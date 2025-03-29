@@ -3391,4 +3391,31 @@ body.light-theme .logo-icon {
 /* Footer logo adjustments */
 .footer-logo .logo-container {
     margin-bottom: 10px;
-} 
+}
+
+/* Portfolio disclaimer styling */
+.portfolio-disclaimer {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid var(--primary-color);
+    padding: 12px 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.portfolio-disclaimer i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.portfolio-disclaimer span {
+    line-height: 1.4;
+}
