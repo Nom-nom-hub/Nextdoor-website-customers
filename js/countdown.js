@@ -1,38 +1,48 @@
+// Countdown Timer Implementation
 document.addEventListener('DOMContentLoaded', function() {
-    const countdownEl = document.querySelector('.countdown');
-    if (!countdownEl) return;
+    const countdownElement = document.querySelector('.countdown');
     
-    const endDate = new Date(countdownEl.dataset.end).getTime();
+    if (!countdownElement) return;
     
-    const daysEl = countdownEl.querySelector('.days');
-    const hoursEl = countdownEl.querySelector('.hours');
-    const minutesEl = countdownEl.querySelector('.minutes');
-    const secondsEl = countdownEl.querySelector('.seconds');
+    const endDate = countdownElement.getAttribute('data-end');
     
-    function updateCountdown() {
-        const now = new Date('March 29, 2025').getTime();
-        
-        const distance = endDate - now;
-        
-        if (distance < 0) {
-            daysEl.textContent = '00';
-            hoursEl.textContent = '00';
-            minutesEl.textContent = '00';
-            secondsEl.textContent = '00';
-            return;
-        }
-        
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        daysEl.textContent = days < 10 ? `0${days}` : days;
-        hoursEl.textContent = hours < 10 ? `0${hours}` : hours;
-        minutesEl.textContent = minutes < 10 ? `0${minutes}` : minutes;
-        secondsEl.textContent = seconds < 10 ? `0${seconds}` : seconds;
+    if (!endDate) {
+        console.error('No end date specified for countdown');
+        return;
     }
     
-    updateCountdown();
-    // setInterval(updateCountdown, 1000);
+    // Calculate the fixed time difference for days and hours
+    const endDateTime = new Date(endDate).getTime();
+    const demoDate = new Date('March 29, 2025').getTime();
+    const fixedTimeRemaining = endDateTime - demoDate;
+    
+    // Fixed values for days and hours
+    const days = Math.floor(fixedTimeRemaining / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((fixedTimeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    
+    // Display fixed values
+    document.querySelector('.days').textContent = days < 10 ? '0' + days : days;
+    document.querySelector('.hours').textContent = hours < 10 ? '0' + hours : hours;
+    
+    // For minutes and seconds, use a cycling counter for visual effect
+    let minutes = 59;
+    let seconds = 59;
+    
+    // Update the countdown every second
+    const countdownTimer = setInterval(function() {
+        seconds--;
+        
+        if (seconds < 0) {
+            seconds = 59;
+            minutes--;
+            
+            if (minutes < 0) {
+                minutes = 59;
+            }
+        }
+        
+        // Display the cycling values
+        document.querySelector('.minutes').textContent = minutes < 10 ? '0' + minutes : minutes;
+        document.querySelector('.seconds').textContent = seconds < 10 ? '0' + seconds : seconds;
+    }, 1000);
 }); 
