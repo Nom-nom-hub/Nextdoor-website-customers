@@ -188,50 +188,57 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.reset();
     });
     
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Get the target element
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (!targetElement) return;
-            
-            // Calculate position with offset for header
-            const headerOffset = 80; // Adjust based on your header height
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
-            // Use native smooth scrolling instead of custom animation
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
+    // Smooth scrolling for navigation links
+    const navLinks = document.querySelectorAll('.main-menu a, .footer-nav a, .cta-buttons a, a.btn');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Only apply to hash links that point to sections on the same page
+            if (this.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (!targetElement) return;
+                
+                // Calculate position with offset for header
+                const headerOffset = 80;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                // Use native smooth scrolling
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
     
     // Disable any scroll event listeners that might be causing the issue
-    const scrollEvents = ['wheel', 'mousewheel', 'DOMMouseScroll'];
+    window.removeEventListener('scroll', window.scrollHandler);
     
-    scrollEvents.forEach(event => {
-        window.addEventListener(event, function(e) {
-            // Only prevent default if a custom scroll animation is in progress
-            if (document.body.classList.contains('is-scrolling-animation')) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-    });
+    // If there are any animation elements that depend on scroll
+    const animateElements = document.querySelectorAll('.fade-in, .slide-in');
     
-    // Remove the scrolling class after animation completes
-    window.addEventListener('scroll', function() {
-        clearTimeout(window.scrollFinished);
-        window.scrollFinished = setTimeout(function() {
-            document.body.classList.remove('is-scrolling-animation');
-        }, 100);
-    });
+    if (animateElements.length > 0) {
+        // Use Intersection Observer instead of scroll events
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Once the animation is triggered, we don't need to observe it anymore
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+    }
     
     // Fix for back-to-top button
     const backToTopButton = document.querySelector('.back-to-top');
@@ -244,53 +251,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-    
-    // Animate elements on scroll
-    const animateElements = document.querySelectorAll('.service-card, .portfolio-item, .about-image, .about-text, .contact-info, .contact-form');
-    
-    function checkScroll() {
-        const triggerBottom = window.innerHeight * 0.8;
-        
-        animateElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            
-            if (elementTop < triggerBottom) {
-                // Only animate if not already animated
-                if (element.getAttribute('data-animated') !== 'true') {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                    element.setAttribute('data-animated', 'true');
-                }
-            }
-        });
-    }
-    
-    // Set initial state for animation - but don't apply to elements already in view
-    animateElements.forEach(element => {
-        // Check if element is already in view on page load
-        const elementTop = element.getBoundingClientRect().top;
-        const triggerBottom = window.innerHeight * 0.8;
-        
-        if (elementTop < triggerBottom) {
-            // Element is already in view, don't animate it
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-            element.setAttribute('data-animated', 'true');
-        } else {
-            // Element is not in view, prepare it for animation
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(30px)';
-            element.setAttribute('data-animated', 'false');
-        }
-        
-        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    });
-    
-    // Check scroll position on load
-    window.addEventListener('load', checkScroll);
-    
-    // Check scroll position on scroll
-    window.addEventListener('scroll', checkScroll);
     
     // Portfolio modal functionality
     const viewProjectButtons = document.querySelectorAll('.view-project');
