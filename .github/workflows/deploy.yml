@@ -12,8 +12,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v3
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
         with:
-          folder: . # The folder the action should deploy.
-          branch: gh-pages # The branch the action should deploy to. 
+          source: ./
+          destination: ./_site
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./_site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+        with:
+          token: ${{ github.token }} 
