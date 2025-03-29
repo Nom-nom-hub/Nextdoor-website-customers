@@ -167,26 +167,35 @@ document.addEventListener('DOMContentLoaded', function() {
         initSlider();
     }
     
-    // Contact form submission
-    const contactForm = document.getElementById('contactForm');
-    
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form values
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const subject = document.getElementById('subject').value;
-        const message = document.getElementById('message').value;
-        
-        // Here you would typically send the form data to a server
-        // For GitHub Pages, you might use a service like Formspree
-        // This is a simple alert for demonstration
-        alert(`Thank you for your message, ${name}! I'll get back to you soon.`);
-        
-        // Reset form
-        contactForm.reset();
-    });
+    // Email contact functionality
+    const emailButton = document.getElementById('emailButton');
+    if (emailButton) {
+        emailButton.addEventListener('click', function() {
+            const name = document.getElementById('name').value || 'Not provided';
+            const email = document.getElementById('email').value || 'Not provided';
+            const subject = document.getElementById('subject').value || 'Website Inquiry';
+            const message = document.getElementById('message').value || 'No message provided';
+            
+            // Format the email body with a more professional style
+            const body = 
+`----- WEBSITE INQUIRY -----
+
+From: ${name}
+Email: ${email}
+
+Message:
+${message}
+
+--------------------------
+Sent from Teck Web Design website`;
+            
+            // Create the mailto link with proper encoding
+            const mailtoLink = `mailto:ftwenty903@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Open the email client
+            window.location.href = mailtoLink;
+        });
+    }
     
     // Smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('.main-menu a, .footer-nav a, .cta-buttons a, a.btn');
