@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechVault | Premium Electronics Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-left">
+                    <a href="tel:+18001234567"><i class="fas fa-phone"></i> 1-800-123-4567</a>
+                    <a href="mailto:support@techvault.com"><i class="fas fa-envelope"></i> support@techvault.com</a>
+                </div>
+                <div class="top-bar-right">
+                    <a href="#"><i class="fas fa-truck"></i> Track Order</a>
+                    <a href="#"><i class="fas fa-map-marker-alt"></i> Store Locator</a>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">Tech<span>Vault</span></a>
+                </div>
+                <div class="search-bar">
+                    <form>
+                        <input type="text" placeholder="Search for products...">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="nav-icons">
+                    <a href="#" class="nav-icon"><i class="fas fa-user"></i></a>
+                    <a href="#" class="nav-icon"><i class="fas fa-heart"></i></a>
+                    <a href="#" class="nav-icon cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+        <div class="category-nav">
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Smartphones <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-column">
+                                <h4>Brands</h4>
+                                <a href="#">Apple</a>
+                                <a href="#">Samsung</a>
+                                <a href="#">Google</a>
+                                <a href="#">OnePlus</a>
+                                <a href="#">Xiaomi</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Categories</h4>
+                                <a href="#">Flagship</a>
+                                <a href="#">Mid-range</a>
+                                <a href="#">Budget</a>
+                                <a href="#">Foldable</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Accessories</h4>
+                                <a href="#">Cases</a>
+                                <a href="#">Screen Protectors</a>
+                                <a href="#">Chargers</a>
+                                <a href="#">Power Banks</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">Laptops</a></li>
+                    <li><a href="#">Tablets</a></li>
+                    <li><a href="#">Audio</a></li>
+                    <li><a href="#">Wearables</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Deals</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-slider">
+            <div class="slider-container">
+                <div class="slide active">
+                    <div class="slide-content">
+                        <h1>The Latest Flagship Smartphones</h1>
+                        <p>Experience cutting-edge technology with premium features</p>
+                        <a href="#" class="btn btn-primary">Shop Now</a>
+                    </div>
+                    <div class="slide-image">
+                        <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Latest Smartphones">
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-content">
+                        <h1>Premium Audio Experience</h1>
+                        <p>Immerse yourself in crystal-clear sound with our high-end headphones</p>
+                        <a href="#" class="btn btn-primary">Shop Now</a>
+                    </div>
+                    <div class="slide-image">
+                        <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Premium Headphones">
+                    </div>
+                </div>
+                <div class="slide-controls">
+                    <button class="prev-slide"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slide-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                    </div>
+                    <button class="next-slide"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Categories -->
+        <section class="featured-categories">
+            <div class="container">
+                <h2 class="section-title">Shop by Category</h2>
+                <div class="category-grid">
+                    <a href="#" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Smartphones</h3>
+                    </a>
+                    <a href="#" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3>Laptops</h3>
+                    </a>
+                    <a href="#" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-tablet-alt"></i>
+                        </div>
+                        <h3>Tablets</h3>
+                    </a>
+                    <a href="#" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <h3>Audio</h3>
+                    </a>
+                    <a href="#" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-watch"></i>
+                        </div>
+                        <h3>Wearables</h3>
+                    </a>
+                    <a href="#" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <h3>TVs</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="featured-products">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Products</h2>
+                    <div class="view-all">
+                        <a href="#">View All <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-badge">New</div>
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Smartphone Pro Max">
+                            <div class="product-actions">
+                                <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                <button class="action-btn compare-btn"><i class="fas fa-exchange-alt"></i></button>
+                                <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Smartphones</div>
+                            <h3 class="product-title">Smartphone Pro Max</h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(24)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$1,099.99</span>
+                                <span class="old-price">$1,199.99</span>
+                            </div>
+                            <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-badge sale">-15%</div>
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Wireless Headphones">
+                            <div class="product-actions">
+                                <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                <button class="action-btn compare-btn"><i class="fas fa-exchange-alt"></i></button>
+                                <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Audio</div>
+                            <h3 class="product-title">Premium Wireless Headphones</h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(42)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">$249.99</span>
+                                <span class="old-price">$299.99</span>
+                            </div>
+                            <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Notice -->
+        <div class="demo-notice">
+            <p>This is a demo website created by <a href="../../index.html">Teck</a>. All products and prices are fictional.</p>
+            <a href="../../index.html" class="btn btn-sm">Return to Portfolio</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-widgets">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <a href="index.html">Tech<span>Vault</span></a>
+                        </div>
+                        <p>Your trusted destination for premium electronics and tech accessories with expert advice and exceptional service.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-widget">
+                        <h4>Shop</h4>
+                        <ul>
+                            <li><a href="#">Smartphones</a></li>
+                            <li><a href="#">Laptops</a></li>
+                            <li><a href="#">Tablets</a></li>
+                            <li><a href="#">Audio</a></li>
+                            <li><a href="#">Wearables</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h4>Customer Service</h4>
+                        <ul>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Track Order</a></li>
+                            <li><a href="#">Shipping & Delivery</a></li>
+                            <li><a href="#">Returns & Exchanges</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-widget">
+                        <h4>Newsletter</h4>
+                        <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Enter your email">
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="payment-methods">
+                    <span>We Accept:</span>
+                    <img src="https://cdn.pixabay.com/photo/2021/12/06/13/48/visa-6850402_1280.png" alt="Visa">
+                    <img src="https://cdn.pixabay.com/photo/2021/12/06/13/45/mastercard-6850363_1280.png" alt="Mastercard">
+                    <img src="https://cdn.pixabay.com/photo/2021/12/06/13/45/paypal-6850362_1280.png" alt="PayPal">
+                    <img src="https://cdn.pixabay.com/photo/2021/12/06/13/45/apple-pay-6850361_1280.png" alt="Apple Pay">
+                </div>
+                <p>&copy; 2023 TechVault. Demo Website by <a href="../../index.html">Teck</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
