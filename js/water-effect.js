@@ -1,537 +1,17 @@
-// Advanced Water Drip Effect with Rain
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("Water effect script loaded");
-    
-    // Initialize the effect immediately
-    init();
-    
-    // Initialize the effect
-    function init() {
-        console.log("Initializing water effect");
-        
-        // Clear any existing elements first
-        const existingElements = document.querySelectorAll('.night-sky, .star, .moon, .spaceship, .planet, .milky-way, .rain-drop, .rain-splash, .rain-ripple');
-        existingElements.forEach(el => el.remove());
-        
-        // Create night sky first (background)
-        createNightSky();
-        
-        // Create canvas
-        const canvas = document.createElement('canvas');
-        canvas.className = 'water-canvas';
-        document.body.appendChild(canvas);
-        
-        // Add CSS for water and rain effects
-        const style = document.createElement('style');
-        style.textContent = `
-            .water-canvas {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-                z-index: 999;
-            }
-            
-            /* Night sky background */
-            .night-sky {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(to bottom, #0a0e21, #191e3b);
-                z-index: -1;
-                pointer-events: none;
-            }
-            
-            /* Star styles */
-            .star {
-                position: absolute;
-                background-color: #ffffff;
-                border-radius: 50%;
-                z-index: 0;
-                pointer-events: none;
-                animation: twinkle 4s infinite ease-in-out;
-            }
-            
-            @keyframes twinkle {
-                0% { opacity: 0.2; }
-                50% { opacity: 1; }
-                100% { opacity: 0.2; }
-            }
-            
-            @keyframes twinkleBright {
-                0% { opacity: 0.4; transform: scale(1); }
-                50% { opacity: 1; transform: scale(1.3); background-color: #fff; }
-                100% { opacity: 0.4; transform: scale(1); }
-            }
-            
-            /* Shooting star styles */
-            .shooting-star {
-                position: absolute;
-                width: 100px;
-                height: 2px;
-                background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-                z-index: 10;
-                pointer-events: none;
-                animation: shoot 1s linear forwards;
-            }
-            
-            @keyframes shoot {
-                0% { 
-                    transform: translateX(0) translateY(0) rotate(30deg); 
-                    opacity: 0;
-                }
-                15% {
-                    opacity: 1;
-                }
-                70% {
-                    opacity: 1;
-                }
-                100% { 
-                    transform: translateX(500px) translateY(300px) rotate(30deg); 
-                    opacity: 0;
-                }
-            }
-            
-            /* Moon styles */
-            .moon {
-                position: absolute; /* Changed from fixed to absolute */
-                width: 80px;
-                height: 80px;
-                border-radius: 50%;
-                background: radial-gradient(circle at 25% 25%, #ffffff 0%, #f4f4f4 50%, #e0e0e0 100%);
-                box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.4);
-                z-index: 1;
-                pointer-events: none;
-            }
-            
-            /* Rain drop styles */
-            .rain-drop {
-                position: absolute;
-                background: linear-gradient(
-                    to bottom,
-                    rgba(255, 255, 255, 0.1),
-                    rgba(255, 255, 255, 0.8)
-                );
-                width: 2px;
-                height: 20px;
-                opacity: 0.7;
-                pointer-events: none;
-                z-index: 2;
-            }
-            
-            /* Rain splash styles */
-            .rain-splash {
-                position: absolute;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: radial-gradient(
-                    circle,
-                    rgba(255, 255, 255, 0.8) 0%,
-                    rgba(255, 255, 255, 0) 70%
-                );
-                opacity: 0.7;
-                pointer-events: none;
-                z-index: 3;
-                animation: splash 0.5s linear forwards;
-            }
-            
-            @keyframes splash {
-                0% { transform: scale(0.1); opacity: 0.7; }
-                100% { transform: scale(1.5); opacity: 0; }
-            }
-            
-            /* Spaceship styles */
-            .spaceship {
-                position: absolute;
-                background-color: rgba(255, 255, 255, 0.8);
-                border-radius: 50% 50% 0 0;
-                z-index: 3;
-                pointer-events: none;
-                box-shadow: 0 0 2px 1px rgba(120, 200, 255, 0.6);
-            }
-            
-            .spaceship::before {
-                content: '';
-                position: absolute;
-                bottom: -1px;
-                width: 100%;
-                height: 1px;
-                background: linear-gradient(to right, transparent, rgba(0, 255, 255, 0.8), transparent);
-            }
-            
-            .spaceship.moving-right {
-                animation: flyRight linear forwards;
-            }
-            
-            .spaceship.moving-left {
-                animation: flyLeft linear forwards;
-            }
-            
-            @keyframes flyRight {
-                from { transform: translateX(0); }
-                to { transform: translateX(calc(100vw + 50px)); }
-            }
-            
-            @keyframes flyLeft {
-                from { transform: translateX(0); }
-                to { transform: translateX(calc(-100vw - 50px)); }
-            }
-            
-            /* Milky Way styles */
-            .milky-way {
-                position: absolute;
-                background: linear-gradient(90deg, 
-                    rgba(255, 255, 255, 0.005), 
-                    rgba(255, 255, 255, 0.02) 20%, 
-                    rgba(200, 220, 255, 0.06) 50%, 
-                    rgba(255, 255, 255, 0.02) 80%, 
-                    rgba(255, 255, 255, 0.005));
-                border-radius: 100px;
-                z-index: 1;
-                pointer-events: none;
-                opacity: 0.6; // Reduced from 0.8
-                overflow: hidden;
-                box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1); // Reduced glow
-            }
-            
-            .star-cluster {
-                position: absolute;
-                background: radial-gradient(
-                    circle, 
-                    rgba(255, 255, 255, 0.7) 2%, 
-                    rgba(255, 255, 255, 0.3) 15%, 
-                    rgba(255, 255, 255, 0.1) 40%, 
-                    transparent 70%
-                );
-                border-radius: 50%;
-                opacity: 0.6; // Reduced from 0.8
-                filter: blur(1px);
-            }
-            
-            .nebula {
-                position: absolute;
-                border-radius: 50%;
-                filter: blur(15px);
-                opacity: 0.4; // Reduced from 0.6
-                mix-blend-mode: screen;
-            }
-            
-            .galaxy-core {
-                position: absolute;
-                background: radial-gradient(
-                    ellipse, 
-                    rgba(255, 255, 255, 0.5) 5%, 
-                    rgba(255, 240, 220, 0.3) 20%, 
-                    rgba(255, 220, 180, 0.15) 40%, 
-                    transparent 70%
-                );
-                border-radius: 50%;
-                filter: blur(5px);
-                opacity: 0.6; // Reduced from 0.8
-                box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.15); // Reduced glow
-            }
-            
-            .dust-lane {
-                position: absolute;
-                background: linear-gradient(
-                    90deg,
-                    transparent 0%,
-                    rgba(0, 0, 0, 0.2) 30%,
-                    rgba(0, 0, 0, 0.3) 50%,
-                    rgba(0, 0, 0, 0.2) 70%,
-                    transparent 100%
-                );
-                transform: rotate(-5deg);
-                filter: blur(3px);
-            }
-            
-            /* Planet styles */
-            .planet {
-                position: absolute;
-                border-radius: 50%;
-                z-index: 2;
-                pointer-events: none;
-                box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.3);
-            }
-            
-            .planet[data-name="saturn"] {
-                position: relative;
-                box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.4);
-            }
-            
-            .planet-ring {
-                position: absolute;
-                width: 200%;
-                height: 30%;
-                left: -50%;
-                top: 35%;
-                border-radius: 50%;
-                border: 1px solid rgba(255, 215, 0, 0.6);
-                transform: rotate(-20deg);
-                box-shadow: 0 0 2px rgba(255, 215, 0, 0.3);
-            }
-            
-            /* Aurora Borealis */
-            .aurora {
-                position: absolute;
-                width: 100%;
-                z-index: 1;
-                pointer-events: none;
-                overflow: hidden;
-            }
-            
-            .aurora-wave {
-                position: absolute;
-                width: 200%;
-                height: 100%;
-                background: linear-gradient(90deg, 
-                    transparent 0%,
-                    rgba(120, 200, 255, 0.1) 15%,
-                    rgba(80, 200, 170, 0.2) 25%,
-                    rgba(100, 150, 255, 0.1) 35%,
-                    transparent 50%,
-                    rgba(120, 180, 255, 0.1) 65%,
-                    rgba(80, 220, 170, 0.2) 75%,
-                    rgba(100, 180, 255, 0.1) 85%,
-                    transparent 100%
-                );
-                filter: blur(20px);
-                transform-origin: center bottom;
-                animation: auroraWave 20s infinite alternate ease-in-out;
-                left: -50%;
-            }
-            
-            @keyframes auroraWave {
-                0% { transform: translateX(-10%) scaleX(1.1); }
-                50% { transform: translateX(10%) scaleX(0.9); }
-                100% { transform: translateX(-10%) scaleX(1.1); }
-            }
-            
-            /* City Lights */
-            .city-lights {
-                position: absolute;
-                z-index: 1;
-                pointer-events: none;
-            }
-            
-            .city-light {
-                position: absolute;
-                width: 1px;
-                background-color: rgba(255, 240, 180, 0.6);
-                bottom: 0;
-                animation: cityLightFlicker 5s infinite;
-            }
-            
-            @keyframes cityLightFlicker {
-                0% { opacity: 0.6; }
-                25% { opacity: 0.8; }
-                30% { opacity: 0.6; }
-                70% { opacity: 0.8; }
-                75% { opacity: 0.6; }
-                100% { opacity: 0.7; }
-            }
-            
-            /* Meteor Shower */
-            .meteor {
-                position: absolute;
-                width: 150px;
-                height: 1px;
-                background: linear-gradient(90deg, 
-                    transparent, 
-                    rgba(255, 255, 255, 0.8) 50%, 
-                    transparent
-                );
-                animation: meteorFall 3s linear forwards;
-                z-index: 3;
-            }
-            
-            @keyframes meteorFall {
-                0% { transform: translateY(0) translateX(0); opacity: 0; }
-                10% { opacity: 1; }
-                100% { transform: translateY(120vh) translateX(100vw); opacity: 0; }
-            }
-            
-            /* Constellations */
-            .constellation {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 1;
-                pointer-events: none;
-            }
-            
-            .constellation-star {
-                position: absolute;
-                background-color: rgba(255, 255, 255, 0.9);
-                border-radius: 50%;
-                box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.4);
-            }
-            
-            .constellation-line {
-                position: absolute;
-                height: 1px;
-                background: linear-gradient(90deg, 
-                    transparent, 
-                    rgba(255, 255, 255, 0.2), 
-                    transparent
-                );
-                transform-origin: left center;
-                opacity: 0.3;
-            }
-            
-            /* Responsive adjustments */
-            @media (max-width: 768px) {
-                .aurora-wave {
-                    opacity: 0.5;
-                }
-                
-                .constellation-line {
-                    opacity: 0.2;
-                }
-            }
-            
-            /* Light theme adjustments */
-            body.light-theme .aurora-wave {
-                opacity: 0.3;
-            }
-            
-            body.light-theme .constellation-line {
-                opacity: 0.1;
-            }
-            
-            body.light-theme .city-light {
-                opacity: 0.3;
-            }
-        `;
-        document.head.appendChild(style);
-        
-        // Global variables
-        let isRaining = false;
-        let rainIntensity = 0.5;
-        
-        // Add rain toggle button
-        const rainButton = document.createElement('button');
-        rainButton.textContent = 'Toggle Rain';
-        rainButton.style.position = 'fixed';
-        rainButton.style.bottom = '10px';
-        rainButton.style.right = '10px';
-        rainButton.style.zIndex = '1000';
-        rainButton.style.padding = '5px 10px';
-        rainButton.style.background = 'rgba(0, 0, 0, 0.5)';
-        rainButton.style.color = 'white';
-        rainButton.style.border = 'none';
-        rainButton.style.borderRadius = '4px';
-        rainButton.style.cursor = 'pointer';
-        
-        rainButton.addEventListener('click', function() {
-            isRaining = !isRaining;
-            console.log("Rain toggled:", isRaining);
-            if (isRaining) {
-                startRain();
-            }
-        });
-        document.body.appendChild(rainButton);
-        
-        // Start with rain enabled
-        isRaining = true;
-        startRain();
-        
-        // Create rain drops
-        function createRaindrop() {
-            if (!isRaining) return;
-            
-            // Random position
-            const x = Math.random() * window.innerWidth;
-            const y = -20; // Start above viewport
-            
-            // Create raindrop element
-            const raindrop = document.createElement('div');
-            raindrop.className = 'rain-drop';
-            
-            // Random size
-            const size = 1 + Math.random() * 2;
-            const length = 15 + Math.random() * 15;
-            raindrop.style.width = `${size}px`;
-            raindrop.style.height = `${length}px`;
-            
-            // Position
-            raindrop.style.left = `${x}px`;
-            raindrop.style.top = `${y}px`;
-            
-            // Add to DOM
-            document.body.appendChild(raindrop);
-            
-            // Animate falling
-            const duration = 0.5 + Math.random() * 0.5;
-            raindrop.style.transition = `top ${duration}s linear`;
-            
-            // Start animation after a small delay
-            setTimeout(() => {
-                raindrop.style.top = `${window.innerHeight + 20}px`;
-            }, 10);
-            
-            // Create splash and remove drop
-            setTimeout(() => {
-                createSplash(x, window.innerHeight - 10, size);
-                raindrop.remove();
-            }, duration * 1000);
-        }
-        
-        // Create splash effect
-        function createSplash(x, y, size) {
-            const splash = document.createElement('div');
-            splash.className = 'rain-splash';
-            splash.style.left = `${x - 5}px`;
-            splash.style.top = `${y - 5}px`;
-            
-            // Add to DOM
-            document.body.appendChild(splash);
-            
-            // Remove after animation
-            setTimeout(() => {
-                splash.remove();
-            }, 500);
-        }
-        
-        // Start rain effect
-        function startRain() {
-            if (!isRaining) return;
-            
-            console.log("Starting rain");
-            
-            // Create multiple raindrops
-            for (let i = 0; i < 10; i++) {
-                setTimeout(() => {
-                    createRaindrop();
-                }, i * 100);
-            }
-            
-            // Continue rain
-            setTimeout(startRain, 1000);
-        }
-        
-        console.log("Water effect initialized");
-    }
-}); 
-
-// Create night sky with stars, moon, spaceships, planets, and Milky Way
+// Create night sky with stars, moon, spaceships, planets, and without Milky Way
 function createNightSky() {
     console.log("Creating night sky");
     
-    // Create night sky background
+    // Create night sky background first
     const nightSky = document.createElement('div');
     nightSky.className = 'night-sky';
     document.body.appendChild(nightSky);
     
-    // Create Milky Way
-    createMilkyWay();
+    // Add enhanced star styles
+    addEnhancedStarStyles();
+    
+    // Add airplane styles
+    addAirplaneStyles();
     
     // Create aurora borealis
     createAurora();
@@ -551,8 +31,18 @@ function createNightSky() {
     // Create moon
     createMoon();
     
-    // Create city lights on horizon
+    // Create water area first (bottom layer)
+    createWaterReflections();
+    
+    // Create boats in the water (middle layer)
+    createBoats();
+    
+    // Create city elements last (top layer)
     createCityLights();
+    createCitySilhouette();
+    
+    // Add city styles
+    addCityStyles();
     
     // Add shooting stars periodically
     createShootingStar();
@@ -568,39 +58,215 @@ function createNightSky() {
     // Add lightning effect
     initLightningEffect();
     
+    // Add airplanes periodically
+    createAirplane();
+    setInterval(createAirplane, 20000 + Math.random() * 15000);
+    
     console.log("Night sky created");
 }
 
-// Create a star
+// Add city styles
+function addCityStyles() {
+    const cityStyles = document.createElement('style');
+    cityStyles.textContent = `
+        .night-sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #0a1525 0%, #1c3b5a 100%);
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle 5s infinite ease-in-out;
+        }
+        
+        .moon {
+            position: absolute;
+            background-color: #fffce8;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 252, 232, 0.6);
+        }
+        
+        .star-cluster {
+            position: absolute;
+            background: radial-gradient(circle, 
+                rgba(255, 255, 255, 0.2) 0%, 
+                rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+        }
+        
+        .city-light {
+            position: absolute;
+            width: 1px;
+            background-color: rgba(255, 240, 180, 0.6);
+            bottom: 0;
+            animation: cityLightFlicker 5s infinite;
+        }
+        
+        @keyframes cityLightFlicker {
+            0% { opacity: 0.6; }
+            25% { opacity: 0.8; }
+            30% { opacity: 0.6; }
+            70% { opacity: 0.8; }
+            75% { opacity: 0.6; }
+            100% { opacity: 0.7; }
+        }
+        
+        .building {
+            transition: opacity 0.5s;
+        }
+        
+        .building:hover {
+            opacity: 0.9 !important;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        .shooting-star {
+            position: absolute;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+            animation: shootingStar 1s linear;
+        }
+        
+        @keyframes shootingStar {
+            0% { transform: translateX(0) translateY(0); opacity: 1; }
+            100% { transform: translateX(200px) translateY(200px); opacity: 0; }
+        }
+    `;
+    
+    document.head.appendChild(cityStyles);
+}
+
+// Add moving traffic to make the city feel alive
+function addTraffic() {
+    setInterval(() => {
+        if (Math.random() < 0.3) {
+            const traffic = document.createElement('div');
+            traffic.className = 'traffic ' + (Math.random() < 0.5 ? 'right' : 'left');
+            
+            // Random position
+            traffic.style.left = Math.random() < 0.5 ? '0' : '100%';
+            traffic.style.width = `${2 + Math.random() * 4}px`;
+            traffic.style.opacity = `${0.6 + Math.random() * 0.4}`;
+            
+            // Much slower animation duration (30-60s instead of 15-30s)
+            traffic.style.animationDuration = `${30 + Math.random() * 30}s`;
+            
+            document.body.appendChild(traffic);
+            
+            // Remove after animation completes (increased to match longer duration)
+            setTimeout(() => {
+                if (traffic && traffic.parentNode) {
+                    traffic.remove();
+                }
+            }, 60000);
+        }
+    }, 500);
+}
+
+// Update the CSS animation styles for traffic
+function updateTrafficStyles() {
+    // Find existing style element or create a new one
+    let styleEl = document.getElementById('traffic-styles');
+    if (!styleEl) {
+        styleEl = document.createElement('style');
+        styleEl.id = 'traffic-styles';
+        document.head.appendChild(styleEl);
+    }
+    
+    // Update with much slower animations
+    styleEl.textContent = `
+        .traffic {
+            position: absolute;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.7);
+            bottom: 2px;
+            z-index: 3;
+        }
+        
+        .traffic.right {
+            animation: trafficRight linear forwards;
+            animation-duration: inherit;
+        }
+        
+        .traffic.left {
+            animation: trafficLeft linear forwards;
+            animation-duration: inherit;
+        }
+        
+        @keyframes trafficRight {
+            from { left: 0; }
+            to { left: 100%; }
+        }
+        
+        @keyframes trafficLeft {
+            from { left: 100%; }
+            to { left: 0; }
+        }
+    `;
+}
+
+// Create a star in the night sky
 function createStar() {
     const star = document.createElement('div');
     star.className = 'star';
     
     // Random position
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * window.innerHeight * 0.7;
+    const x = Math.random() * 100;
+    const y = Math.random() * 60; // Keep stars in upper portion
     
     // Random size
-    const size = 1 + Math.random() * 3;
+    const size = 1 + Math.random() * 2;
     
-    // Random twinkle delay
-    const delay = Math.random() * 4;
+    // Random twinkle animation duration
+    const duration = 2 + Math.random() * 5;
     
-    star.style.left = `${x}px`;
-    star.style.top = `${y}px`;
+    // Random delay for twinkling to avoid synchronization
+    const delay = Math.random() * 5;
+    
+    star.style.left = `${x}%`;
+    star.style.top = `${y}%`;
     star.style.width = `${size}px`;
     star.style.height = `${size}px`;
+    star.style.animationDuration = `${duration}s`;
     star.style.animationDelay = `${delay}s`;
-    star.style.zIndex = '1';
-    
-    // Add enhanced twinkling for some stars
-    if (Math.random() > 0.7) {
-        star.style.animation = 'twinkleBright 3s infinite ease-in-out';
-        star.style.boxShadow = '0 0 3px 1px rgba(255, 255, 255, 0.8)';
-    }
     
     // Add to DOM
     document.body.appendChild(star);
+}
+
+// Add enhanced twinkling styles
+function addEnhancedStarStyles() {
+    const starStyles = document.createElement('style');
+    starStyles.id = 'enhanced-star-styles';
+    starStyles.textContent = `
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle ease-in-out infinite;
+            box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+    `;
+    
+    document.head.appendChild(starStyles);
 }
 
 // Create moon
@@ -608,18 +274,17 @@ function createMoon() {
     const moon = document.createElement('div');
     moon.className = 'moon';
     
-    // Position in top right quadrant
-    const x = window.innerWidth * 0.7 + Math.random() * (window.innerWidth * 0.2);
-    const y = window.innerHeight * 0.2 + Math.random() * (window.innerHeight * 0.1);
+    // Make moon smaller and higher to appear more distant
+    const size = Math.random() * 30 + 40; // Reduced size
+    const posX = Math.random() * 70 + 15; // Keep horizontal position similar
+    const posY = Math.random() * 10 + 5;  // Position higher in the sky
     
-    moon.style.left = `${x}px`;
-    moon.style.top = `${y}px`;
-    moon.style.zIndex = '2'; // Changed from -1 to positive value
+    moon.style.width = `${size}px`;
+    moon.style.height = `${size}px`;
+    moon.style.top = `${posY}%`;
+    moon.style.left = `${posX}%`;
     
-    // Add to DOM
     document.body.appendChild(moon);
-    
-    console.log("Moon created at", x, y);
 }
 
 // Create a shooting star
@@ -803,63 +468,6 @@ function createMilkyWay() {
         cluster.style.height = `${size}px`;
         
         milkyWay.appendChild(cluster);
-    }
-    
-    // Add subtle nebula-like clouds (reduced opacity)
-    for (let i = 0; i < 6; i++) { // Reduced number
-        const nebula = document.createElement('div');
-        nebula.className = 'nebula';
-        
-        // Random position
-        const x = 10 + Math.random() * 80;
-        const y = 10 + Math.random() * 80;
-        
-        // Random size (reduced)
-        const width = 40 + Math.random() * 100;
-        const height = 20 + Math.random() * 60;
-        
-        // Random rotation
-        const rotation = Math.random() * 360;
-        
-        // Random color (more subtle blues and purples)
-        const hue = 200 + Math.random() * 60; // More blue range
-        const color = `hsla(${hue}, 60%, 50%, 0.08)`; // Reduced opacity
-        
-        nebula.style.left = `${x}%`;
-        nebula.style.top = `${y}%`;
-        nebula.style.width = `${width}px`;
-        nebula.style.height = `${height}px`;
-        nebula.style.transform = `rotate(${rotation}deg)`;
-        nebula.style.backgroundColor = color;
-        
-        milkyWay.appendChild(nebula);
-    }
-    
-    // Add more subtle core
-    const core = document.createElement('div');
-    core.className = 'galaxy-core';
-    
-    // Position near the center
-    core.style.left = '40%';
-    core.style.top = '30%';
-    core.style.width = '100px'; // Reduced size
-    core.style.height = '60px'; // Reduced size
-    
-    milkyWay.appendChild(core);
-    
-    // Add subtle dust lanes
-    for (let i = 0; i < 2; i++) { // Reduced number
-        const dustLane = document.createElement('div');
-        dustLane.className = 'dust-lane';
-        
-        // Position across the Milky Way
-        dustLane.style.left = '0';
-        dustLane.style.top = `${35 + i * 20}%`;
-        dustLane.style.width = '100%';
-        dustLane.style.height = '8px'; // Reduced height
-        dustLane.style.opacity = 0.2 + (Math.random() * 0.1); // Reduced opacity
-        
-        milkyWay.appendChild(dustLane);
     }
 }
 
@@ -1061,151 +669,282 @@ function createAurora() {
     }
 }
 
-// Create distant city lights on the horizon
+// Create distant city lights on the horizon - enhanced for realism
 function createCityLights() {
     const cityLights = document.createElement('div');
     cityLights.className = 'city-lights';
     
     // Position at the bottom of the screen
     cityLights.style.width = '100%';
-    cityLights.style.height = '5px'; // Increased from 3px
+    cityLights.style.height = '8px'; // Increased height for more detail
     cityLights.style.bottom = '0';
     cityLights.style.left = '0';
+    cityLights.style.position = 'absolute';
+    cityLights.style.zIndex = '2';
     
     document.body.appendChild(cityLights);
     
-    // Create individual lights - increased density
-    const lightCount = Math.floor(window.innerWidth / 10); // Increased density
+    // Create individual lights - increased density and variety
+    const lightCount = Math.floor(window.innerWidth / 8); // Higher density
     for (let i = 0; i < lightCount; i++) {
         const light = document.createElement('div');
         light.className = 'city-light';
         
         // Random position along the horizon
-        const x = (i / lightCount) * 100 + (Math.random() * 0.5);
-        const height = 1 + Math.random() * 4; // Increased max height
+        const x = (i / lightCount) * 100 + (Math.random() * 0.8 - 0.4);
+        
+        // More varied heights for skyline effect
+        const height = 1 + Math.random() * 6; 
         
         light.style.left = `${x}%`;
         light.style.height = `${height}px`;
-        light.style.width = `${Math.random() < 0.3 ? 2 : 1}px`; // Some lights are wider
-        light.style.opacity = `${0.5 + Math.random() * 0.5}`; // Varied opacity
-        light.style.animationDuration = `${3 + Math.random() * 5}s`;
+        
+        // More varied widths
+        light.style.width = `${Math.random() < 0.2 ? 2 : Math.random() < 0.1 ? 3 : 1}px`;
+        
+        // Varied opacity and colors
+        light.style.opacity = `${0.5 + Math.random() * 0.5}`;
+        
+        // Randomize animation timing
+        light.style.animationDuration = `${3 + Math.random() * 7}s`;
         light.style.animationDelay = `${Math.random() * 5}s`;
         
-        // Add different color tints to some lights
-        if (Math.random() < 0.3) {
-            light.style.backgroundColor = 'rgba(255, 220, 180, 0.7)'; // Warm light
-        } else if (Math.random() < 0.2) {
-            light.style.backgroundColor = 'rgba(200, 240, 255, 0.7)'; // Cool light
+        // Add different color tints to lights
+        const colorRoll = Math.random();
+        if (colorRoll < 0.5) {
+            light.style.backgroundColor = 'rgba(255, 240, 180, 0.7)'; // Warm yellow
+        } else if (colorRoll < 0.7) {
+            light.style.backgroundColor = 'rgba(255, 220, 180, 0.7)'; // Warm orange
+        } else if (colorRoll < 0.85) {
+            light.style.backgroundColor = 'rgba(200, 240, 255, 0.7)'; // Cool blue
+        } else {
+            light.style.backgroundColor = 'rgba(255, 200, 200, 0.7)'; // Reddish
         }
         
         cityLights.appendChild(light);
     }
-    
-    // Add city silhouette
-    createCitySilhouette();
 }
 
-// Add a silhouette of buildings to enhance city appearance
+// Add a more detailed silhouette of buildings
 function createCitySilhouette() {
     const silhouette = document.createElement('div');
     silhouette.className = 'city-silhouette';
+    silhouette.style.position = 'absolute';
+    silhouette.style.bottom = '0';
+    silhouette.style.left = '0';
+    silhouette.style.width = '100%';
+    silhouette.style.height = '40px';
+    silhouette.style.overflow = 'hidden';
+    silhouette.style.zIndex = '2';
     
-    // Get the website's background color for better integration
-    const isDarkTheme = !document.body.classList.contains('light-theme');
-    const baseColor = isDarkTheme ? '#0a0e21' : '#f8fafc'; // Match website theme colors
+    document.body.appendChild(silhouette);
     
-    // Add CSS for silhouette
-    const style = document.createElement('style');
-    style.textContent = `
-        .city-silhouette {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            background: linear-gradient(to top, 
-                rgba(0, 0, 0, 0.9) 0%, 
-                rgba(0, 0, 0, 0.7) 60%, 
-                rgba(0, 0, 0, 0) 100%);
-            z-index: 1;
-            overflow: hidden;
-        }
-        
-        .building {
-            position: absolute;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.95);
-            z-index: 2;
-            border-radius: 1px 1px 0 0;
-        }
-        
-        body.light-theme .city-silhouette {
-            background: linear-gradient(to top, 
-                rgba(20, 30, 50, 0.8) 0%, 
-                rgba(20, 30, 50, 0.5) 60%, 
-                rgba(20, 30, 50, 0) 100%);
-        }
-        
-        body.light-theme .building {
-            background-color: rgba(20, 30, 50, 0.9);
-        }
-        
-        .window {
-            position: absolute;
-            background-color: rgba(255, 240, 180, 0.6);
-            width: 2px;
-            height: 2px;
-            animation: windowFlicker 8s infinite;
+    // Create buildings with more variety and realism
+    const buildingCount = Math.floor(window.innerWidth / 15); // More buildings for a denser skyline
+    
+    // Add city animation styles
+    const cityAnimationStyles = document.createElement('style');
+    cityAnimationStyles.textContent = `
+        .building-window {
+            animation: windowFlicker 4s infinite;
+            animation-delay: var(--delay);
         }
         
         @keyframes windowFlicker {
-            0%, 100% { opacity: 0.6; }
-            3% { opacity: 0.2; }
-            6% { opacity: 0.6; }
-            92% { opacity: 0.6; }
-            94% { opacity: 0.2; }
-            96% { opacity: 0.6; }
+            0%, 100% { opacity: var(--base-opacity); }
+            3% { opacity: 0.3; }
+            6% { opacity: var(--base-opacity); }
+            7% { opacity: 0.3; }
+            9% { opacity: var(--base-opacity); }
+            94% { opacity: var(--base-opacity); }
+            96% { opacity: 0.3; }
+            98% { opacity: var(--base-opacity); }
+        }
+        
+        .traffic {
+            position: absolute;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.7);
+            bottom: 2px;
+            z-index: 3;
+        }
+        
+        .traffic.right {
+            animation: trafficRight 15s linear forwards;
+        }
+        
+        .traffic.left {
+            animation: trafficLeft 15s linear forwards;
+        }
+        
+        @keyframes trafficRight {
+            from { left: 0; }
+            to { left: 100%; }
+        }
+        
+        @keyframes trafficLeft {
+            from { left: 100%; }
+            to { left: 0; }
+        }
+        
+        .helicopter {
+            position: absolute;
+            width: 6px;
+            height: 2px;
+            background-color: rgba(255, 0, 0, 0.5);
+            z-index: 3;
+            animation: helicopterFly 30s linear forwards;
+        }
+        
+        .helicopter::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            top: -4px;
+            left: 1px;
+            animation: helicopterLight 1s infinite;
+        }
+        
+        @keyframes helicopterFly {
+            0% { left: -10px; top: 20%; }
+            100% { left: 110%; top: 40%; }
+        }
+        
+        @keyframes helicopterLight {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
         }
     `;
-    document.head.appendChild(style);
-    document.body.appendChild(silhouette);
+    document.head.appendChild(cityAnimationStyles);
     
-    // Create buildings
-    const buildingCount = Math.floor(window.innerWidth / 40);
     for (let i = 0; i < buildingCount; i++) {
         const building = document.createElement('div');
         building.className = 'building';
         
-        const width = 20 + Math.random() * 60;
-        const height = 5 + Math.random() * 25;
-        const left = (i / buildingCount) * 100;
+        // More varied width and height for realism
+        const width = 8 + Math.random() * 35;
+        const height = 5 + Math.random() * 35;
+        const left = (i / buildingCount) * 100 + (Math.random() * 0.8 - 0.4);
         
+        building.style.position = 'absolute';
         building.style.width = `${width}px`;
         building.style.height = `${height}px`;
         building.style.left = `${left}%`;
+        building.style.bottom = '0';
         
-        // Add a slight opacity variation for depth
-        building.style.opacity = (0.8 + Math.random() * 0.2).toString();
+        // More realistic building colors
+        const buildingColor = Math.random() < 0.7 ? 
+            `rgba(${5 + Math.random() * 15}, ${10 + Math.random() * 20}, ${20 + Math.random() * 30}, 0.9)` : 
+            `rgba(${20 + Math.random() * 30}, ${20 + Math.random() * 30}, ${30 + Math.random() * 40}, 0.9)`;
+        building.style.backgroundColor = buildingColor;
         
         // Add windows to buildings
-        const windowCount = Math.floor(width / 4) * Math.floor(height / 3);
-        for (let j = 0; j < windowCount; j++) {
-            if (Math.random() < 0.4) { // Only some windows are lit
-                const windowEl = document.createElement('div');
-                windowEl.className = 'window';
-                
-                const windowX = Math.random() * (width - 2);
-                const windowY = Math.random() * (height - 2);
-                
-                windowEl.style.left = `${windowX}px`;
-                windowEl.style.bottom = `${windowY}px`;
-                windowEl.style.animationDelay = `${Math.random() * 8}s`;
-                
-                building.appendChild(windowEl);
+        if (height > 10 && width > 10) {
+            const windowRows = Math.floor(height / 5);
+            const windowCols = Math.floor(width / 5);
+            
+            for (let row = 0; row < windowRows; row++) {
+                for (let col = 0; col < windowCols; col++) {
+                    if (Math.random() < 0.7) { // Some windows are lit
+                        const windowEl = document.createElement('div');
+                        windowEl.className = 'building-window';
+                        windowEl.style.position = 'absolute';
+                        windowEl.style.width = `${1 + Math.random() * 2}px`;
+                        windowEl.style.height = `${1 + Math.random() * 2}px`;
+                        windowEl.style.bottom = `${row * 5 + 1 + Math.random()}px`;
+                        windowEl.style.left = `${col * 5 + 1 + Math.random()}px`;
+                        
+                        // Random window colors for variety
+                        const windowColor = getWindowColor();
+                        windowEl.style.backgroundColor = windowColor;
+                        
+                        // Add flickering effect to some windows
+                        if (Math.random() < 0.3) {
+                            const baseOpacity = 0.5 + Math.random() * 0.5;
+                            const delay = Math.random() * 10;
+                            windowEl.style.setProperty('--base-opacity', baseOpacity);
+                            windowEl.style.setProperty('--delay', `${delay}s`);
+                        }
+                        
+                        building.appendChild(windowEl);
+                    }
+                }
             }
         }
         
         silhouette.appendChild(building);
+    }
+    
+    // Update traffic styles for slower movement
+    updateTrafficStyles();
+    
+    // Add traffic with slower speeds
+    addTraffic();
+    
+    // Add occasional helicopter
+    addHelicopter();
+    setInterval(addHelicopter, 45000 + Math.random() * 30000);
+}
+
+// Get random window color
+function getWindowColor() {
+    const colorRoll = Math.random();
+    if (colorRoll < 0.6) {
+        return `rgba(255, 240, 180, ${0.5 + Math.random() * 0.5})`; // Warm yellow
+    } else if (colorRoll < 0.8) {
+        return `rgba(200, 240, 255, ${0.5 + Math.random() * 0.5})`; // Cool blue
+    } else if (colorRoll < 0.9) {
+        return `rgba(255, 200, 200, ${0.5 + Math.random() * 0.5})`; // Reddish
+    } else {
+        return `rgba(200, 255, 200, ${0.5 + Math.random() * 0.5})`; // Greenish
+    }
+}
+
+// Add moving traffic to make the city feel alive
+function addTraffic() {
+    setInterval(() => {
+        if (Math.random() < 0.3) {
+            const traffic = document.createElement('div');
+            traffic.className = 'traffic ' + (Math.random() < 0.5 ? 'right' : 'left');
+            
+            // Random position
+            traffic.style.left = Math.random() < 0.5 ? '0' : '100%';
+            traffic.style.width = `${2 + Math.random() * 4}px`;
+            traffic.style.opacity = `${0.6 + Math.random() * 0.4}`;
+            traffic.style.animationDuration = `${5 + Math.random() * 10}s`;
+            
+            document.body.appendChild(traffic);
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                if (traffic && traffic.parentNode) {
+                    traffic.remove();
+                }
+            }, 15000);
+        }
+    }, 500);
+}
+
+// Add helicopter flying across the sky
+function addHelicopter() {
+    if (Math.random() < 0.7) {
+        const helicopter = document.createElement('div');
+        helicopter.className = 'helicopter';
+        
+        // Random starting position
+        helicopter.style.animationDuration = `${20 + Math.random() * 20}s`;
+        
+        document.body.appendChild(helicopter);
+        
+        // Remove after animation completes
+        setTimeout(() => {
+            if (helicopter && helicopter.parentNode) {
+                helicopter.remove();
+            }
+        }, 40000);
     }
 }
 
@@ -1327,3 +1066,413 @@ function createConstellations() {
         });
     });
 }
+
+// Create water reflection effect for city lights
+function createWaterReflections() {
+    // Add water reflection styles
+    const reflectionStyles = document.createElement('style');
+    reflectionStyles.textContent = `
+        .water-area {
+            position: absolute;
+            bottom: -15px; /* Position below the buildings */
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: linear-gradient(
+                to bottom,
+                rgba(10, 20, 40, 0.6),
+                rgba(5, 10, 30, 0.8)
+            );
+            overflow: hidden;
+            z-index: 0; /* Lower z-index to be behind buildings */
+        }
+        
+        .city-reflection {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-image: linear-gradient(
+                to bottom,
+                rgba(255, 240, 180, 0.1),
+                rgba(255, 240, 180, 0)
+            );
+            opacity: 0.4;
+            filter: blur(1px);
+            transform: scaleY(-1);
+            animation: waterWave 8s infinite ease-in-out;
+        }
+        
+        .water-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0) 70%
+            );
+            transform: scale(0);
+            animation: rippleEffect 4s linear forwards;
+            pointer-events: none;
+        }
+        
+        @keyframes waterWave {
+            0%, 100% { transform: scaleY(-1) scaleX(1.01); }
+            50% { transform: scaleY(-1) scaleX(0.99); }
+        }
+        
+        @keyframes rippleEffect {
+            0% { transform: scale(0); opacity: 0.5; }
+            100% { transform: scale(6); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(reflectionStyles);
+    
+    // Create water area as a sibling to city silhouette, not a child
+    const citySilhouette = document.querySelector('.city-silhouette');
+    if (!citySilhouette) {
+        console.error("City silhouette not found, creating water area in body instead");
+        createWaterAreaInBody();
+        return;
+    }
+    
+    // Create water area as a sibling element, positioned below the city
+    const waterArea = document.createElement('div');
+    waterArea.className = 'water-area';
+    
+    // Insert water area after the city silhouette
+    if (citySilhouette.parentNode) {
+        citySilhouette.parentNode.insertBefore(waterArea, citySilhouette.nextSibling);
+    } else {
+        document.body.appendChild(waterArea);
+    }
+    
+    // Create city reflection
+    const cityReflection = document.createElement('div');
+    cityReflection.className = 'city-reflection';
+    waterArea.appendChild(cityReflection);
+    
+    // Add random ripples to water
+    setInterval(() => {
+        if (Math.random() < 0.3) {
+            createWaterRipple();
+        }
+    }, 2000);
+    
+    function createWaterAreaInBody() {
+        const waterArea = document.createElement('div');
+        waterArea.className = 'water-area';
+        document.body.appendChild(waterArea);
+        
+        const cityReflection = document.createElement('div');
+        cityReflection.className = 'city-reflection';
+        waterArea.appendChild(cityReflection);
+    }
+}
+
+// Create a ripple in the water
+function createWaterRipple() {
+    const waterArea = document.querySelector('.water-area');
+    if (!waterArea) return;
+    
+    const ripple = document.createElement('div');
+    ripple.className = 'water-ripple';
+    
+    // Random position
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    
+    // Random size
+    const size = 5 + Math.random() * 10;
+    
+    ripple.style.left = `${x}%`;
+    ripple.style.top = `${y}%`;
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    
+    waterArea.appendChild(ripple);
+    
+    // Remove ripple after animation completes
+    setTimeout(() => {
+        if (ripple.parentNode) {
+            ripple.remove();
+        }
+    }, 4000);
+}
+
+// Create boats with lights moving in the water
+function createBoats() {
+    console.log("Creating boats in the water");
+    
+    // Add boat styles
+    const boatStyles = document.createElement('style');
+    boatStyles.textContent = `
+        .boat {
+            position: absolute;
+            bottom: 5px; /* Position boats in the water */
+            height: 3px;
+            background-color: rgba(40, 40, 40, 0.8);
+            border-radius: 1px;
+            z-index: 2; /* Between water and city */
+            transform-origin: center bottom;
+            animation: boatRock 3s ease-in-out infinite;
+        }
+        
+        .boat-light {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: rgba(255, 220, 150, 0.9);
+            border-radius: 50%;
+            top: -2px;
+            filter: blur(1px);
+            box-shadow: 0 0 2px rgba(255, 220, 150, 0.8);
+            animation: lightFlicker 2s infinite;
+        }
+        
+        .boat-reflection {
+            position: absolute;
+            background-color: rgba(255, 220, 150, 0.2);
+            border-radius: 50%;
+            filter: blur(1px);
+            transform: scaleY(0.3);
+            animation: reflectionWaver 2s infinite;
+        }
+        
+        @keyframes boatRock {
+            0%, 100% { transform: rotate(-1deg); }
+            50% { transform: rotate(1deg); }
+        }
+        
+        @keyframes lightFlicker {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 0.7; }
+        }
+        
+        @keyframes reflectionWaver {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.3); }
+            50% { opacity: 0.5; transform: scaleY(0.4); }
+        }
+        
+        @keyframes boatMove {
+            0% { transform: translateX(0) rotate(-1deg); }
+            25% { transform: translateX(calc(var(--travel-distance) * 0.25)) rotate(1deg); }
+            50% { transform: translateX(calc(var(--travel-distance) * 0.5)) rotate(-1deg); }
+            75% { transform: translateX(calc(var(--travel-distance) * 0.75)) rotate(1deg); }
+            100% { transform: translateX(var(--travel-distance)) rotate(-1deg); }
+        }
+    `;
+    document.head.appendChild(boatStyles);
+    
+    // Create initial boats
+    const initialBoats = 3 + Math.floor(Math.random() * 3);
+    for (let i = 0; i < initialBoats; i++) {
+        createBoat();
+    }
+    
+    // Add new boats periodically
+    setInterval(createBoat, 15000);
+}
+
+// Create a single boat with lights
+function createBoat() {
+    const boat = document.createElement('div');
+    boat.className = 'boat';
+    
+    // Random size (small to maintain "distance" effect)
+    const size = 4 + Math.random() * 8;
+    boat.style.width = `${size}px`;
+    
+    // Random starting position
+    const startFromRight = Math.random() < 0.5;
+    const startPos = startFromRight ? window.innerWidth + 10 : -size - 10;
+    boat.style.left = `${startPos}px`;
+    
+    // Set travel distance and direction
+    const travelDistance = startFromRight ? -(window.innerWidth + size + 20) : (window.innerWidth + size + 20);
+    boat.style.setProperty('--travel-distance', `${travelDistance}px`);
+    
+    // Random speed
+    const duration = 60 + Math.random() * 120;
+    
+    // Add boat lights (1-3 lights depending on boat size)
+    const lightCount = Math.max(1, Math.floor(size / 4));
+    for (let i = 0; i < lightCount; i++) {
+        const light = document.createElement('div');
+        light.className = 'boat-light';
+        
+        // Position light along the boat
+        const lightPos = (i / (lightCount - 1 || 1)) * (size - 2);
+        light.style.left = `${lightPos}px`;
+        
+        // Random flicker timing
+        light.style.animationDuration = `${1 + Math.random()}s`;
+        light.style.animationDelay = `${Math.random()}s`;
+        
+        boat.appendChild(light);
+        
+        // Add light reflection in water
+        const reflection = document.createElement('div');
+        reflection.className = 'boat-reflection';
+        reflection.style.width = `${2 + Math.random()}px`;
+        reflection.style.height = `${3 + Math.random() * 2}px`;
+        reflection.style.left = `${lightPos}px`;
+        reflection.style.top = `${3}px`;
+        reflection.style.animationDuration = `${1 + Math.random()}s`;
+        reflection.style.animationDelay = `${Math.random()}s`;
+        
+        boat.appendChild(reflection);
+    }
+    
+    // Add to DOM
+    document.body.appendChild(boat);
+    
+    // Animate boat movement
+    boat.style.animation = `boatMove ${duration}s linear forwards`;
+    
+    // Remove after animation completes
+    setTimeout(() => {
+        if (boat && boat.parentNode) {
+            boat.remove();
+        }
+    }, duration * 1000);
+}
+
+// Create realistic airplanes flying across the sky
+function createAirplane() {
+    const airplane = document.createElement('div');
+    airplane.className = 'airplane';
+    
+    // Random direction (left to right or right to left)
+    const direction = Math.random() < 0.5 ? 'right' : 'left';
+    airplane.classList.add(direction);
+    
+    // Random altitude (higher than city, lower than stars)
+    const altitude = 20 + Math.random() * 30;
+    
+    // Random size (smaller = appears further away)
+    const size = 3 + Math.random() * 2;
+    
+    // Set initial position
+    airplane.style.top = `${altitude}%`;
+    airplane.style.left = direction === 'right' ? '-100px' : '100%';
+    
+    // Create airplane silhouette (single element for more realistic shape)
+    const silhouette = document.createElement('div');
+    silhouette.className = 'airplane-silhouette';
+    silhouette.style.width = `${size * 10}px`;
+    silhouette.style.height = `${size * 2}px`;
+    
+    // Add red navigation light (left wing)
+    const redNavLight = document.createElement('div');
+    redNavLight.className = 'airplane-nav-light';
+    redNavLight.style.width = `${size/3}px`;
+    redNavLight.style.height = `${size/3}px`;
+    
+    // Add green navigation light (right wing)
+    const greenNavLight = document.createElement('div');
+    greenNavLight.className = 'airplane-nav-light right';
+    greenNavLight.style.width = `${size/3}px`;
+    greenNavLight.style.height = `${size/3}px`;
+    
+    // Add blinking strobe
+    const strobe = document.createElement('div');
+    strobe.className = 'airplane-strobe';
+    strobe.style.width = `${size/4}px`;
+    strobe.style.height = `${size/4}px`;
+    
+    // Assemble airplane
+    airplane.appendChild(silhouette);
+    airplane.appendChild(redNavLight);
+    airplane.appendChild(greenNavLight);
+    airplane.appendChild(strobe);
+    
+    // Add to DOM
+    document.body.appendChild(airplane);
+    
+    // Calculate flight duration based on screen width (60-90 seconds)
+    const duration = 60 + Math.random() * 30;
+    
+    // Animate flight
+    airplane.style.animation = `flight-${direction} ${duration}s linear forwards`;
+    
+    // Remove after animation completes
+    setTimeout(() => {
+        if (airplane && airplane.parentNode) {
+            airplane.remove();
+        }
+    }, duration * 1000);
+}
+
+// Add realistic airplane styles
+function addAirplaneStyles() {
+    const airplaneStyles = document.createElement('style');
+    airplaneStyles.id = 'airplane-styles';
+    airplaneStyles.textContent = `
+        .airplane {
+            position: absolute;
+            z-index: 3;
+        }
+        
+        .airplane-silhouette {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 50% 50% 0 0;
+            transform: scaleY(0.3);
+        }
+        
+        /* Flip the airplane when flying left */
+        .airplane.left .airplane-silhouette {
+            transform: scaleY(0.3) scaleX(-1);
+        }
+        
+        .airplane-nav-light {
+            position: absolute;
+            background-color: rgba(255, 0, 0, 0.7);
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 0 3px rgba(255, 0, 0, 0.5);
+        }
+        
+        .airplane-nav-light.right {
+            background-color: rgba(0, 255, 0, 0.7);
+            left: auto;
+            right: 0;
+            box-shadow: 0 0 3px rgba(0, 255, 0, 0.5);
+        }
+        
+        .airplane-strobe {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            top: 0;
+            left: 50%;
+            animation: strobe-blink 1s infinite;
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+        }
+        
+        @keyframes strobe-blink {
+            0%, 30%, 100% { opacity: 0; }
+            5%, 10% { opacity: 1; }
+        }
+        
+        @keyframes flight-right {
+            from { left: -100px; }
+            to { left: calc(100% + 100px); }
+        }
+        
+        @keyframes flight-left {
+            from { left: 100%; }
+            to { left: -100px; }
+        }
+    `;
+    
+    document.head.appendChild(airplaneStyles);
+}
+
+// Initialize the night sky effect when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    createNightSky();
+});
