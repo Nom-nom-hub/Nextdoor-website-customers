@@ -26,7 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (menuToggle && navContainer) {
         // Toggle menu when hamburger icon is clicked
-        menuToggle.addEventListener('click', function() {
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default behavior
+            e.stopPropagation(); // Stop event propagation
             this.classList.toggle('active');
             navContainer.classList.toggle('active');
             document.body.classList.toggle('menu-open');

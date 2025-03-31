@@ -296,6 +296,7 @@ body.light-theme .site-header.scrolled {
 @media (max-width: 992px) {
     .mobile-menu-toggle {
         display: block;
+        z-index: 1002; /* Ensure it's above the nav container */
     }
     
     .nav-container {
@@ -310,7 +311,7 @@ body.light-theme .site-header.scrolled {
         justify-content: flex-start;
         align-items: flex-start;
         padding: 100px 30px 30px;
-        transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
         box-shadow: -5px 0 30px rgba(0, 0, 0, 0.15);
         overflow-y: auto;
         z-index: 1000;
@@ -334,29 +335,11 @@ body.light-theme .site-header.scrolled {
         padding: 12px 15px;
         font-size: 1.1rem;
         border-radius: 8px;
-    }
-    
-    .menu-icon {
-        width: 24px;
-        text-align: center;
-        margin-right: 15px;
-    }
-    
-    .menu-item a::after {
-        display: none;
-    }
-    
-    .nav-cta {
-        margin-top: 30px;
-        width: 100%;
-    }
-    
-    .nav-cta .btn {
         display: block;
         width: 100%;
-        text-align: center;
     }
     
+    /* Remove duplicate styles that might be causing conflicts */
     body.menu-open {
         overflow: hidden;
     }
@@ -2351,8 +2334,7 @@ body.light-theme .logo-icon {
     margin-left: auto;
     margin-right: auto;
 }
-    font-weight: 500;
-}
+  
 
 .pricing-disclaimer i {
     color: var(--secondary-color);
@@ -2410,6 +2392,7 @@ body.dom-loaded .site-header {
 body.dom-loaded.light-theme .site-header {
     background-color: #ffffff; /* Light theme navbar color */
 }
+    .menu-item a {
         color: var(--text-color);
         font-size: 1.2rem;
         padding: 12px 0;
@@ -2436,7 +2419,7 @@ body.dom-loaded.light-theme .site-header {
         margin-top: 15px;
         text-align: center;
     }
-}
+
 
 /* Services Section Styling */
 .services {
@@ -2654,6 +2637,7 @@ body.dom-loaded.light-theme .site-header {
     animation: fadeIn 1.5s ease forwards;
     animation-delay: 4.5s;
 }
+.hero-content .cta-buttons {
     border: 1px solid var(--border-color);
     border-radius: 30px;
     color: var(--text-muted);
