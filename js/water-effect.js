@@ -275,6 +275,140 @@ document.addEventListener('DOMContentLoaded', function() {
                 transform: rotate(-20deg);
                 box-shadow: 0 0 2px rgba(255, 215, 0, 0.3);
             }
+            
+            /* Aurora Borealis */
+            .aurora {
+                position: absolute;
+                width: 100%;
+                z-index: 1;
+                pointer-events: none;
+                overflow: hidden;
+            }
+            
+            .aurora-wave {
+                position: absolute;
+                width: 200%;
+                height: 100%;
+                background: linear-gradient(90deg, 
+                    transparent 0%,
+                    rgba(120, 200, 255, 0.1) 15%,
+                    rgba(80, 200, 170, 0.2) 25%,
+                    rgba(100, 150, 255, 0.1) 35%,
+                    transparent 50%,
+                    rgba(120, 180, 255, 0.1) 65%,
+                    rgba(80, 220, 170, 0.2) 75%,
+                    rgba(100, 180, 255, 0.1) 85%,
+                    transparent 100%
+                );
+                filter: blur(20px);
+                transform-origin: center bottom;
+                animation: auroraWave 20s infinite alternate ease-in-out;
+                left: -50%;
+            }
+            
+            @keyframes auroraWave {
+                0% { transform: translateX(-10%) scaleX(1.1); }
+                50% { transform: translateX(10%) scaleX(0.9); }
+                100% { transform: translateX(-10%) scaleX(1.1); }
+            }
+            
+            /* City Lights */
+            .city-lights {
+                position: absolute;
+                z-index: 1;
+                pointer-events: none;
+            }
+            
+            .city-light {
+                position: absolute;
+                width: 1px;
+                background-color: rgba(255, 240, 180, 0.6);
+                bottom: 0;
+                animation: cityLightFlicker 5s infinite;
+            }
+            
+            @keyframes cityLightFlicker {
+                0% { opacity: 0.6; }
+                25% { opacity: 0.8; }
+                30% { opacity: 0.6; }
+                70% { opacity: 0.8; }
+                75% { opacity: 0.6; }
+                100% { opacity: 0.7; }
+            }
+            
+            /* Meteor Shower */
+            .meteor {
+                position: absolute;
+                width: 150px;
+                height: 1px;
+                background: linear-gradient(90deg, 
+                    transparent, 
+                    rgba(255, 255, 255, 0.8) 50%, 
+                    transparent
+                );
+                animation: meteorFall 3s linear forwards;
+                z-index: 3;
+            }
+            
+            @keyframes meteorFall {
+                0% { transform: translateY(0) translateX(0); opacity: 0; }
+                10% { opacity: 1; }
+                100% { transform: translateY(120vh) translateX(100vw); opacity: 0; }
+            }
+            
+            /* Constellations */
+            .constellation {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                pointer-events: none;
+            }
+            
+            .constellation-star {
+                position: absolute;
+                background-color: rgba(255, 255, 255, 0.9);
+                border-radius: 50%;
+                box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.4);
+            }
+            
+            .constellation-line {
+                position: absolute;
+                height: 1px;
+                background: linear-gradient(90deg, 
+                    transparent, 
+                    rgba(255, 255, 255, 0.2), 
+                    transparent
+                );
+                transform-origin: left center;
+                opacity: 0.3;
+            }
+            
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                .aurora-wave {
+                    opacity: 0.5;
+                }
+                
+                .constellation-line {
+                    opacity: 0.2;
+                }
+            }
+            
+            /* Light theme adjustments */
+            body.light-theme .aurora-wave {
+                opacity: 0.3;
+            }
+            
+            body.light-theme .constellation-line {
+                opacity: 0.1;
+            }
+            
+            body.light-theme .city-light {
+                opacity: 0.3;
+            }
         `;
         document.head.appendChild(style);
         
@@ -399,11 +533,17 @@ function createNightSky() {
     // Create Milky Way
     createMilkyWay();
     
+    // Create aurora borealis
+    createAurora();
+    
     // Create stars
     const starCount = 100;
     for (let i = 0; i < starCount; i++) {
         createStar();
     }
+    
+    // Create constellations
+    createConstellations();
     
     // Create planets
     createPlanets();
@@ -411,9 +551,15 @@ function createNightSky() {
     // Create moon
     createMoon();
     
+    // Create city lights on horizon
+    createCityLights();
+    
     // Add shooting stars periodically
     createShootingStar();
     setInterval(createShootingStar, 3000);
+    
+    // Start meteor showers
+    setTimeout(createMeteorShower, 10000 + Math.random() * 30000);
     
     // Add spaceships periodically
     createSpaceship();
@@ -886,4 +1032,298 @@ function initLightningEffect() {
     function randomBetween(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
+}
+
+// Create subtle aurora borealis effect
+function createAurora() {
+    const aurora = document.createElement('div');
+    aurora.className = 'aurora';
+    
+    // Position at the top of the screen
+    aurora.style.width = '100%';
+    aurora.style.height = '30vh';
+    aurora.style.top = '0';
+    aurora.style.left = '0';
+    
+    document.body.appendChild(aurora);
+    
+    // Create aurora waves
+    for (let i = 0; i < 3; i++) {
+        const wave = document.createElement('div');
+        wave.className = 'aurora-wave';
+        
+        // Different animation delay for each wave
+        wave.style.animationDelay = `${i * 2}s`;
+        wave.style.opacity = 0.4 - (i * 0.1);
+        wave.style.top = `${i * 10}%`;
+        
+        aurora.appendChild(wave);
+    }
+}
+
+// Create distant city lights on the horizon
+function createCityLights() {
+    const cityLights = document.createElement('div');
+    cityLights.className = 'city-lights';
+    
+    // Position at the bottom of the screen
+    cityLights.style.width = '100%';
+    cityLights.style.height = '5px'; // Increased from 3px
+    cityLights.style.bottom = '0';
+    cityLights.style.left = '0';
+    
+    document.body.appendChild(cityLights);
+    
+    // Create individual lights - increased density
+    const lightCount = Math.floor(window.innerWidth / 10); // Increased density
+    for (let i = 0; i < lightCount; i++) {
+        const light = document.createElement('div');
+        light.className = 'city-light';
+        
+        // Random position along the horizon
+        const x = (i / lightCount) * 100 + (Math.random() * 0.5);
+        const height = 1 + Math.random() * 4; // Increased max height
+        
+        light.style.left = `${x}%`;
+        light.style.height = `${height}px`;
+        light.style.width = `${Math.random() < 0.3 ? 2 : 1}px`; // Some lights are wider
+        light.style.opacity = `${0.5 + Math.random() * 0.5}`; // Varied opacity
+        light.style.animationDuration = `${3 + Math.random() * 5}s`;
+        light.style.animationDelay = `${Math.random() * 5}s`;
+        
+        // Add different color tints to some lights
+        if (Math.random() < 0.3) {
+            light.style.backgroundColor = 'rgba(255, 220, 180, 0.7)'; // Warm light
+        } else if (Math.random() < 0.2) {
+            light.style.backgroundColor = 'rgba(200, 240, 255, 0.7)'; // Cool light
+        }
+        
+        cityLights.appendChild(light);
+    }
+    
+    // Add city silhouette
+    createCitySilhouette();
+}
+
+// Add a silhouette of buildings to enhance city appearance
+function createCitySilhouette() {
+    const silhouette = document.createElement('div');
+    silhouette.className = 'city-silhouette';
+    
+    // Get the website's background color for better integration
+    const isDarkTheme = !document.body.classList.contains('light-theme');
+    const baseColor = isDarkTheme ? '#0a0e21' : '#f8fafc'; // Match website theme colors
+    
+    // Add CSS for silhouette
+    const style = document.createElement('style');
+    style.textContent = `
+        .city-silhouette {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(to top, 
+                rgba(0, 0, 0, 0.9) 0%, 
+                rgba(0, 0, 0, 0.7) 60%, 
+                rgba(0, 0, 0, 0) 100%);
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .building {
+            position: absolute;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2;
+            border-radius: 1px 1px 0 0;
+        }
+        
+        body.light-theme .city-silhouette {
+            background: linear-gradient(to top, 
+                rgba(20, 30, 50, 0.8) 0%, 
+                rgba(20, 30, 50, 0.5) 60%, 
+                rgba(20, 30, 50, 0) 100%);
+        }
+        
+        body.light-theme .building {
+            background-color: rgba(20, 30, 50, 0.9);
+        }
+        
+        .window {
+            position: absolute;
+            background-color: rgba(255, 240, 180, 0.6);
+            width: 2px;
+            height: 2px;
+            animation: windowFlicker 8s infinite;
+        }
+        
+        @keyframes windowFlicker {
+            0%, 100% { opacity: 0.6; }
+            3% { opacity: 0.2; }
+            6% { opacity: 0.6; }
+            92% { opacity: 0.6; }
+            94% { opacity: 0.2; }
+            96% { opacity: 0.6; }
+        }
+    `;
+    document.head.appendChild(style);
+    document.body.appendChild(silhouette);
+    
+    // Create buildings
+    const buildingCount = Math.floor(window.innerWidth / 40);
+    for (let i = 0; i < buildingCount; i++) {
+        const building = document.createElement('div');
+        building.className = 'building';
+        
+        const width = 20 + Math.random() * 60;
+        const height = 5 + Math.random() * 25;
+        const left = (i / buildingCount) * 100;
+        
+        building.style.width = `${width}px`;
+        building.style.height = `${height}px`;
+        building.style.left = `${left}%`;
+        
+        // Add a slight opacity variation for depth
+        building.style.opacity = (0.8 + Math.random() * 0.2).toString();
+        
+        // Add windows to buildings
+        const windowCount = Math.floor(width / 4) * Math.floor(height / 3);
+        for (let j = 0; j < windowCount; j++) {
+            if (Math.random() < 0.4) { // Only some windows are lit
+                const windowEl = document.createElement('div');
+                windowEl.className = 'window';
+                
+                const windowX = Math.random() * (width - 2);
+                const windowY = Math.random() * (height - 2);
+                
+                windowEl.style.left = `${windowX}px`;
+                windowEl.style.bottom = `${windowY}px`;
+                windowEl.style.animationDelay = `${Math.random() * 8}s`;
+                
+                building.appendChild(windowEl);
+            }
+        }
+        
+        silhouette.appendChild(building);
+    }
+}
+
+// Create occasional meteor shower
+function createMeteorShower() {
+    // Only create meteor shower occasionally
+    if (Math.random() > 0.7) return;
+    
+    console.log("Creating meteor shower");
+    
+    const meteorCount = 5 + Math.floor(Math.random() * 10);
+    const duration = 15000; // 15 seconds
+    
+    // Create meteor shower container
+    const meteorShower = document.createElement('div');
+    meteorShower.className = 'meteor-shower';
+    document.body.appendChild(meteorShower);
+    
+    // Create meteors with staggered timing
+    for (let i = 0; i < meteorCount; i++) {
+        setTimeout(() => {
+            if (!document.body.contains(meteorShower)) return;
+            
+            const meteor = document.createElement('div');
+            meteor.className = 'meteor';
+            
+            // Random position and angle
+            const x = Math.random() * 100;
+            const angle = 15 + Math.random() * 30;
+            const speed = 1 + Math.random() * 2;
+            
+            meteor.style.left = `${x}%`;
+            meteor.style.top = '-5%';
+            meteor.style.transform = `rotate(${angle}deg)`;
+            meteor.style.animationDuration = `${speed}s`;
+            
+            meteorShower.appendChild(meteor);
+            
+            // Remove meteor after animation
+            setTimeout(() => {
+                if (meteor && meteor.parentNode) {
+                    meteor.remove();
+                }
+            }, speed * 1000);
+            
+        }, i * (duration / meteorCount));
+    }
+    
+    // Remove meteor shower after duration
+    setTimeout(() => {
+        if (meteorShower && meteorShower.parentNode) {
+            meteorShower.remove();
+        }
+    }, duration);
+    
+    // Schedule next meteor shower
+    setTimeout(createMeteorShower, duration + 30000 + Math.random() * 60000);
+}
+
+// Create constellation patterns
+function createConstellations() {
+    const constellations = [
+        {
+            name: 'big-dipper',
+            stars: [
+                {x: 10, y: 20}, {x: 15, y: 22}, {x: 20, y: 25}, 
+                {x: 25, y: 28}, {x: 30, y: 25}, {x: 35, y: 20}, {x: 40, y: 15}
+            ]
+        },
+        {
+            name: 'orion',
+            stars: [
+                {x: 60, y: 30}, {x: 63, y: 35}, {x: 65, y: 40}, 
+                {x: 62, y: 45}, {x: 58, y: 45}, {x: 55, y: 40}, {x: 57, y: 35}
+            ]
+        }
+    ];
+    
+    constellations.forEach(constellation => {
+        const container = document.createElement('div');
+        container.className = `constellation ${constellation.name}`;
+        document.body.appendChild(container);
+        
+        // Create stars
+        constellation.stars.forEach((pos, index) => {
+            const star = document.createElement('div');
+            star.className = 'constellation-star';
+            
+            // Position star
+            star.style.left = `${pos.x}%`;
+            star.style.top = `${pos.y}%`;
+            
+            // Vary size slightly
+            const size = 2 + (index % 3);
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            container.appendChild(star);
+            
+            // Connect stars with lines (except last star)
+            if (index < constellation.stars.length - 1) {
+                const nextPos = constellation.stars[index + 1];
+                const line = document.createElement('div');
+                line.className = 'constellation-line';
+                
+                // Calculate line position and rotation
+                const dx = nextPos.x - pos.x;
+                const dy = nextPos.y - pos.y;
+                const length = Math.sqrt(dx * dx + dy * dy);
+                const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                
+                line.style.left = `${pos.x}%`;
+                line.style.top = `${pos.y}%`;
+                line.style.width = `${length}%`;
+                line.style.transform = `rotate(${angle}deg)`;
+                
+                container.appendChild(line);
+            }
+        });
+    });
 }
