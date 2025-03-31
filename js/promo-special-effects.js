@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
     initValuePriceGlow();
     initTypingEffect();
     initParallaxBackground();
+    initShootingStars();
+    initMoon();
+    initStarfield(); // Add twinkling stars
+    initGradientBackground(); // Add animated gradient background
+    initMouseTrail(); // Add interactive mouse trail
+    initPricingSpotlight(); // Add spotlight effect on pricing
 });
 
 // Create pulsing highlight effect for pricing elements
@@ -315,4 +321,350 @@ function initParallaxBackground() {
         }
     `;
     document.head.appendChild(style);
+}
+
+// Add shooting stars effect to the promo page
+function initShootingStars() {
+    const promoContainer = document.querySelector('.promo-container');
+    if (!promoContainer) return;
+    
+    // Make sure container has position relative for absolute positioning
+    const containerStyle = window.getComputedStyle(promoContainer);
+    if (containerStyle.position === 'static') {
+        promoContainer.style.position = 'relative';
+    }
+    
+    // Create initial shooting stars
+    createShootingStar(promoContainer);
+    
+    // Create shooting stars periodically
+    setInterval(() => createShootingStar(promoContainer), 3000);
+    
+    // Add required CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        .shooting-star {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+            z-index: 10;
+            pointer-events: none;
+            animation: shoot 1s linear forwards;
+        }
+        
+        @keyframes shoot {
+            0% { 
+                transform: translateX(0) translateY(0) rotate(30deg); 
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translateX(500px) translateY(300px) rotate(30deg); 
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Create a shooting star within the container
+function createShootingStar(container) {
+    const shootingStar = document.createElement('div');
+    shootingStar.className = 'shooting-star';
+    
+    // Random position (start from left side)
+    const startX = Math.random() * (container.offsetWidth * 0.3);
+    const startY = Math.random() * (container.offsetHeight * 0.5);
+    
+    // Random angle (diagonal down-right)
+    const angle = 30 + Math.random() * 20;
+    
+    // Set initial position
+    shootingStar.style.left = `${startX}px`;
+    shootingStar.style.top = `${startY}px`;
+    shootingStar.style.transform = `rotate(${angle}deg)`;
+    
+    // Add to container
+    container.appendChild(shootingStar);
+    
+    // Remove after animation completes
+    setTimeout(() => {
+        shootingStar.remove();
+    }, 1000);
+}
+
+// Add moon effect to the promo page
+function initMoon() {
+    const promoContainer = document.querySelector('.promo-container');
+    if (!promoContainer) return;
+    
+    // Make sure container has position relative for absolute positioning
+    const containerStyle = window.getComputedStyle(promoContainer);
+    if (containerStyle.position === 'static') {
+        promoContainer.style.position = 'relative';
+    }
+    
+    // Create moon
+    const moon = document.createElement('div');
+    moon.className = 'promo-moon';
+    
+    // Position in top right quadrant of the container
+    const x = promoContainer.offsetWidth * 0.7 + Math.random() * (promoContainer.offsetWidth * 0.2);
+    const y = promoContainer.offsetHeight * 0.1 + Math.random() * (promoContainer.offsetHeight * 0.1);
+    
+    moon.style.left = `${x}px`;
+    moon.style.top = `${y}px`;
+    
+    // Add to container
+    promoContainer.appendChild(moon);
+    
+    // Add required CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        .promo-moon {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 25% 25%, #ffffff 0%, #f4f4f4 50%, #e0e0e0 100%);
+            box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.4);
+            z-index: -1;
+            pointer-events: none;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    console.log("Promo moon created at", x, y);
+}
+
+// Add twinkling stars to the background
+function initStarfield() {
+    const promoContainer = document.querySelector('.promo-container');
+    if (!promoContainer) return;
+    
+    // Create starfield container
+    const starfield = document.createElement('div');
+    starfield.className = 'starfield';
+    promoContainer.appendChild(starfield);
+    
+    // Create stars
+    for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        // Random position
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        
+        // Random size
+        const size = Math.random() * 3;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        
+        // Random twinkle delay
+        star.style.animationDelay = `${Math.random() * 5}s`;
+        
+        starfield.appendChild(star);
+    }
+    
+    // Add required CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        .starfield {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #ffffff;
+            border-radius: 50%;
+            z-index: -2;
+            pointer-events: none;
+            animation: twinkle 4s infinite ease-in-out;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Add animated gradient background
+function initGradientBackground() {
+    const promoContainer = document.querySelector('.promo-container');
+    if (!promoContainer) return;
+    
+    // Create gradient overlay
+    const gradientOverlay = document.createElement('div');
+    gradientOverlay.className = 'gradient-overlay';
+    promoContainer.appendChild(gradientOverlay);
+    
+    // Add required CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        .gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(99, 102, 241, 0.1), 
+                rgba(14, 165, 233, 0.1),
+                rgba(245, 158, 11, 0.1),
+                rgba(99, 102, 241, 0.1));
+            background-size: 400% 400%;
+            z-index: -3;
+            pointer-events: none;
+            animation: gradientMove 15s ease infinite;
+        }
+        
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Add interactive mouse trail effect
+function initMouseTrail() {
+    const promoContainer = document.querySelector('.promo-container');
+    if (!promoContainer) return;
+    
+    // Create trail container
+    const trailContainer = document.createElement('div');
+    trailContainer.className = 'mouse-trail-container';
+    promoContainer.appendChild(trailContainer);
+    
+    // Track mouse position
+    let mouseX = 0;
+    let mouseY = 0;
+    
+    promoContainer.addEventListener('mousemove', (e) => {
+        const rect = promoContainer.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+        
+        // Create trail particle
+        createTrailParticle(mouseX, mouseY, trailContainer);
+    });
+    
+    // Add required CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        .mouse-trail-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        .trail-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-color) 0%, rgba(255,255,255,0) 70%);
+            pointer-events: none;
+            z-index: 5;
+            opacity: 0.7;
+            transform: translate(-50%, -50%);
+            animation: fadeOut 1s forwards;
+        }
+        
+        @keyframes fadeOut {
+            0% { opacity: 0.7; width: 8px; height: 8px; }
+            100% { opacity: 0; width: 30px; height: 30px; }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Create a trail particle at the given position
+function createTrailParticle(x, y, container) {
+    const particle = document.createElement('div');
+    particle.className = 'trail-particle';
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
+    
+    container.appendChild(particle);
+    
+    // Remove particle after animation completes
+    setTimeout(() => {
+        particle.remove();
+    }, 1000);
+}
+
+// Add spotlight effect on pricing section
+function initPricingSpotlight() {
+    const pricingSection = document.querySelector('.pricing-section');
+    if (!pricingSection) return;
+    
+    // Create spotlight element
+    const spotlight = document.createElement('div');
+    spotlight.className = 'pricing-spotlight';
+    pricingSection.appendChild(spotlight);
+    
+    // Add required CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        .pricing-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-spotlight {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0) 70%);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            animation: spotlightPulse 8s infinite ease-in-out;
+        }
+        
+        @keyframes spotlightPulse {
+            0%, 100% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Move spotlight between pricing options
+    const pricingCards = pricingSection.querySelectorAll('.pricing-card, .price-card');
+    if (pricingCards.length > 0) {
+        let currentIndex = 0;
+        
+        setInterval(() => {
+            const card = pricingCards[currentIndex];
+            const rect = card.getBoundingClientRect();
+            const sectionRect = pricingSection.getBoundingClientRect();
+            
+            spotlight.style.left = `${rect.left - sectionRect.left + rect.width/2}px`;
+            spotlight.style.top = `${rect.top - sectionRect.top + rect.height/2}px`;
+            
+            currentIndex = (currentIndex + 1) % pricingCards.length;
+        }, 4000);
+    }
 }

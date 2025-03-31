@@ -1,13 +1,22 @@
 // Advanced Water Drip Effect with Rain
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize water drip effect
-    initWaterDripEffect();
+    console.log("Water effect script loaded");
     
-    function initWaterDripEffect() {
-        const header = document.querySelector('header');
-        if (!header) return;
+    // Initialize the effect immediately
+    init();
+    
+    // Initialize the effect
+    function init() {
+        console.log("Initializing water effect");
         
-        // Create canvas for water effect
+        // Clear any existing elements first
+        const existingElements = document.querySelectorAll('.night-sky, .star, .moon, .spaceship, .planet, .milky-way, .rain-drop, .rain-splash, .rain-ripple');
+        existingElements.forEach(el => el.remove());
+        
+        // Create night sky first (background)
+        createNightSky();
+        
+        // Create canvas
         const canvas = document.createElement('canvas');
         canvas.className = 'water-canvas';
         document.body.appendChild(canvas);
@@ -25,460 +34,253 @@ document.addEventListener('DOMContentLoaded', function() {
                 z-index: 999;
             }
             
+            /* Night sky background */
+            .night-sky {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, #0a0e21, #191e3b);
+                z-index: -1;
+                pointer-events: none;
+            }
+            
+            /* Star styles */
+            .star {
+                position: absolute;
+                background-color: #ffffff;
+                border-radius: 50%;
+                z-index: 0;
+                pointer-events: none;
+                animation: twinkle 4s infinite ease-in-out;
+            }
+            
+            @keyframes twinkle {
+                0% { opacity: 0.2; }
+                50% { opacity: 1; }
+                100% { opacity: 0.2; }
+            }
+            
+            @keyframes twinkleBright {
+                0% { opacity: 0.4; transform: scale(1); }
+                50% { opacity: 1; transform: scale(1.3); background-color: #fff; }
+                100% { opacity: 0.4; transform: scale(1); }
+            }
+            
+            /* Shooting star styles */
+            .shooting-star {
+                position: absolute;
+                width: 100px;
+                height: 2px;
+                background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+                z-index: 10;
+                pointer-events: none;
+                animation: shoot 1s linear forwards;
+            }
+            
+            @keyframes shoot {
+                0% { 
+                    transform: translateX(0) translateY(0) rotate(30deg); 
+                    opacity: 0;
+                }
+                15% {
+                    opacity: 1;
+                }
+                70% {
+                    opacity: 1;
+                }
+                100% { 
+                    transform: translateX(500px) translateY(300px) rotate(30deg); 
+                    opacity: 0;
+                }
+            }
+            
+            /* Moon styles */
+            .moon {
+                position: absolute; /* Changed from fixed to absolute */
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                background: radial-gradient(circle at 25% 25%, #ffffff 0%, #f4f4f4 50%, #e0e0e0 100%);
+                box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.4);
+                z-index: 1;
+                pointer-events: none;
+            }
+            
             /* Rain drop styles */
             .rain-drop {
                 position: absolute;
                 background: linear-gradient(
                     to bottom,
                     rgba(255, 255, 255, 0.1),
-                    rgba(255, 255, 255, 0.4)
+                    rgba(255, 255, 255, 0.8)
                 );
-                width: 1px;
-                height: 15px;
-                border-radius: 0 0 1px 1px;
-                transform: rotate(10deg);
+                width: 2px;
+                height: 20px;
                 opacity: 0.7;
                 pointer-events: none;
-                z-index: 998;
+                z-index: 2;
             }
             
             /* Rain splash styles */
             .rain-splash {
                 position: absolute;
-                background: radial-gradient(
-                    circle at center,
-                    rgba(255, 255, 255, 0.6),
-                    rgba(255, 255, 255, 0.1) 70%,
-                    transparent 100%
-                );
-                border-radius: 50%;
-                transform: scale(0);
-                opacity: 0;
-                pointer-events: none;
-                z-index: 998;
-            }
-            
-            @keyframes rainFall {
-                0% {
-                    transform: translateY(-20px) rotate(10deg);
-                    opacity: 0;
-                }
-                10% {
-                    opacity: 0.7;
-                }
-                90% {
-                    opacity: 0.7;
-                }
-                100% {
-                    transform: translateY(100vh) rotate(10deg);
-                    opacity: 0;
-                }
-            }
-            
-            @keyframes rainSplash {
-                0% {
-                    transform: scale(0);
-                    opacity: 0.7;
-                }
-                100% {
-                    transform: scale(10);
-                    opacity: 0;
-                }
-            }
-            
-            /* Existing water effect styles */
-            .water-drop {
-                position: absolute;
-                background: radial-gradient(
-                    circle at 50% 30%, 
-                    rgba(255, 255, 255, 0.8), 
-                    rgba(99, 102, 241, 0.4) 40%, 
-                    rgba(99, 102, 241, 0.2) 60%,
-                    transparent 70%
-                );
-                border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-                box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
-                filter: blur(1px);
-                opacity: 0;
-                transform-origin: center bottom;
-                pointer-events: none;
-                z-index: 1000;
-            }
-            
-            .water-splash {
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                background-color: rgba(99, 102, 241, 0.6);
-                border-radius: 50%;
-                transform: scale(0);
-                opacity: 0;
-                pointer-events: none;
-                z-index: 1000;
-            }
-            
-            .water-ripple {
-                position: absolute;
-                border: 2px solid rgba(99, 102, 241, 0.5);
-                border-radius: 50%;
-                transform: scale(0);
-                opacity: 0;
-                pointer-events: none;
-                z-index: 999;
-            }
-            
-            .water-trail {
-                position: absolute;
-                width: 2px;
+                width: 10px;
                 height: 10px;
-                background: linear-gradient(
-                    to bottom,
-                    rgba(99, 102, 241, 0.1),
-                    rgba(99, 102, 241, 0.4)
-                );
                 border-radius: 50%;
-                opacity: 0;
+                background: radial-gradient(
+                    circle,
+                    rgba(255, 255, 255, 0.8) 0%,
+                    rgba(255, 255, 255, 0) 70%
+                );
+                opacity: 0.7;
                 pointer-events: none;
-                z-index: 999;
-            }
-            
-            @keyframes dropFall {
-                0% {
-                    transform: translateY(0) scaleY(1) scaleX(1);
-                    opacity: 0;
-                }
-                10% {
-                    opacity: 0.7;
-                }
-                30% {
-                    transform: translateY(10px) scaleY(1.1) scaleX(0.9);
-                    opacity: 0.8;
-                }
-                60% {
-                    transform: translateY(60px) scaleY(1.3) scaleX(0.8);
-                    opacity: 0.6;
-                }
-                80% {
-                    transform: translateY(80px) scaleY(1.2) scaleX(0.8);
-                    opacity: 0.4;
-                }
-                100% {
-                    transform: translateY(100px) scaleY(0.8) scaleX(1.2);
-                    opacity: 0;
-                }
+                z-index: 3;
+                animation: splash 0.5s linear forwards;
             }
             
             @keyframes splash {
-                0% {
-                    transform: scale(0);
-                    opacity: 0.8;
-                }
-                80% {
-                    opacity: 0.5;
-                }
-                100% {
-                    transform: scale(20);
-                    opacity: 0;
-                }
+                0% { transform: scale(0.1); opacity: 0.7; }
+                100% { transform: scale(1.5); opacity: 0; }
             }
             
-            @keyframes ripple {
-                0% {
-                    transform: scale(0);
-                    opacity: 0.8;
-                }
-                100% {
-                    transform: scale(10);
-                    opacity: 0;
-                }
-            }
-            
-            @keyframes trail {
-                0% {
-                    height: 0;
-                    opacity: 0;
-                }
-                30% {
-                    opacity: 0.5;
-                }
-                100% {
-                    height: 20px;
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Add more realistic rain styles
-        const rainStyles = `
-            /* More realistic raindrop styles */
-            .rain-drop {
+            /* Spaceship styles */
+            .spaceship {
                 position: absolute;
-                background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
-                width: 1px;
-                height: 15px;
-                border-radius: 0 0 1px 1px;
-                box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-                opacity: 0;
+                background-color: rgba(255, 255, 255, 0.8);
+                border-radius: 50% 50% 0 0;
+                z-index: 3;
                 pointer-events: none;
-                z-index: 999;
+                box-shadow: 0 0 2px 1px rgba(120, 200, 255, 0.6);
             }
             
-            /* Enhanced rain splash styles */
-            .rain-splash {
+            .spaceship::before {
+                content: '';
+                position: absolute;
+                bottom: -1px;
+                width: 100%;
+                height: 1px;
+                background: linear-gradient(to right, transparent, rgba(0, 255, 255, 0.8), transparent);
+            }
+            
+            .spaceship.moving-right {
+                animation: flyRight linear forwards;
+            }
+            
+            .spaceship.moving-left {
+                animation: flyLeft linear forwards;
+            }
+            
+            @keyframes flyRight {
+                from { transform: translateX(0); }
+                to { transform: translateX(calc(100vw + 50px)); }
+            }
+            
+            @keyframes flyLeft {
+                from { transform: translateX(0); }
+                to { transform: translateX(calc(-100vw - 50px)); }
+            }
+            
+            /* Milky Way styles */
+            .milky-way {
+                position: absolute;
+                background: linear-gradient(90deg, 
+                    rgba(255, 255, 255, 0.005), 
+                    rgba(255, 255, 255, 0.02) 20%, 
+                    rgba(200, 220, 255, 0.06) 50%, 
+                    rgba(255, 255, 255, 0.02) 80%, 
+                    rgba(255, 255, 255, 0.005));
+                border-radius: 100px;
+                z-index: 1;
+                pointer-events: none;
+                opacity: 0.6; // Reduced from 0.8
+                overflow: hidden;
+                box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1); // Reduced glow
+            }
+            
+            .star-cluster {
                 position: absolute;
                 background: radial-gradient(
-                    circle at center,
-                    rgba(255, 255, 255, 0.8),
-                    rgba(255, 255, 255, 0.2) 60%,
-                    transparent 100%
+                    circle, 
+                    rgba(255, 255, 255, 0.7) 2%, 
+                    rgba(255, 255, 255, 0.3) 15%, 
+                    rgba(255, 255, 255, 0.1) 40%, 
+                    transparent 70%
                 );
                 border-radius: 50%;
-                transform: scale(0);
-                opacity: 0;
-                pointer-events: none;
-                z-index: 998;
+                opacity: 0.6; // Reduced from 0.8
+                filter: blur(1px);
+            }
+            
+            .nebula {
+                position: absolute;
+                border-radius: 50%;
+                filter: blur(15px);
+                opacity: 0.4; // Reduced from 0.6
                 mix-blend-mode: screen;
             }
             
-            /* Rain ripple effect */
-            .rain-ripple {
+            .galaxy-core {
                 position: absolute;
-                border: 1px solid rgba(255, 255, 255, 0.5);
+                background: radial-gradient(
+                    ellipse, 
+                    rgba(255, 255, 255, 0.5) 5%, 
+                    rgba(255, 240, 220, 0.3) 20%, 
+                    rgba(255, 220, 180, 0.15) 40%, 
+                    transparent 70%
+                );
                 border-radius: 50%;
-                transform: scale(0);
-                opacity: 0;
-                pointer-events: none;
-                z-index: 997;
+                filter: blur(5px);
+                opacity: 0.6; // Reduced from 0.8
+                box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.15); // Reduced glow
             }
             
-            @keyframes rainRipple {
-                0% {
-                    transform: scale(0);
-                    opacity: 0.7;
-                }
-                100% {
-                    transform: scale(1);
-                    opacity: 0;
-                }
+            .dust-lane {
+                position: absolute;
+                background: linear-gradient(
+                    90deg,
+                    transparent 0%,
+                    rgba(0, 0, 0, 0.2) 30%,
+                    rgba(0, 0, 0, 0.3) 50%,
+                    rgba(0, 0, 0, 0.2) 70%,
+                    transparent 100%
+                );
+                transform: rotate(-5deg);
+                filter: blur(3px);
+            }
+            
+            /* Planet styles */
+            .planet {
+                position: absolute;
+                border-radius: 50%;
+                z-index: 2;
+                pointer-events: none;
+                box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.3);
+            }
+            
+            .planet[data-name="saturn"] {
+                position: relative;
+                box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.4);
+            }
+            
+            .planet-ring {
+                position: absolute;
+                width: 200%;
+                height: 30%;
+                left: -50%;
+                top: 35%;
+                border-radius: 50%;
+                border: 1px solid rgba(255, 215, 0, 0.6);
+                transform: rotate(-20deg);
+                box-shadow: 0 0 2px rgba(255, 215, 0, 0.3);
             }
         `;
-
-        // Add styles to document
-        const rainStyleElement = document.createElement('style');
-        rainStyleElement.textContent = rainStyles;
-        document.head.appendChild(rainStyleElement);
+        document.head.appendChild(style);
         
-        // Set up canvas
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        // Rain parameters
-        const raindrops = [];
+        // Global variables
         let isRaining = false;
-        let rainIntensity = 0.5; // 0 to 1
-        
-        // Create a raindrop
-        function createRaindrop() {
-            // Random position
-            const x = Math.random() * window.innerWidth;
-            const y = -20; // Start above viewport
-            
-            // Create raindrop element
-            const raindrop = document.createElement('div');
-            raindrop.className = 'rain-drop';
-            
-            // Random size for variety
-            const size = 0.8 + Math.random() * 0.4; // Slight variation in width
-            const length = 10 + Math.random() * 10; // Variable length
-            raindrop.style.width = `${size}px`;
-            raindrop.style.height = `${length}px`;
-            
-            // Random wind and angle
-            const windDirection = window.windDirection || 1;
-            const windStrength = window.windStrength || 0.5;
-            const angle = 15 + (windDirection * windStrength * 20); // More pronounced angle
-            
-            // Adjust horizontal position based on wind
-            const horizontalOffset = windDirection * windStrength * 150;
-            
-            raindrop.style.transform = `rotate(${angle}deg)`;
-            raindrop.style.left = `${x}px`;
-            raindrop.style.top = `${y}px`;
-            
-            // Random animation duration - faster in stronger winds
-            const duration = Math.max(0.4, 0.7 + Math.random() * 0.3 - (windStrength * 0.3));
-            
-            // Create custom animation with wind-affected trajectory
-            const keyframes = `
-                @keyframes rainFall${Math.floor(Math.random() * 1000)} {
-                    0% {
-                        transform: translateY(0) translateX(0) rotate(${angle}deg);
-                        opacity: 0;
-                    }
-                    5% {
-                        opacity: ${0.5 + Math.random() * 0.3};
-                    }
-                    90% {
-                        opacity: ${0.5 + Math.random() * 0.3};
-                    }
-                    100% {
-                        transform: translateY(${window.innerHeight + 50}px) translateX(${horizontalOffset}px) rotate(${angle}deg);
-                        opacity: 0;
-                    }
-                }
-            `;
-            
-            // Add keyframes to document
-            const styleSheet = document.createElement('style');
-            styleSheet.textContent = keyframes;
-            document.head.appendChild(styleSheet);
-            
-            // Apply the custom animation
-            const animationName = keyframes.match(/@keyframes\s+([^\s{]+)/)[1];
-            raindrop.style.animation = `${animationName} ${duration}s linear forwards`;
-            
-            // Add to DOM
-            document.body.appendChild(raindrop);
-            
-            // Calculate landing position with wind effect
-            const landingX = x + horizontalOffset;
-            
-            // Remove after animation
-            setTimeout(() => {
-                // Create splash when raindrop hits "ground"
-                createRainSplash(landingX, window.innerHeight - 10, size);
-                
-                // Remove raindrop and style element
-                raindrop.remove();
-                styleSheet.remove();
-            }, duration * 1000);
-        }
-        
-        // Create rain splash
-        function createRainSplash(x, y, size) {
-            const splash = document.createElement('div');
-            splash.className = 'rain-splash';
-            
-            // Size based on raindrop size
-            const splashSize = 3 + (size * 4);
-            splash.style.width = `${splashSize}px`;
-            splash.style.height = `${splashSize}px`;
-            
-            // Position
-            splash.style.left = `${x - splashSize/2}px`;
-            splash.style.top = `${y - splashSize/2}px`;
-            
-            // Animation
-            const duration = 0.3 + Math.random() * 0.2;
-            splash.style.animation = `rainSplash ${duration}s ease-out forwards`;
-            
-            // Add to DOM
-            document.body.appendChild(splash);
-            
-            // Create ripple effect
-            createRainRipple(x, y, splashSize * 3);
-            
-            // Remove after animation
-            setTimeout(() => {
-                splash.remove();
-            }, duration * 1000);
-        }
-
-        // Create rain ripple effect
-        function createRainRipple(x, y, size) {
-            const ripple = document.createElement('div');
-            ripple.className = 'rain-ripple';
-            
-            // Position
-            ripple.style.left = `${x - size/2}px`;
-            ripple.style.top = `${y - size/2}px`;
-            ripple.style.width = `${size}px`;
-            ripple.style.height = `${size}px`;
-            
-            // Animation
-            const duration = 0.8 + Math.random() * 0.4;
-            ripple.style.animation = `rainRipple ${duration}s ease-out forwards`;
-            
-            // Add to DOM
-            document.body.appendChild(ripple);
-            
-            // Remove after animation
-            setTimeout(() => {
-                ripple.remove();
-            }, duration * 1000);
-        }
-        
-        // Toggle rain effect
-        function toggleRain() {
-            isRaining = !isRaining;
-            
-            if (isRaining) {
-                startRain();
-            }
-        }
-        
-        // Start rain effect
-        function startRain() {
-            if (!isRaining) return;
-            
-            // Create raindrops based on intensity and wind
-            const baseCount = Math.floor(3 + (rainIntensity * 12));
-            const windFactor = Math.min(1.5, 1 + (window.windStrength || 0));
-            const count = Math.floor(baseCount * windFactor);
-            
-            for (let i = 0; i < count; i++) {
-                setTimeout(() => {
-                    createRaindrop();
-                }, i * (50 - rainIntensity * 20)); // Faster drops in higher intensity
-            }
-            
-            // Schedule next batch of raindrops
-            setTimeout(startRain, 300 + Math.random() * 200);
-        }
-        
-        // Change rain intensity and behavior based on wind
-        window.addEventListener('windChange', function(e) {
-            if (e.detail) {
-                // Increase rain intensity with stronger wind
-                rainIntensity = Math.min(1, 0.3 + (e.detail.strength * 0.2));
-                
-                // Adjust rain angle based on wind direction and strength
-                const windDirection = e.detail.direction;
-                const windStrength = e.detail.strength;
-                
-                // Start rain automatically in stronger winds
-                if (windStrength > 1.0 && !isRaining && Math.random() < 0.3) {
-                    isRaining = true;
-                    startRain();
-                    
-                    // Stop rain after a while if wind calms down
-                    setTimeout(() => {
-                        if (window.windStrength < 0.8) {
-                            isRaining = false;
-                        }
-                    }, 8000);
-                }
-            }
-        });
-        
-        // Start rain on wind gusts
-        window.addEventListener('windGust', function() {
-            if (!isRaining) {
-                isRaining = true;
-                rainIntensity = 0.8;
-                startRain();
-                
-                // Stop rain after gust
-                setTimeout(() => {
-                    isRaining = false;
-                }, 5000);
-            } else {
-                // Increase intensity during gust
-                rainIntensity = 1;
-            }
-        });
+        let rainIntensity = 0.5;
         
         // Add rain toggle button
         const rainButton = document.createElement('button');
@@ -494,231 +296,594 @@ document.addEventListener('DOMContentLoaded', function() {
         rainButton.style.borderRadius = '4px';
         rainButton.style.cursor = 'pointer';
         
-        rainButton.addEventListener('click', toggleRain);
+        rainButton.addEventListener('click', function() {
+            isRaining = !isRaining;
+            console.log("Rain toggled:", isRaining);
+            if (isRaining) {
+                startRain();
+            }
+        });
         document.body.appendChild(rainButton);
         
-        // Start with some rain
+        // Start with rain enabled
         isRaining = true;
         startRain();
         
-        // Water physics parameters
-        const drops = [];
-        const splashes = [];
-        const ripples = [];
-        const trails = [];
-        const headerBottom = header.offsetTop + header.offsetHeight;
-        
-        // Create water drops at random intervals
-        function createDrop() {
-            // Random position along the header
-            const x = Math.random() * window.innerWidth;
+        // Create rain drops
+        function createRaindrop() {
+            if (!isRaining) return;
             
-            // Create drop element
-            const drop = document.createElement('div');
-            drop.className = 'water-drop';
+            // Random position
+            const x = Math.random() * window.innerWidth;
+            const y = -20; // Start above viewport
+            
+            // Create raindrop element
+            const raindrop = document.createElement('div');
+            raindrop.className = 'rain-drop';
             
             // Random size
-            const size = Math.random() * 10 + 5;
-            drop.style.width = `${size}px`;
-            drop.style.height = `${size * 1.2}px`;
+            const size = 1 + Math.random() * 2;
+            const length = 15 + Math.random() * 15;
+            raindrop.style.width = `${size}px`;
+            raindrop.style.height = `${length}px`;
             
-            // Position at bottom of header
-            drop.style.left = `${x}px`;
-            drop.style.top = `${headerBottom}px`;
-            
-            // Random animation duration
-            const duration = Math.random() * 1.5 + 1;
-            drop.style.animation = `dropFall ${duration}s cubic-bezier(0.2, 0.8, 0.3, 1) forwards`;
+            // Position
+            raindrop.style.left = `${x}px`;
+            raindrop.style.top = `${y}px`;
             
             // Add to DOM
-            document.body.appendChild(drop);
+            document.body.appendChild(raindrop);
             
-            // Track drop
-            const dropObj = {
-                element: drop,
-                x: x,
-                y: headerBottom,
-                size: size,
-                speed: 2 + Math.random() * 2,
-                opacity: 0.8,
-                remove: false
-            };
-            drops.push(dropObj);
+            // Animate falling
+            const duration = 0.5 + Math.random() * 0.5;
+            raindrop.style.transition = `top ${duration}s linear`;
             
-            // Create trail
-            createTrail(x, headerBottom, size);
-            
-            // Remove after animation
+            // Start animation after a small delay
             setTimeout(() => {
-                // Create splash when drop hits "ground"
-                createSplash(x, headerBottom + 100, size);
-                
-                // Remove drop
-                drop.remove();
-                dropObj.remove = true;
-                
-                // Filter out removed drops
-                const index = drops.indexOf(dropObj);
-                if (index > -1) {
-                    drops.splice(index, 1);
-                }
+                raindrop.style.top = `${window.innerHeight + 20}px`;
+            }, 10);
+            
+            // Create splash and remove drop
+            setTimeout(() => {
+                createSplash(x, window.innerHeight - 10, size);
+                raindrop.remove();
             }, duration * 1000);
         }
         
         // Create splash effect
         function createSplash(x, y, size) {
             const splash = document.createElement('div');
-            splash.className = 'water-splash';
-            splash.style.left = `${x}px`;
-            splash.style.top = `${y}px`;
-            
-            // Random animation duration
-            const duration = Math.random() * 0.5 + 0.5;
-            splash.style.animation = `splash ${duration}s ease-out forwards`;
+            splash.className = 'rain-splash';
+            splash.style.left = `${x - 5}px`;
+            splash.style.top = `${y - 5}px`;
             
             // Add to DOM
             document.body.appendChild(splash);
             
-            // Create ripple
-            createRipple(x, y, size * 2);
-            
             // Remove after animation
             setTimeout(() => {
                 splash.remove();
-            }, duration * 1000);
+            }, 500);
         }
         
-        // Create ripple effect
-        function createRipple(x, y, size) {
-            const ripple = document.createElement('div');
-            ripple.className = 'water-ripple';
-            ripple.style.left = `${x - size/2}px`;
-            ripple.style.top = `${y - size/2}px`;
-            ripple.style.width = `${size}px`;
-            ripple.style.height = `${size}px`;
+        // Start rain effect
+        function startRain() {
+            if (!isRaining) return;
             
-            // Random animation duration
-            const duration = Math.random() * 1 + 1;
-            ripple.style.animation = `ripple ${duration}s ease-out forwards`;
+            console.log("Starting rain");
             
-            // Add to DOM
-            document.body.appendChild(ripple);
-            
-            // Remove after animation
-            setTimeout(() => {
-                ripple.remove();
-            }, duration * 1000);
-        }
-        
-        // Create water trail
-        function createTrail(x, y, size) {
-            const trail = document.createElement('div');
-            trail.className = 'water-trail';
-            trail.style.left = `${x + size/2 - 1}px`;
-            trail.style.top = `${y}px`;
-            
-            // Random animation duration
-            const duration = Math.random() * 0.5 + 0.5;
-            trail.style.animation = `trail ${duration}s ease-out forwards`;
-            
-            // Add to DOM
-            document.body.appendChild(trail);
-            
-            // Remove after animation
-            setTimeout(() => {
-                trail.remove();
-            }, duration * 1000);
-        }
-        
-        // Create water drops at random intervals
-        function startWaterEffect() {
-            // Initial drops
-            for (let i = 0; i < 3; i++) {
+            // Create multiple raindrops
+            for (let i = 0; i < 10; i++) {
                 setTimeout(() => {
-                    createDrop();
-                }, i * 200);
+                    createRaindrop();
+                }, i * 100);
             }
             
-            // Continue creating drops
-            setInterval(() => {
-                if (Math.random() < 0.3) {
-                    createDrop();
-                }
-            }, 300);
+            // Continue rain
+            setTimeout(startRain, 1000);
         }
         
-        // Add interactive water effect on hover
-        header.addEventListener('mousemove', function(e) {
-            if (Math.random() < 0.1) {
-                const x = e.clientX;
-                const y = headerBottom;
-                const size = Math.random() * 8 + 4;
-                
-                // Create interactive drop
-                const drop = document.createElement('div');
-                drop.className = 'water-drop';
-                drop.style.width = `${size}px`;
-                drop.style.height = `${size * 1.2}px`;
-                drop.style.left = `${x}px`;
-                drop.style.top = `${y}px`;
-                
-                const duration = Math.random() * 1.5 + 1;
-                drop.style.animation = `dropFall ${duration}s cubic-bezier(0.2, 0.8, 0.3, 1) forwards`;
-                
-                document.body.appendChild(drop);
-                
-                // Create trail
-                createTrail(x, y, size);
-                
-                // Remove after animation
-                setTimeout(() => {
-                    createSplash(x, y + 100, size);
-                    drop.remove();
-                }, duration * 1000);
-            }
-        });
-        
-        // Start water effect
-        startWaterEffect();
-        
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-        
-        // Advanced water simulation on canvas
-        function drawWaterSimulation() {
-            // Clear canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw water connections
-            ctx.strokeStyle = 'rgba(99, 102, 241, 0.1)';
-            ctx.lineWidth = 1;
-            
-            for (let i = 0; i < drops.length; i++) {
-                for (let j = i + 1; j < drops.length; j++) {
-                    const drop1 = drops[i];
-                    const drop2 = drops[j];
-                    
-                    const dx = drop1.x - drop2.x;
-                    const dy = drop1.y - drop2.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 100) {
-                        ctx.beginPath();
-                        ctx.moveTo(drop1.x, drop1.y);
-                        ctx.lineTo(drop2.x, drop2.y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            
-            // Request next frame
-            requestAnimationFrame(drawWaterSimulation);
-        }
-        
-        // Start water simulation
-        drawWaterSimulation();
+        console.log("Water effect initialized");
     }
 }); 
+
+// Create night sky with stars, moon, spaceships, planets, and Milky Way
+function createNightSky() {
+    console.log("Creating night sky");
+    
+    // Create night sky background
+    const nightSky = document.createElement('div');
+    nightSky.className = 'night-sky';
+    document.body.appendChild(nightSky);
+    
+    // Create Milky Way
+    createMilkyWay();
+    
+    // Create stars
+    const starCount = 100;
+    for (let i = 0; i < starCount; i++) {
+        createStar();
+    }
+    
+    // Create planets
+    createPlanets();
+    
+    // Create moon
+    createMoon();
+    
+    // Add shooting stars periodically
+    createShootingStar();
+    setInterval(createShootingStar, 3000);
+    
+    // Add spaceships periodically
+    createSpaceship();
+    setInterval(createSpaceship, 8000);
+    
+    // Add lightning effect
+    initLightningEffect();
+    
+    console.log("Night sky created");
+}
+
+// Create a star
+function createStar() {
+    const star = document.createElement('div');
+    star.className = 'star';
+    
+    // Random position
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight * 0.7;
+    
+    // Random size
+    const size = 1 + Math.random() * 3;
+    
+    // Random twinkle delay
+    const delay = Math.random() * 4;
+    
+    star.style.left = `${x}px`;
+    star.style.top = `${y}px`;
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.animationDelay = `${delay}s`;
+    star.style.zIndex = '1';
+    
+    // Add enhanced twinkling for some stars
+    if (Math.random() > 0.7) {
+        star.style.animation = 'twinkleBright 3s infinite ease-in-out';
+        star.style.boxShadow = '0 0 3px 1px rgba(255, 255, 255, 0.8)';
+    }
+    
+    // Add to DOM
+    document.body.appendChild(star);
+}
+
+// Create moon
+function createMoon() {
+    const moon = document.createElement('div');
+    moon.className = 'moon';
+    
+    // Position in top right quadrant
+    const x = window.innerWidth * 0.7 + Math.random() * (window.innerWidth * 0.2);
+    const y = window.innerHeight * 0.2 + Math.random() * (window.innerHeight * 0.1);
+    
+    moon.style.left = `${x}px`;
+    moon.style.top = `${y}px`;
+    moon.style.zIndex = '2'; // Changed from -1 to positive value
+    
+    // Add to DOM
+    document.body.appendChild(moon);
+    
+    console.log("Moon created at", x, y);
+}
+
+// Create a shooting star
+function createShootingStar() {
+    // Find the container to add the shooting star to
+    const container = document.querySelector('.promo-container') || document.querySelector('.hero') || document.body;
+    
+    const shootingStar = document.createElement('div');
+    shootingStar.className = 'shooting-star';
+    
+    // Random position (start from left side)
+    const startX = Math.random() * (container.offsetWidth * 0.3);
+    const startY = Math.random() * (container.offsetHeight * 0.5);
+    
+    // Random angle (diagonal down-right)
+    const angle = 30 + Math.random() * 20;
+    
+    // Set initial position
+    shootingStar.style.left = `${startX}px`;
+    shootingStar.style.top = `${startY}px`;
+    shootingStar.style.transform = `rotate(${angle}deg)`;
+    
+    // Add to container instead of body
+    container.appendChild(shootingStar);
+    
+    // Remove after animation completes
+    setTimeout(() => {
+        shootingStar.remove();
+    }, 1000);
+    
+    console.log("Shooting star created at", startX, startY);
+}
+
+// Create a spaceship
+function createSpaceship() {
+    const spaceship = document.createElement('div');
+    spaceship.className = 'spaceship';
+    
+    // Random position (start from either left or right edge)
+    const startFromLeft = Math.random() > 0.5;
+    const y = Math.random() * (window.innerHeight * 0.5);
+    
+    // Set initial position
+    if (startFromLeft) {
+        spaceship.style.left = '-30px';
+        spaceship.style.right = 'auto';
+        spaceship.classList.add('moving-right');
+    } else {
+        spaceship.style.right = '-30px';
+        spaceship.style.left = 'auto';
+        spaceship.classList.add('moving-left');
+    }
+    spaceship.style.top = `${y}px`;
+    
+    // Random size (small to maintain "distance" effect)
+    const size = 3 + Math.random() * 5;
+    spaceship.style.width = `${size}px`;
+    spaceship.style.height = `${size/3}px`;
+    
+    // Random speed
+    const duration = 15 + Math.random() * 20;
+    spaceship.style.animationDuration = `${duration}s`;
+    
+    // Add to DOM
+    document.body.appendChild(spaceship);
+    
+    // Remove after animation completes
+    setTimeout(() => {
+        spaceship.remove();
+    }, duration * 1000);
+}
+
+// Create planets
+function createPlanets() {
+    // Define planet types
+    const planetTypes = [
+        { color: '#ff9966', size: 8, name: 'mars' },
+        { color: '#e6e6fa', size: 10, name: 'venus' },
+        { color: '#f0e68c', size: 12, name: 'saturn' },
+        { color: '#add8e6', size: 15, name: 'neptune' },
+        { color: '#ffd700', size: 9, name: 'mercury' },
+        { color: '#8b4513', size: 7, name: 'pluto' },
+        { color: '#f5deb3', size: 14, name: 'jupiter' },
+        { color: '#7cfc00', size: 11, name: 'uranus' }
+    ];
+    
+    // Create 4-6 random planets
+    const planetCount = 4 + Math.floor(Math.random() * 3);
+    
+    // Track used positions to avoid overlap
+    const usedPositions = [];
+    
+    for (let i = 0; i < planetCount; i++) {
+        // Select random planet type
+        const planetType = planetTypes[Math.floor(Math.random() * planetTypes.length)];
+        
+        // Create planet element
+        const planet = document.createElement('div');
+        planet.className = 'planet';
+        planet.dataset.name = planetType.name;
+        
+        // Random position (avoid center where moon might be)
+        let x, y, validPosition = false;
+        
+        // Try to find a position that doesn't overlap with existing planets
+        while (!validPosition) {
+            if (Math.random() > 0.5) {
+                // Left side
+                x = window.innerWidth * 0.05 + Math.random() * (window.innerWidth * 0.3);
+            } else {
+                // Right side
+                x = window.innerWidth * 0.65 + Math.random() * (window.innerWidth * 0.3);
+            }
+            y = window.innerHeight * 0.05 + Math.random() * (window.innerHeight * 0.4);
+            
+            // Check if position is far enough from other planets
+            validPosition = true;
+            for (const pos of usedPositions) {
+                const distance = Math.sqrt(Math.pow(x - pos.x, 2) + Math.pow(y - pos.y, 2));
+                if (distance < 30) {  // Minimum distance between planets
+                    validPosition = false;
+                    break;
+                }
+            }
+        }
+        
+        // Remember this position
+        usedPositions.push({ x, y });
+        
+        // Apply styles
+        planet.style.left = `${x}px`;
+        planet.style.top = `${y}px`;
+        planet.style.width = `${planetType.size}px`;
+        planet.style.height = `${planetType.size}px`;
+        planet.style.backgroundColor = planetType.color;
+        
+        // Add special styling for Saturn and Jupiter
+        if (planetType.name === 'saturn') {
+            const ring = document.createElement('div');
+            ring.className = 'planet-ring';
+            planet.appendChild(ring);
+        } else if (planetType.name === 'jupiter') {
+            planet.style.backgroundImage = 'linear-gradient(90deg, #f5deb3 60%, #d2b48c 60%, #d2b48c 65%, #f5deb3 65%)';
+        }
+        
+        // Add to DOM
+        document.body.appendChild(planet);
+    }
+}
+
+// Create Milky Way with reduced brightness
+function createMilkyWay() {
+    // Create main Milky Way band
+    const milkyWay = document.createElement('div');
+    milkyWay.className = 'milky-way';
+    
+    // Position diagonally across the sky with increased width
+    milkyWay.style.width = `${Math.max(window.innerWidth, window.innerHeight) * 2}px`;
+    milkyWay.style.height = '180px'; // Slightly reduced height
+    milkyWay.style.transform = 'rotate(30deg)';
+    milkyWay.style.left = `-${window.innerWidth * 0.3}px`;
+    milkyWay.style.top = `${window.innerHeight * 0.2}px`;
+    
+    document.body.appendChild(milkyWay);
+    
+    // Add star clusters to the Milky Way (reduced number and brightness)
+    for (let i = 0; i < 40; i++) {
+        const cluster = document.createElement('div');
+        cluster.className = 'star-cluster';
+        
+        // Random position within the Milky Way
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        
+        // Random size with moderate variation
+        const size = 3 + Math.random() * 15; // Reduced size
+        
+        cluster.style.left = `${x}%`;
+        cluster.style.top = `${y}%`;
+        cluster.style.width = `${size}px`;
+        cluster.style.height = `${size}px`;
+        
+        milkyWay.appendChild(cluster);
+    }
+    
+    // Add subtle nebula-like clouds (reduced opacity)
+    for (let i = 0; i < 6; i++) { // Reduced number
+        const nebula = document.createElement('div');
+        nebula.className = 'nebula';
+        
+        // Random position
+        const x = 10 + Math.random() * 80;
+        const y = 10 + Math.random() * 80;
+        
+        // Random size (reduced)
+        const width = 40 + Math.random() * 100;
+        const height = 20 + Math.random() * 60;
+        
+        // Random rotation
+        const rotation = Math.random() * 360;
+        
+        // Random color (more subtle blues and purples)
+        const hue = 200 + Math.random() * 60; // More blue range
+        const color = `hsla(${hue}, 60%, 50%, 0.08)`; // Reduced opacity
+        
+        nebula.style.left = `${x}%`;
+        nebula.style.top = `${y}%`;
+        nebula.style.width = `${width}px`;
+        nebula.style.height = `${height}px`;
+        nebula.style.transform = `rotate(${rotation}deg)`;
+        nebula.style.backgroundColor = color;
+        
+        milkyWay.appendChild(nebula);
+    }
+    
+    // Add more subtle core
+    const core = document.createElement('div');
+    core.className = 'galaxy-core';
+    
+    // Position near the center
+    core.style.left = '40%';
+    core.style.top = '30%';
+    core.style.width = '100px'; // Reduced size
+    core.style.height = '60px'; // Reduced size
+    
+    milkyWay.appendChild(core);
+    
+    // Add subtle dust lanes
+    for (let i = 0; i < 2; i++) { // Reduced number
+        const dustLane = document.createElement('div');
+        dustLane.className = 'dust-lane';
+        
+        // Position across the Milky Way
+        dustLane.style.left = '0';
+        dustLane.style.top = `${35 + i * 20}%`;
+        dustLane.style.width = '100%';
+        dustLane.style.height = '8px'; // Reduced height
+        dustLane.style.opacity = 0.2 + (Math.random() * 0.1); // Reduced opacity
+        
+        milkyWay.appendChild(dustLane);
+    }
+}
+
+// Initialize lightning effect
+function initLightningEffect() {
+    // Add CSS for lightning
+    const style = document.createElement('style');
+    style.textContent += `
+        .lightning-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0;
+        }
+        
+        .lightning-bolt {
+            position: absolute;
+            background: linear-gradient(to bottom, 
+                rgba(255, 255, 255, 0.8), 
+                rgba(200, 220, 255, 0.8));
+            z-index: 1;
+            pointer-events: none;
+            transform-origin: top;
+            filter: drop-shadow(0 0 10px rgba(200, 220, 255, 0.8));
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Create lightning container
+    const lightningContainer = document.createElement('div');
+    lightningContainer.className = 'lightning-container';
+    document.body.appendChild(lightningContainer);
+    
+    // Create flash element
+    const flash = document.createElement('div');
+    flash.className = 'lightning-flash';
+    lightningContainer.appendChild(flash);
+    
+    // Set up lightning parameters
+    window.lightningParams = {
+        stormInterval: [8000, 15000], // Time between lightning strikes
+        flashDuration: [50, 150],     // Duration of flash
+        boltCount: [1, 3],            // Number of bolts per strike
+        branchChance: 0.5,            // Chance of branching
+        elementInteractionChance: 0.3  // Chance of interacting with page elements
+    };
+    
+    // Start lightning storm
+    scheduleLightning();
+    
+    // Schedule next lightning
+    function scheduleLightning() {
+        const delay = randomBetween(
+            window.lightningParams.stormInterval[0], 
+            window.lightningParams.stormInterval[1]
+        );
+        
+        setTimeout(() => {
+            createLightning();
+            scheduleLightning();
+        }, delay);
+    }
+    
+    // Create lightning effect
+    function createLightning() {
+        // Flash effect
+        flash.style.opacity = '1';
+        
+        // Random flash duration
+        const flashDuration = randomBetween(
+            window.lightningParams.flashDuration[0],
+            window.lightningParams.flashDuration[1]
+        );
+        
+        // Create bolts
+        const boltCount = randomBetween(
+            window.lightningParams.boltCount[0],
+            window.lightningParams.boltCount[1]
+        );
+        
+        for (let i = 0; i < boltCount; i++) {
+            setTimeout(() => {
+                createLightningBolt();
+            }, i * 100);
+        }
+        
+        // Fade out flash
+        setTimeout(() => {
+            flash.style.opacity = '0';
+            flash.style.transition = 'opacity 0.3s ease-out';
+        }, flashDuration);
+    }
+    
+    // Create a lightning bolt
+    function createLightningBolt() {
+        const bolt = document.createElement('div');
+        bolt.className = 'lightning-bolt';
+        
+        // Random position
+        const startX = Math.random() * window.innerWidth;
+        const startY = -10; // Start above viewport
+        
+        // Random width and height
+        const width = 2 + Math.random() * 3;
+        const height = 100 + Math.random() * 300;
+        
+        // Set bolt properties
+        bolt.style.width = `${width}px`;
+        bolt.style.height = `${height}px`;
+        bolt.style.left = `${startX}px`;
+        bolt.style.top = `${startY}px`;
+        
+        // Random angle
+        const angle = -5 + Math.random() * 10;
+        bolt.style.transform = `rotate(${angle}deg)`;
+        
+        // Add to container
+        lightningContainer.appendChild(bolt);
+        
+        // Create branches
+        if (Math.random() < window.lightningParams.branchChance) {
+            createBranch(bolt, startX, startY, height);
+        }
+        
+        // Remove after animation
+        setTimeout(() => {
+            bolt.remove();
+        }, 200);
+    }
+    
+    // Create a branch from main bolt
+    function createBranch(parentBolt, startX, startY, parentHeight) {
+        const branch = document.createElement('div');
+        branch.className = 'lightning-bolt';
+        
+        // Branch position (somewhere along parent bolt)
+        const branchPoint = Math.random() * 0.6 + 0.2; // 20-80% down the parent
+        const branchY = startY + (parentHeight * branchPoint);
+        
+        // Branch properties
+        const width = 1 + Math.random() * 2;
+        const height = 50 + Math.random() * 100;
+        
+        // Random direction (left or right)
+        const direction = Math.random() > 0.5 ? 1 : -1;
+        const angle = direction * (20 + Math.random() * 30);
+        
+        // Set branch properties
+        branch.style.width = `${width}px`;
+        branch.style.height = `${height}px`;
+        branch.style.left = `${startX}px`;
+        branch.style.top = `${branchY}px`;
+        branch.style.transform = `rotate(${angle}deg)`;
+        
+        // Add to container
+        lightningContainer.appendChild(branch);
+        
+        // Remove after animation
+        setTimeout(() => {
+            branch.remove();
+        }, 150);
+    }
+    
+    // Helper function for random number between min and max
+    function randomBetween(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+}
