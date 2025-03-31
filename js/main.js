@@ -24,41 +24,56 @@ document.addEventListener('DOMContentLoaded', function() {
     const navContainer = document.querySelector('.nav-container');
     const menuItems = document.querySelectorAll('.main-menu a');
 
+    // Debug logging to check if elements are found
+    console.log('Menu toggle found:', menuToggle);
+    console.log('Nav container found:', navContainer);
+    
     if (menuToggle && navContainer) {
-        // Toggle menu when hamburger icon is clicked
-        menuToggle.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevent default behavior
-            e.stopPropagation(); // Stop event propagation
+        // Add direct click handler with logging
+        menuToggle.onclick = function(e) {
+            console.log('Mobile menu clicked');
+            e.preventDefault();
             this.classList.toggle('active');
             navContainer.classList.toggle('active');
             document.body.classList.toggle('menu-open');
-        });
+            
+            // Log the current state
+            console.log('Menu active:', this.classList.contains('active'));
+            console.log('Nav active:', navContainer.classList.contains('active'));
+        };
         
-        // Close menu when clicking on menu items
-        menuItems.forEach(item => {
-            item.addEventListener('click', function() {
-                navContainer.classList.remove('active');
-                menuToggle.classList.remove('active');
-                document.body.classList.remove('menu-open');
-                
-                // Update active menu item
-                menuItems.forEach(link => link.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (navContainer.classList.contains('active') && 
-                !navContainer.contains(e.target) && 
-                !menuToggle.contains(e.target)) {
-                
-                navContainer.classList.remove('active');
-                menuToggle.classList.remove('active');
-                document.body.classList.remove('menu-open');
-            }
-        });
+        // Ensure the menu toggle is visible and clickable
+        menuToggle.style.display = 'block';
+        menuToggle.style.cursor = 'pointer';
+        menuToggle.style.zIndex = '1002';
+    } else {
+        console.error('Mobile menu elements not found!');
     }
+    
+    // Close menu when clicking on menu items
+    menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+            navContainer.classList.remove('active');
+            menuToggle.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            
+            // Update active menu item
+            menuItems.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (navContainer.classList.contains('active') && 
+            !navContainer.contains(e.target) && 
+            !menuToggle.contains(e.target)) {
+            
+            navContainer.classList.remove('active');
+            menuToggle.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    });
 
     // Email button functionality
     const emailButton = document.getElementById('emailButton');

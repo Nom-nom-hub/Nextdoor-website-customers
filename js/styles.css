@@ -3965,3 +3965,58 @@ footer {
         font-size: 1.3rem;
     }
 }
+
+/* Enhanced mobile menu toggle styling */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    z-index: 1002;
+    margin-left: auto; /* Push to the right */
+}
+
+.hamburger-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color);
+    margin: 6px 0;
+    transition: all 0.3s ease;
+}
+
+/* Make sure mobile menu toggle is visible on mobile */
+@media (max-width: 992px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    /* Force visibility of hamburger lines */
+    .hamburger-line {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Ensure the nav container transitions properly */
+    .nav-container {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 350px;
+        height: 100vh;
+        background-color: var(--darker-color);
+        flex-direction: column;
+        padding: 100px 30px 30px;
+        transition: right 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .nav-container.active {
+        right: 0;
+    }
+}
