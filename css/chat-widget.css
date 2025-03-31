@@ -1,0 +1,40 @@
+/* Extremely aggressive CSS to force Tawk.to widget to bottom left */
+[class*="tawk"],
+[id*="tawk"],
+iframe[title*="chat"],
+iframe[src*="tawk"],
+div[style*="z-index: 1000"] {
+    bottom: 20px !important;
+    right: auto !important;
+    left: 20px !important;
+    top: auto !important;
+    position: fixed !important;
+    margin: 0 !important;
+    transform: none !important;
+}
+
+/* Target parent elements as well */
+[class*="tawk"] *,
+[id*="tawk"] *,
+iframe[title*="chat"] *,
+iframe[src*="tawk"] * {
+    bottom: 20px !important;
+    right: auto !important;
+    left: 20px !important;
+    top: auto !important;
+}
+
+/* Add !important to all properties to override inline styles */
+#tawkchat-container,
+#tawkchat-minified-container,
+.tawk-min-container,
+.tawk-card,
+.tawk-chat-panel {
+    bottom: 20px !important;
+    right: auto !important;
+    left: 20px !important;
+    top: auto !important;
+    position: fixed !important;
+    margin: 0 !important;
+    transform: none !important;
+}

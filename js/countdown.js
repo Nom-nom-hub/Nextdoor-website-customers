@@ -11,38 +11,35 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     
-    // Calculate the fixed time difference for days and hours
     const endDateTime = new Date(endDate).getTime();
-    const demoDate = new Date('March 29, 2025').getTime();
-    const fixedTimeRemaining = endDateTime - demoDate;
-    
-    // Fixed values for days and hours
-    const days = Math.floor(fixedTimeRemaining / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((fixedTimeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    
-    // Display fixed values
-    document.querySelector('.days').textContent = days < 10 ? '0' + days : days;
-    document.querySelector('.hours').textContent = hours < 10 ? '0' + hours : hours;
-    
-    // For minutes and seconds, use a cycling counter for visual effect
-    let minutes = 59;
-    let seconds = 59;
     
     // Update the countdown every second
     const countdownTimer = setInterval(function() {
-        seconds--;
+        // Get current date and time
+        const now = new Date().getTime();
         
-        if (seconds < 0) {
-            seconds = 59;
-            minutes--;
-            
-            if (minutes < 0) {
-                minutes = 59;
-            }
-        }
+        // Find the time remaining
+        const timeRemaining = endDateTime - now;
         
-        // Display the cycling values
+        // Calculate days, hours, minutes, and seconds
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        
+        // Display the countdown
+        document.querySelector('.days').textContent = days < 10 ? '0' + days : days;
+        document.querySelector('.hours').textContent = hours < 10 ? '0' + hours : hours;
         document.querySelector('.minutes').textContent = minutes < 10 ? '0' + minutes : minutes;
         document.querySelector('.seconds').textContent = seconds < 10 ? '0' + seconds : seconds;
+        
+        // If countdown is finished
+        if (timeRemaining < 0) {
+            clearInterval(countdownTimer);
+            document.querySelector('.days').textContent = '00';
+            document.querySelector('.hours').textContent = '00';
+            document.querySelector('.minutes').textContent = '00';
+            document.querySelector('.seconds').textContent = '00';
+        }
     }, 1000);
 }); 

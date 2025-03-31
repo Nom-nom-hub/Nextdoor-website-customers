@@ -10,9 +10,13 @@
     <meta property="og:url" content="https://yourusername.github.io/">
     <meta property="og:image" content="images/og-image.jpg">
     <title>Teck | Web Designer & Developer</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="js/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    
+    <link rel="stylesheet" href="css/emergency.css">
+    <link rel="stylesheet" href="css/test-styles.css">
+    <link rel="stylesheet" href="css/chat-widget.css">
 </head>
 <body>
     <header class="site-header">
@@ -29,32 +33,28 @@
                 </div>
                 
                 <div class="nav-controls">
-                    <div class="theme-switch">
-                        <i class="fas fa-moon"></i>
-            </div>
+                    <!-- Removed the theme-switch div -->
                     
                     <button class="mobile-menu-toggle" aria-label="Toggle menu">
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
                     </button>
-            </div>
+                </div>
                 
                 <div class="nav-container">
                     <ul class="main-menu">
-                        <li class="menu-item"><a href="#home" class="active">Home</a></li>
-                        <li class="menu-item"><a href="#services">Services</a></li>
-                        <li class="menu-item"><a href="#portfolio">Portfolio</a></li>
-                        <li class="menu-item"><a href="#pricing">Pricing</a></li>
-                        <li class="menu-item"><a href="#about">About</a></li>
-                        <li class="menu-item"><a href="#contact">Contact</a></li>
-            </ul>
+                        <li class="menu-item"><a href="#home" class="active"><i class="fas fa-home menu-icon"></i>Home</a></li>
+                        <li class="menu-item"><a href="#services"><i class="fas fa-tools menu-icon"></i>Services</a></li>
+                        <li class="menu-item"><a href="#portfolio"><i class="fas fa-laptop-code menu-icon"></i>Portfolio</a></li>
+                        <li class="menu-item"><a href="#about"><i class="fas fa-user menu-icon"></i>About</a></li>
+                        <li class="menu-item"><a href="#pricing"><i class="fas fa-tags menu-icon"></i>Pricing</a></li>
+                        <li class="menu-item"><a href="#contact"><i class="fas fa-envelope menu-icon"></i>Contact</a></li>
+                    </ul>
                     
-                    <div class="nav-cta">
-                        <a href="#contact" class="btn btn-primary btn-rounded">Start a Project</a>
-                    </div>
+                    
                 </div>
-        </nav>
+            </nav>
         </div>
     </header>
 
@@ -70,96 +70,6 @@
                         <a href="#contact" class="btn btn-secondary">Get In Touch</a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="code-editor">
-                        <div class="editor-header">
-                            <div class="window-controls">
-                                <span class="control close"></span>
-                                <span class="control minimize"></span>
-                                <span class="control maximize"></span>
-                            </div>
-                            <div class="editor-title">
-                                <span class="file-icon"><i class="fas fa-code"></i></span>
-                                <span class="file-name">portfolio.js</span>
-                            </div>
-                            <div class="editor-actions">
-                                <span class="action-icon"><i class="fas fa-save"></i></span>
-                                <span class="action-icon"><i class="fas fa-cog"></i></span>
-                            </div>
-                        </div>
-                        <div class="editor-body">
-                            <div class="line-numbers">
-                                <span>1</span>
-                                <span>2</span>
-                                <span>3</span>
-                                <span>4</span>
-                                <span>5</span>
-                                <span>6</span>
-                                <span>7</span>
-                                <span>8</span>
-                                <span>9</span>
-                                <span>10</span>
-                                <span>11</span>
-                                <span>12</span>
-                                <span>13</span>
-                                <span>14</span>
-                                <span>15</span>
-                            </div>
-                            <div class="code-content">
-                                <div class="code-line"><span class="keyword">class</span> <span class="class-name">WebDeveloper</span> {</div>
-                                <div class="code-line indent1"><span class="keyword">constructor</span>(<span class="parameter">name</span>, <span class="parameter">skills</span>) {</div>
-                                <div class="code-line indent2"><span class="this">this</span>.<span class="property">name</span> = name;</div>
-                                <div class="code-line indent2"><span class="this">this</span>.<span class="property">skills</span> = skills;</div>
-                                <div class="code-line indent2"><span class="this">this</span>.<span class="property">projects</span> = [];</div>
-                                <div class="code-line indent1">}</div>
-                                <div class="code-line"></div>
-                                <div class="code-line indent1"><span class="function">createWebsite</span>(<span class="parameter">client</span>, <span class="parameter">type</span>) {</div>
-                                <div class="code-line indent2"><span class="keyword">const</span> <span class="variable">project</span> = {</div>
-                                <div class="code-line indent3"><span class="property">client</span>: client,</div>
-                                <div class="code-line indent3"><span class="property">type</span>: type,</div>
-                                <div class="code-line indent3"><span class="property">features</span>: [<span class="string">'responsive'</span>, <span class="string">'SEO-optimized'</span>, <span class="string">'fast-loading'</span>],</div>
-                                <div class="code-line indent3"><span class="property">completed</span>: <span class="keyword">false</span></div>
-                                <div class="code-line indent2">};</div>
-                                <div class="code-line indent2"><span class="this">this</span>.<span class="property">projects</span>.<span class="function">push</span>(project);</div>
-                                <div class="code-line indent2"><span class="keyword">return</span> project;</div>
-                                <div class="code-line indent1">}</div>
-                                <div class="code-line"></div>
-                                <div class="code-line indent1"><span class="function">deliverProject</span>(<span class="parameter">projectIndex</span>) {</div>
-                                <div class="code-line indent2"><span class="keyword">if</span> (projectIndex >= <span class="this">this</span>.<span class="property">projects</span>.<span class="property">length</span>) {</div>
-                                <div class="code-line indent3"><span class="keyword">throw new</span> <span class="class-name">Error</span>(<span class="string">'Project not found'</span>);</div>
-                                <div class="code-line indent2">}</div>
-                                <div class="code-line indent2"><span class="this">this</span>.<span class="property">projects</span>[projectIndex].<span class="property">completed</span> = <span class="keyword">true</span>;</div>
-                                <div class="code-line indent2"><span class="function">console</span>.<span class="method">log</span>(<span class="string">`Project for ${</span><span class="this">this</span>.<span class="property">projects</span>[projectIndex].<span class="property">client</span><span class="string">} delivered successfully!`</span>);</div>
-                                <div class="code-line indent1">}</div>
-                                <div class="code-line">}</div>
-                                <div class="code-line"></div>
-                                <div class="code-line"><span class="comment">// Create a new developer instance</span></div>
-                                <div class="code-line"><span class="keyword">const</span> <span class="variable">teck</span> = <span class="keyword">new</span> <span class="class-name">WebDeveloper</span>(<span class="string">'Teck'</span>, [
-                                    <span class="string">'HTML5'</span>, 
-                                    <span class="string">'CSS3/SASS'</span>, 
-                                    <span class="string">'JavaScript/TypeScript'</span>, 
-                                    <span class="string">'React/Next.js'</span>,
-                                    <span class="string">'AI Integration'</span>,
-                                    <span class="string">'WebXR'</span>
-                                ]);</div>
-                                <div class="code-line"></div>
-                                <div class="code-line"><span class="comment">// Create a new project</span></div>
-                                <div class="code-line"><span class="keyword">const</span> <span class="variable">newProject</span> = teck.<span class="function">createWebsite</span>(<span class="string">'YourCompany'</span>, <span class="string">'e-commerce'</span>);</div>
-                                <div class="code-line typing"><span class="cursor"></span></div>
-                            </div>
-                        </div>
-                        <div class="editor-footer">
-                            <div class="editor-status">
-                                <span class="status-item">JavaScript</span>
-                                <span class="status-item">UTF-8</span>
-                                <span class="status-item">Ln 32, Col 0</span>
-                            </div>
-                            <div class="editor-info">
-                                <span class="info-item"><i class="fas fa-check-circle"></i> No Problems</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -170,6 +80,7 @@
                     <h2>My Services</h2>
                     <p>Comprehensive web design solutions to help your business thrive online</p>
                 </div>
+                
                 <div class="services-grid">
                     <div class="service-card">
                         <div class="service-icon">
@@ -238,8 +149,7 @@
                             <a href="#contact" class="btn btn-sm btn-outline">Learn More</a>
                         </div>
                     </div>
-
-                    <!-- Additional service cards to add to the services-grid -->
+                    
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-shopping-cart"></i>
@@ -256,7 +166,7 @@
                             <a href="#contact" class="btn btn-sm btn-outline">Learn More</a>
                         </div>
                     </div>
-
+                    
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-tachometer-alt"></i>
@@ -273,7 +183,7 @@
                             <a href="#contact" class="btn btn-sm btn-outline">Learn More</a>
                         </div>
                     </div>
-
+                    
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-paint-brush"></i>
@@ -290,7 +200,7 @@
                             <a href="#contact" class="btn btn-sm btn-outline">Learn More</a>
                         </div>
                     </div>
-
+                    
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-chart-line"></i>
@@ -307,8 +217,7 @@
                             <a href="#contact" class="btn btn-sm btn-outline">Learn More</a>
                         </div>
                     </div>
-
-                    <!-- Update services to include modern technologies -->
+                    
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-robot"></i>
@@ -325,7 +234,7 @@
                             <a href="#contact" class="btn btn-sm btn-outline">Learn More</a>
                         </div>
                     </div>
-
+                    
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-vr-cardboard"></i>
@@ -500,28 +409,46 @@
                 <div class="about-content">
                     <div class="about-text">
                         <h2>About Me</h2>
-                        <p>Hello! I'm Teck, a passionate web designer and developer with over 5 years of experience creating beautiful, functional websites that help businesses succeed online.</p>
+                        <p>Hello! I'm <span class="highlight-name">Teck</span>, a passionate web designer and developer with over 15 years of experience creating beautiful, functional websites that help businesses succeed online. I started coding in 2008 and graduated from Full Sail University with an Associate's Degree in Computer Science in 2010.</p>
                         <p>My approach combines creative design with technical expertise to deliver websites that not only look stunning but also perform exceptionally well. I believe that great web design should be both visually impressive and strategically effective.</p>
                         <p>I specialize in responsive design, user experience optimization, and creating custom solutions that align with my clients' unique business goals. Every project I undertake is handled with meticulous attention to detail and a commitment to excellence.</p>
                         <div class="skills">
                             <div class="skill">
-                                <span>HTML/CSS</span>
+                                <span>HTML5/CSS3</span>
+                                <div class="skill-bar"><div class="skill-level" style="width: 98%;"></div></div>
+                            </div>
+                            <div class="skill">
+                                <span>JavaScript/TypeScript</span>
                                 <div class="skill-bar"><div class="skill-level" style="width: 95%;"></div></div>
                             </div>
                             <div class="skill">
-                                <span>JavaScript</span>
-                                <div class="skill-bar"><div class="skill-level" style="width: 90%;"></div></div>
+                                <span>React/Next.js</span>
+                                <div class="skill-bar"><div class="skill-level" style="width: 92%;"></div></div>
                             </div>
                             <div class="skill">
                                 <span>UI/UX Design</span>
-                                <div class="skill-bar"><div class="skill-level" style="width: 85%;"></div></div>
+                                <div class="skill-bar"><div class="skill-level" style="width: 90%;"></div></div>
                             </div>
                             <div class="skill">
                                 <span>Responsive Design</span>
-                                <div class="skill-bar"><div class="skill-level" style="width: 95%;"></div></div>
+                                <div class="skill-bar"><div class="skill-level" style="width: 97%;"></div></div>
+                            </div>
+                            <div class="skill">
+                                <span>Node.js/Express</span>
+                                <div class="skill-bar"><div class="skill-level" style="width: 88%;"></div></div>
+                            </div>
+                            <div class="skill">
+                                <span>MongoDB/SQL</span>
+                                <div class="skill-bar"><div class="skill-level" style="width: 85%;"></div></div>
+                            </div>
+                            <div class="skill">
+                                <span>WebXR/Three.js</span>
+                                <div class="skill-bar"><div class="skill-level" style="width: 82%;"></div></div>
                             </div>
                         </div>
-                        <a href="#contact" class="btn btn-primary">Let's Work Together</a>
+                        <div class="cta-buttons mt-4">
+                            <a href="#contact" class="btn btn-primary">Let's Work Together</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -584,15 +511,22 @@
                 </div>
                 
                 <div class="pricing-grid">
-                    <!-- Set Your Own Price (First) -->
+                    <!-- Update the Set Your Own Price card -->
                     <div class="pricing-card featured">
                         <div class="pricing-badge">Most Popular</div>
                         <div class="pricing-header">
-                            <h3>Set Your Own Price</h3>
+                            <h3>Pay What You Value</h3>
                             <div class="price">$50<span class="price-suffix">+</span></div>
-                            <p>You decide what's fair (minimum $50)</p>
+                            <p>Fair pricing based on your satisfaction</p>
                         </div>
                         <div class="pricing-body">
+                            <p class="pricing-intro">I believe in delivering exceptional value and letting you decide what it's worth. Here's how it works:</p>
+                            <ol class="pricing-steps">
+                                <li>We discuss your project requirements</li>
+                                <li>I build your complete website in one day</li>
+                                <li>You review the final result</li>
+                                <li>You pay what you think is fair (minimum $50)</li>
+                            </ol>
                             <ul class="pricing-features">
                                 <li><i class="fas fa-check"></i> Unlimited pages</li>
                                 <li><i class="fas fa-check"></i> Custom design</li>
@@ -602,7 +536,7 @@
                                 <li><i class="fas fa-check"></i> Same-day delivery</li>
                                 <li><i class="fas fa-check"></i> Lifetime support</li>
                             </ul>
-                            <p class="pricing-description">Pay what you think is fair based on your satisfaction with the final result.</p>
+                            <p class="pricing-description">This model is built on trust and ensures you only pay what you believe the website is worth to your business.</p>
                         </div>
                         <div class="pricing-footer">
                             <a href="#contact" class="btn btn-primary">Get Started</a>
@@ -831,33 +765,41 @@
                     <p>Ready to discuss your project? Let's make something amazing together.</p>
                 </div>
                 <div class="contact-content">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">
+                    <div class="contact-info-grid">
+                        <!-- Email Card -->
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div class="contact-details">
-                                <h3>Email</h3>
-                                <p><a href="mailto:ftwenty903@gmail.com">ftwenty903@gmail.com</a></p>
-                            </div>
+                            <h3 class="contact-card-title">Email</h3>
+                            <div class="contact-card-value">ftwenty903@gmail.com</div>
+                            <a href="mailto:ftwenty903@gmail.com" class="contact-card-link">
+                                Send an email <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
+                        
+                        <!-- Location Card -->
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <div class="contact-details">
-                                <h3>Location</h3>
-                                <p>Cape Coral, FL</p>
-                            </div>
+                            <h3 class="contact-card-title">Location</h3>
+                            <div class="contact-card-value">Cape Coral, FL</div>
+                            <a href="https://maps.google.com/?q=Cape+Coral,+FL" target="_blank" class="contact-card-link">
+                                View on map <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
+                        
+                        <!-- Nextdoor Card -->
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
                                 <i class="fas fa-home"></i>
                             </div>
-                            <div class="contact-details">
-                                <h3>Nextdoor</h3>
-                                <p><a href="https://nextdoor.com/profile/01n49GXWJYKQryC5k" target="_blank">Connect on Nextdoor</a></p>
-                            </div>
+                            <h3 class="contact-card-title">Nextdoor</h3>
+                            <div class="contact-card-value">Connect with me on Nextdoor</div>
+                            <a href="#" class="nextdoor-link">
+                                <i class="fas fa-external-link-alt"></i> Connect on Nextdoor
+                            </a>
                         </div>
                     </div>
                     <div class="contact-form">
@@ -899,16 +841,19 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <a href="index.html">
-                        <div class="logo-container">
-                            <span class="logo-text">Teck</span>
-                            <span class="logo-accent"></span>
-                            <span class="logo-icon"><i class="fas fa-code"></i></span>
-                        </div>
-                    </a>
-                    <p class="footer-tagline">Crafting digital experiences that inspire</p>
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <a href="index.html">
+                            <div class="logo-container">
+                                <span class="logo-text">Teck</span>
+                                <span class="logo-accent"></span>
+                                <span class="logo-icon"><i class="fas fa-code"></i></span>
+                            </div>
+                        </a>
+                        <p class="footer-tagline">Crafting digital experiences that inspire and engage.</p>
+                    </div>
                 </div>
+                
                 <div class="footer-links">
                     <div class="footer-nav">
                         <h4>Navigation</h4>
@@ -916,70 +861,75 @@
                             <li><a href="#home">Home</a></li>
                             <li><a href="#services">Services</a></li>
                             <li><a href="#portfolio">Portfolio</a></li>
-                            <li><a href="#pricing">Pricing</a></li>
                             <li><a href="#about">About</a></li>
+                            <li><a href="#pricing">Pricing</a></li>
                             <li><a href="#contact">Contact</a></li>
                         </ul>
                     </div>
-                   
+                    
+                    <div class="footer-social">
+                        <h4>Connect</h4>
+                        <div class="social-icons">
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; <span id="currentYear">2025</span> Teck. All rights reserved.</p>
+                <p>&copy; <span id="currentYear">2023</span> Teck. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
-    <a href="#home" class="back-to-top">
+    
+    <!-- Back to top button - moved outside footer but before scripts -->
+    <a href="#" class="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </a>
+    
+    <!-- Scripts -->
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/theme-switcher.js"></script>
+    <script type="text/javascript" src="js/faq.js"></script>
+    <script type="text/javascript" src="js/countdown.js"></script>
+    <script type="text/javascript" src="js/email.js"></script>
+    <script type="text/javascript" src="js/particle.js"></script>
+    <script type="text/javascript" src="js/cursor.js"></script>
+    <script type="text/javascript" src="js/scroll.js"></script>
+    <script type="text/javascript" src="js/animations.js"></script>
+    <script type="text/javascript" src="js/form-validation.js"></script>
+    <script type="text/javascript" src="js/portfolio-filter.js"></script>
+    <script type="text/javascript" src="js/mobile-menu.js"></script>
+    <script type="text/javascript" src="js/portfolio-details.js"></script>
+    <script type="text/javascript" src="js/hanging-light.js"></script>
+    <script type="text/javascript" src="js/water-effect.js"></script>
+    
+    <!-- Live Chat Widget -->
+    <!--Start of Tawk.to Script with position only-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/67ea8c40d3fdf2190fe8268a/1inm37mvv';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
 
-    <!-- Demo Request Modal -->
-    <div id="demoRequestModal" class="demo-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-body">
-                <h2>Request a Live Demo</h2>
-                <p class="demo-description">I'd be happy to set up a personalized demo of this project for you. Please fill out the form below, and I'll get back to you within 24 hours.</p>
-                
-                <form id="demoRequestForm" class="demo-form">
-                    <div class="form-group">
-                        <label for="demoName">Your Name</label>
-                        <input type="text" id="demoName" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="demoEmail">Email</label>
-                        <input type="email" id="demoEmail" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="demoProject">Project Type</label>
-                        <input type="text" id="demoProject" name="project" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="demoMessage">Additional Information</label>
-                        <textarea id="demoMessage" name="message" rows="3" placeholder="Please share any specific features you're interested in seeing."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit Request</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add this right before the closing </body> tag -->
-    <canvas id="particle-canvas"></canvas>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-    <div class="dark-bg-texture"></div>
-
-    <script src="js/main.js"></script>
-    <script src="js/advanced-animations.js"></script>
-    <script src="js/theme-switcher.js"></script>
-    <script src="js/advanced-effects.js"></script>
-    <script src="js/3d-effects.js"></script>
-    <script src="js/countdown.js"></script>
-    <script src="js/faq.js"></script>
-    <link rel="stylesheet" href="css/theme-styles.css">
-    <script src="js/interactive-light.js"></script>
+    // Only customize position, not colors
+    Tawk_API.onLoad = function(){
+        // Position the widget at the bottom left
+        Tawk_API.customize({
+            bottom: '20px',
+            right: 'auto',
+            left: '20px'
+        });
+    };
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
-</html> 
+</html>

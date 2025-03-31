@@ -1,4 +1,4 @@
-// Advanced Water Drip Effect
+// Advanced Water Drip Effect with Rain
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize water drip effect
     initWaterDripEffect();
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         canvas.className = 'water-canvas';
         document.body.appendChild(canvas);
         
-        // Add CSS for water effect
+        // Add CSS for water and rain effects
         const style = document.createElement('style');
         style.textContent = `
             .water-canvas {
@@ -25,6 +25,68 @@ document.addEventListener('DOMContentLoaded', function() {
                 z-index: 999;
             }
             
+            /* Rain drop styles */
+            .rain-drop {
+                position: absolute;
+                background: linear-gradient(
+                    to bottom,
+                    rgba(255, 255, 255, 0.1),
+                    rgba(255, 255, 255, 0.4)
+                );
+                width: 1px;
+                height: 15px;
+                border-radius: 0 0 1px 1px;
+                transform: rotate(10deg);
+                opacity: 0.7;
+                pointer-events: none;
+                z-index: 998;
+            }
+            
+            /* Rain splash styles */
+            .rain-splash {
+                position: absolute;
+                background: radial-gradient(
+                    circle at center,
+                    rgba(255, 255, 255, 0.6),
+                    rgba(255, 255, 255, 0.1) 70%,
+                    transparent 100%
+                );
+                border-radius: 50%;
+                transform: scale(0);
+                opacity: 0;
+                pointer-events: none;
+                z-index: 998;
+            }
+            
+            @keyframes rainFall {
+                0% {
+                    transform: translateY(-20px) rotate(10deg);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 0.7;
+                }
+                90% {
+                    opacity: 0.7;
+                }
+                100% {
+                    transform: translateY(100vh) rotate(10deg);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes rainSplash {
+                0% {
+                    transform: scale(0);
+                    opacity: 0.7;
+                }
+                100% {
+                    transform: scale(10);
+                    opacity: 0;
+                }
+            }
+            
+            /* Existing water effect styles */
             .water-drop {
                 position: absolute;
                 background: radial-gradient(
@@ -146,11 +208,298 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         `;
         document.head.appendChild(style);
+
+        // Add more realistic rain styles
+        const rainStyles = `
+            /* More realistic raindrop styles */
+            .rain-drop {
+                position: absolute;
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+                width: 1px;
+                height: 15px;
+                border-radius: 0 0 1px 1px;
+                box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+                opacity: 0;
+                pointer-events: none;
+                z-index: 999;
+            }
+            
+            /* Enhanced rain splash styles */
+            .rain-splash {
+                position: absolute;
+                background: radial-gradient(
+                    circle at center,
+                    rgba(255, 255, 255, 0.8),
+                    rgba(255, 255, 255, 0.2) 60%,
+                    transparent 100%
+                );
+                border-radius: 50%;
+                transform: scale(0);
+                opacity: 0;
+                pointer-events: none;
+                z-index: 998;
+                mix-blend-mode: screen;
+            }
+            
+            /* Rain ripple effect */
+            .rain-ripple {
+                position: absolute;
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                border-radius: 50%;
+                transform: scale(0);
+                opacity: 0;
+                pointer-events: none;
+                z-index: 997;
+            }
+            
+            @keyframes rainRipple {
+                0% {
+                    transform: scale(0);
+                    opacity: 0.7;
+                }
+                100% {
+                    transform: scale(1);
+                    opacity: 0;
+                }
+            }
+        `;
+
+        // Add styles to document
+        const rainStyleElement = document.createElement('style');
+        rainStyleElement.textContent = rainStyles;
+        document.head.appendChild(rainStyleElement);
         
         // Set up canvas
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        
+        // Rain parameters
+        const raindrops = [];
+        let isRaining = false;
+        let rainIntensity = 0.5; // 0 to 1
+        
+        // Create a raindrop
+        function createRaindrop() {
+            // Random position
+            const x = Math.random() * window.innerWidth;
+            const y = -20; // Start above viewport
+            
+            // Create raindrop element
+            const raindrop = document.createElement('div');
+            raindrop.className = 'rain-drop';
+            
+            // Random size for variety
+            const size = 0.8 + Math.random() * 0.4; // Slight variation in width
+            const length = 10 + Math.random() * 10; // Variable length
+            raindrop.style.width = `${size}px`;
+            raindrop.style.height = `${length}px`;
+            
+            // Random wind and angle
+            const windDirection = window.windDirection || 1;
+            const windStrength = window.windStrength || 0.5;
+            const angle = 15 + (windDirection * windStrength * 20); // More pronounced angle
+            
+            // Adjust horizontal position based on wind
+            const horizontalOffset = windDirection * windStrength * 150;
+            
+            raindrop.style.transform = `rotate(${angle}deg)`;
+            raindrop.style.left = `${x}px`;
+            raindrop.style.top = `${y}px`;
+            
+            // Random animation duration - faster in stronger winds
+            const duration = Math.max(0.4, 0.7 + Math.random() * 0.3 - (windStrength * 0.3));
+            
+            // Create custom animation with wind-affected trajectory
+            const keyframes = `
+                @keyframes rainFall${Math.floor(Math.random() * 1000)} {
+                    0% {
+                        transform: translateY(0) translateX(0) rotate(${angle}deg);
+                        opacity: 0;
+                    }
+                    5% {
+                        opacity: ${0.5 + Math.random() * 0.3};
+                    }
+                    90% {
+                        opacity: ${0.5 + Math.random() * 0.3};
+                    }
+                    100% {
+                        transform: translateY(${window.innerHeight + 50}px) translateX(${horizontalOffset}px) rotate(${angle}deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+            
+            // Add keyframes to document
+            const styleSheet = document.createElement('style');
+            styleSheet.textContent = keyframes;
+            document.head.appendChild(styleSheet);
+            
+            // Apply the custom animation
+            const animationName = keyframes.match(/@keyframes\s+([^\s{]+)/)[1];
+            raindrop.style.animation = `${animationName} ${duration}s linear forwards`;
+            
+            // Add to DOM
+            document.body.appendChild(raindrop);
+            
+            // Calculate landing position with wind effect
+            const landingX = x + horizontalOffset;
+            
+            // Remove after animation
+            setTimeout(() => {
+                // Create splash when raindrop hits "ground"
+                createRainSplash(landingX, window.innerHeight - 10, size);
+                
+                // Remove raindrop and style element
+                raindrop.remove();
+                styleSheet.remove();
+            }, duration * 1000);
+        }
+        
+        // Create rain splash
+        function createRainSplash(x, y, size) {
+            const splash = document.createElement('div');
+            splash.className = 'rain-splash';
+            
+            // Size based on raindrop size
+            const splashSize = 3 + (size * 4);
+            splash.style.width = `${splashSize}px`;
+            splash.style.height = `${splashSize}px`;
+            
+            // Position
+            splash.style.left = `${x - splashSize/2}px`;
+            splash.style.top = `${y - splashSize/2}px`;
+            
+            // Animation
+            const duration = 0.3 + Math.random() * 0.2;
+            splash.style.animation = `rainSplash ${duration}s ease-out forwards`;
+            
+            // Add to DOM
+            document.body.appendChild(splash);
+            
+            // Create ripple effect
+            createRainRipple(x, y, splashSize * 3);
+            
+            // Remove after animation
+            setTimeout(() => {
+                splash.remove();
+            }, duration * 1000);
+        }
+
+        // Create rain ripple effect
+        function createRainRipple(x, y, size) {
+            const ripple = document.createElement('div');
+            ripple.className = 'rain-ripple';
+            
+            // Position
+            ripple.style.left = `${x - size/2}px`;
+            ripple.style.top = `${y - size/2}px`;
+            ripple.style.width = `${size}px`;
+            ripple.style.height = `${size}px`;
+            
+            // Animation
+            const duration = 0.8 + Math.random() * 0.4;
+            ripple.style.animation = `rainRipple ${duration}s ease-out forwards`;
+            
+            // Add to DOM
+            document.body.appendChild(ripple);
+            
+            // Remove after animation
+            setTimeout(() => {
+                ripple.remove();
+            }, duration * 1000);
+        }
+        
+        // Toggle rain effect
+        function toggleRain() {
+            isRaining = !isRaining;
+            
+            if (isRaining) {
+                startRain();
+            }
+        }
+        
+        // Start rain effect
+        function startRain() {
+            if (!isRaining) return;
+            
+            // Create raindrops based on intensity and wind
+            const baseCount = Math.floor(3 + (rainIntensity * 12));
+            const windFactor = Math.min(1.5, 1 + (window.windStrength || 0));
+            const count = Math.floor(baseCount * windFactor);
+            
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    createRaindrop();
+                }, i * (50 - rainIntensity * 20)); // Faster drops in higher intensity
+            }
+            
+            // Schedule next batch of raindrops
+            setTimeout(startRain, 300 + Math.random() * 200);
+        }
+        
+        // Change rain intensity and behavior based on wind
+        window.addEventListener('windChange', function(e) {
+            if (e.detail) {
+                // Increase rain intensity with stronger wind
+                rainIntensity = Math.min(1, 0.3 + (e.detail.strength * 0.2));
+                
+                // Adjust rain angle based on wind direction and strength
+                const windDirection = e.detail.direction;
+                const windStrength = e.detail.strength;
+                
+                // Start rain automatically in stronger winds
+                if (windStrength > 1.0 && !isRaining && Math.random() < 0.3) {
+                    isRaining = true;
+                    startRain();
+                    
+                    // Stop rain after a while if wind calms down
+                    setTimeout(() => {
+                        if (window.windStrength < 0.8) {
+                            isRaining = false;
+                        }
+                    }, 8000);
+                }
+            }
+        });
+        
+        // Start rain on wind gusts
+        window.addEventListener('windGust', function() {
+            if (!isRaining) {
+                isRaining = true;
+                rainIntensity = 0.8;
+                startRain();
+                
+                // Stop rain after gust
+                setTimeout(() => {
+                    isRaining = false;
+                }, 5000);
+            } else {
+                // Increase intensity during gust
+                rainIntensity = 1;
+            }
+        });
+        
+        // Add rain toggle button
+        const rainButton = document.createElement('button');
+        rainButton.textContent = 'Toggle Rain';
+        rainButton.style.position = 'fixed';
+        rainButton.style.bottom = '10px';
+        rainButton.style.right = '10px';
+        rainButton.style.zIndex = '1000';
+        rainButton.style.padding = '5px 10px';
+        rainButton.style.background = 'rgba(0, 0, 0, 0.5)';
+        rainButton.style.color = 'white';
+        rainButton.style.border = 'none';
+        rainButton.style.borderRadius = '4px';
+        rainButton.style.cursor = 'pointer';
+        
+        rainButton.addEventListener('click', toggleRain);
+        document.body.appendChild(rainButton);
+        
+        // Start with some rain
+        isRaining = true;
+        startRain();
         
         // Water physics parameters
         const drops = [];
