@@ -2638,7 +2638,6 @@ body.dom-loaded.light-theme .site-header {
     animation-delay: 4.5s;
 }
 .hero-content .cta-buttons {
-    border: 1px solid var(--border-color);
     border-radius: 30px;
     color: var(--text-muted);
 }
