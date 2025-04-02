@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo Icon -->
+  <g>
+    <!-- Code bracket shape -->
+    <path d="M22 10L12 25L22 40" stroke="#6366F1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M38 10L48 25L38 40" stroke="#6366F1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- T shape -->
+    <path d="M30 10V40" stroke="#10B981" stroke-width="4" stroke-linecap="round"/>
+    <path d="M20 10H40" stroke="#10B981" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Accent dots -->
+    <circle cx="12" cy="25" r="3" fill="#818CF8"/>
+    <circle cx="48" cy="25" r="3" fill="#818CF8"/>
+    <circle cx="30" cy="40" r="3" fill="#818CF8"/>
+  </g>
+
+  <!-- Logo Text -->
+  <text x="60" y="32" font-family="Arial, sans-serif" font-weight="700" font-size="18" fill="#F8FAFC">Designs by</text>
+  <text x="160" y="32" font-family="Arial, sans-serif" font-weight="800" font-size="20" fill="#6366F1">Teck</text>
+</svg>

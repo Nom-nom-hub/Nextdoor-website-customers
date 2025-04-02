@@ -58,18 +58,28 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update SVG illustrations to match theme
         const svgElements = document.querySelectorAll('img[src$=".svg"]');
         svgElements.forEach(svg => {
-            // If the SVG has loaded
-            if (svg.contentDocument) {
-                const svgDoc = svg.contentDocument;
-                const svgRoot = svgDoc.documentElement;
-                svgRoot.setAttribute('data-theme', newTheme);
-            } else {
-                // For SVGs that haven't loaded yet, add an event listener
+            // For SVGs that haven't loaded yet, add an event listener
+            if (!svg.complete) {
                 svg.addEventListener('load', function() {
-                    const svgDoc = this.contentDocument;
-                    const svgRoot = svgDoc.documentElement;
-                    svgRoot.setAttribute('data-theme', newTheme);
+                    try {
+                        const svgDoc = this.contentDocument;
+                        if (svgDoc && svgDoc.documentElement) {
+                            svgDoc.documentElement.setAttribute('data-theme', newTheme);
+                        }
+                    } catch (e) {
+                        console.log('Error setting theme on SVG:', e);
+                    }
                 });
+            } else {
+                // For already loaded SVGs
+                try {
+                    const svgDoc = svg.contentDocument;
+                    if (svgDoc && svgDoc.documentElement) {
+                        svgDoc.documentElement.setAttribute('data-theme', newTheme);
+                    }
+                } catch (e) {
+                    console.log('Error setting theme on SVG:', e);
+                }
             }
         });
 

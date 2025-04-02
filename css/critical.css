@@ -144,43 +144,52 @@ section {
 }
 
 .logo a {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
     text-decoration: none;
-    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
 }
 
-[data-theme="dark"] .logo a {
-    color: white;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.logo .highlight {
-    color: var(--secondary-color);
-    font-weight: 800;
-    position: relative;
-}
-
-[data-theme="dark"] .logo .highlight {
-    color: var(--primary-color);
-}
-
-.logo .highlight::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--primary-color);
-    transform: scaleX(0.7);
+.logo-image {
+    height: 40px;
+    width: auto;
     transition: transform 0.3s ease;
 }
 
-.logo a:hover .highlight::after {
-    transform: scaleX(1);
+.logo a:hover .logo-image {
+    transform: scale(1.05);
 }
+
+/* Theme-specific logo images */
+.light-mode-image {
+    display: block;
+}
+
+.dark-mode-image {
+    display: none;
+}
+
+[data-theme="dark"] .light-mode-image {
+    display: none;
+}
+
+[data-theme="dark"] .dark-mode-image {
+    display: block;
+}
+
+/* Screen reader only class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Logo hover effect is now handled by the transform on the SVG */
 
 .main-menu {
     display: flex;
