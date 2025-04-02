@@ -123,16 +123,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Save message to history
-    function saveMessageToHistory(sender, text) {
-        const timestamp = new Date().toISOString();
+    function saveMessageToHistory(sender, text, timestamp, messageId) {
+        // Generate timestamp and ID if not provided
+        timestamp = timestamp || new Date().toISOString();
+        const msgId = messageId || 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+
         const chatHistory = JSON.parse(localStorage.getItem(`chat_history_${clientId}`)) || [];
 
-        chatHistory.push({
+        // Create message object with ID
+        const messageObj = {
             sender,
             text,
-            timestamp
-        });
+            timestamp,
+            id: msgId
+        };
 
+        chatHistory.push(messageObj);
         localStorage.setItem(`chat_history_${clientId}`, JSON.stringify(chatHistory));
 
         // Also save to all chats for admin dashboard
@@ -145,27 +151,39 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         }
 
-        allChats[clientId].messages.push({
-            sender,
-            text,
-            timestamp
-        });
-
+        allChats[clientId].messages.push(messageObj);
         allChats[clientId].lastMessage = timestamp;
 
         if (sender === 'client') {
             allChats[clientId].unread = (allChats[clientId].unread || 0) + 1;
         }
 
+        // Add lastUpdate timestamp to trigger change events
+        allChats[clientId].lastUpdate = Date.now();
+
         localStorage.setItem('all_chats', JSON.stringify(allChats));
+
+        // If this is a client message, create a notification for admin
+        if (sender === 'client') {
+            const notification = {
+                clientId: clientId,
+                messageId: msgId,
+                timestamp: Date.now()
+            };
+            localStorage.setItem('new_client_message', JSON.stringify(notification));
+        }
+
+        return messageObj;
     }
 
     // Add message to chat
-    function addMessageToChat(sender, text, timestamp, save = true) {
+    function addMessageToChat(sender, text, timestamp, save = true, messageId = null) {
         const messageElement = document.createElement('div');
         messageElement.className = `chat-message ${sender}-message`;
 
-        const time = new Date(timestamp || Date.now()).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        // Generate timestamp if not provided
+        const msgTimestamp = timestamp || new Date().toISOString();
+        const time = new Date(msgTimestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 
         messageElement.innerHTML = `
             <div class="message-content">
@@ -174,11 +192,19 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
 
+        // Add message ID as data attribute for future reference
+        if (messageId) {
+            messageElement.setAttribute('data-message-id', messageId);
+        }
+
         chatMessages.appendChild(messageElement);
         chatMessages.scrollTop = chatMessages.scrollHeight;
 
+        let msgObj = null;
         if (save) {
-            saveMessageToHistory(sender, text);
+            msgObj = saveMessageToHistory(sender, text, msgTimestamp, messageId);
+            // Add the message ID to the element
+            messageElement.setAttribute('data-message-id', msgObj.id);
         }
 
         // If it's an admin message and chat is not open, increment unread counter
@@ -186,6 +212,8 @@ document.addEventListener('DOMContentLoaded', function() {
             unreadMessages++;
             updateNotificationBadge();
         }
+
+        return msgObj;
     }
 
     // Update notification badge
@@ -446,28 +474,81 @@ document.addEventListener('DOMContentLoaded', function() {
         addMessageToChat('admin', 'Thank you for your feedback! We appreciate your input.');
     });
 
-    // Check for new messages every 1 second (simulating real-time)
+    // Check for new messages every 300ms (more responsive)
     setInterval(() => {
+        // First check for direct notification
+        const notification = localStorage.getItem('new_message_notification');
+        if (notification) {
+            try {
+                const notificationData = JSON.parse(notification);
+
+                // Check if this notification is for this client and is recent (within last 5 seconds)
+                const notificationTime = notificationData.timestamp;
+                const currentTime = Date.now();
+
+                if (notificationData.clientId === clientId && (currentTime - notificationTime < 5000)) {
+                    // Get the latest chat data
+                    const allChats = JSON.parse(localStorage.getItem('all_chats')) || {};
+                    const clientChat = allChats[clientId] || { unread: 0, messages: [] };
+
+                    // Find the specific message by ID
+                    const newMessage = clientChat.messages.find(msg => msg.id === notificationData.messageId);
+
+                    if (newMessage && newMessage.sender === 'admin') {
+                        // Get current chat history
+                        const currentHistory = JSON.parse(localStorage.getItem(`chat_history_${clientId}`)) || [];
+
+                        // Check if this message is already in the history
+                        const exists = currentHistory.some(m => m.id === newMessage.id);
+
+                        if (!exists) {
+                            // Show typing indicator briefly before showing the message
+                            showTypingIndicator();
+
+                            setTimeout(() => {
+                                // Hide typing indicator
+                                hideTypingIndicator();
+
+                                // Add to UI and save to history
+                                addMessageToChat('admin', newMessage.text, newMessage.timestamp);
+
+                                // If chat is not open, increment unread counter
+                                if (!chatOpen) {
+                                    unreadMessages++;
+                                    updateNotificationBadge();
+                                }
+
+                                // Play notification sound if available
+                                const notificationSound = document.getElementById('chat-notification');
+                                if (notificationSound) {
+                                    notificationSound.play().catch(e => console.log('Sound play prevented by browser'));
+                                }
+
+                                // Update local storage with the latest messages
+                                localStorage.setItem(`chat_history_${clientId}`, JSON.stringify(clientChat.messages));
+                            }, 800);
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error('Error parsing notification:', e);
+            }
+        }
+
+        // Fallback: Get the latest chat data directly from localStorage
         const allChats = JSON.parse(localStorage.getItem('all_chats')) || {};
         const clientChat = allChats[clientId] || { unread: 0, messages: [] };
 
         // Get current chat history
         const currentHistory = JSON.parse(localStorage.getItem(`chat_history_${clientId}`)) || [];
 
-        // Check if there are new messages from admin in the all_chats that aren't in the chat history
-        if (clientChat.messages && clientChat.messages.length > currentHistory.length) {
-            // Get the new messages
-            const newMessages = clientChat.messages.slice(currentHistory.length);
-
-            // Add only admin messages that aren't already in the chat
-            newMessages.forEach(message => {
-                if (message.sender === 'admin') {
-                    // Check if this message is already in the history by timestamp
-                    const exists = currentHistory.some(m =>
-                        m.timestamp === message.timestamp &&
-                        m.text === message.text &&
-                        m.sender === message.sender
-                    );
+        // Check for new messages by comparing message IDs
+        if (clientChat.messages && clientChat.messages.length > 0) {
+            // Process all admin messages that aren't in the current history
+            clientChat.messages.forEach(message => {
+                if (message.sender === 'admin' && message.id) {
+                    // Check if this message is already in the history by ID
+                    const exists = currentHistory.some(m => m.id === message.id);
 
                     if (!exists) {
                         // Show typing indicator briefly before showing the message
@@ -491,10 +572,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             if (notificationSound) {
                                 notificationSound.play().catch(e => console.log('Sound play prevented by browser'));
                             }
-                        }, 1000);
+                        }, 800);
                     }
                 }
             });
+
+            // Update local storage with the latest messages
+            localStorage.setItem(`chat_history_${clientId}`, JSON.stringify(clientChat.messages));
         }
 
         // Also check for typing status from admin
@@ -512,5 +596,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
-    }, 1000);
+    }, 300);
 });

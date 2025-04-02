@@ -89,117 +89,206 @@
                 <h2>My Portfolio</h2>
                 <p>Recent projects that showcase my web development expertise</p>
             </div>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web-design">Web Design</button>
+                <button class="filter-btn" data-filter="e-commerce">E-Commerce</button>
+                <button class="filter-btn" data-filter="interactive">Interactive</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+            </div>
             <div class="portfolio-grid">
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-category="web-design interactive">
                     <div class="portfolio-image">
-                        <a href="demos/creative/index.html" target="_blank">
-                            <div class="portfolio-preview creative-preview">
-                                <div class="preview-content">
-                                    <h4>Pixel Perfect</h4>
-                                    <p>Creative Design Studio</p>
+                        <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Custom Chat Widget">
+                        <div class="portfolio-overlay">
+                            <div class="preview-content">
+                                <h4>LiveConnect</h4>
+                                <p>Real-time Chat Solution</p>
+                                <div class="portfolio-buttons">
+                                    <a href="#" class="portfolio-btn" onclick="document.querySelector('.chat-button').click(); return false;">Try Live Demo</a>
+                                    <a href="#" class="portfolio-btn details-btn" data-project="chat">View Details</a>
                                 </div>
                             </div>
-                        </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-details">
+                        <h3>Custom Chat Widget</h3>
+                        <p>A real-time customer support chat widget with admin dashboard.</p>
+                        <div class="portfolio-meta">
+                            <span class="meta-item"><i class="fas fa-code"></i> HTML, CSS, JavaScript</span>
+                            <span class="meta-item"><i class="fas fa-calendar"></i> 2023</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web-design branding">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Creative Agency Website">
+                        <div class="portfolio-overlay">
+                            <div class="preview-content">
+                                <h4>Pixel Perfect</h4>
+                                <p>Creative Design Studio</p>
+                                <div class="portfolio-buttons">
+                                    <a href="demos/creative/index.html" target="_blank" class="portfolio-btn">View Demo</a>
+                                    <a href="#" class="portfolio-btn details-btn" data-project="creative">View Details</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="portfolio-details">
                         <h3>Creative Agency Website</h3>
                         <p>A modern website for a creative design studio with portfolio showcase.</p>
+                        <div class="portfolio-meta">
+                            <span class="meta-item"><i class="fas fa-code"></i> HTML, CSS, JavaScript</span>
+                            <span class="meta-item"><i class="fas fa-calendar"></i> 2023</span>
+                        </div>
                     </div>
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-category="web-design">
                     <div class="portfolio-image">
-                        <a href="demos/restaurant/index.html" target="_blank">
-                            <div class="portfolio-preview restaurant-preview">
-                                <div class="preview-content">
-                                    <h4>Savoria</h4>
-                                    <p>Fine Dining Experience</p>
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Restaurant Website">
+                        <div class="portfolio-overlay">
+                            <div class="preview-content">
+                                <h4>Savoria</h4>
+                                <p>Fine Dining Experience</p>
+                                <div class="portfolio-buttons">
+                                    <a href="demos/restaurant/index.html" target="_blank" class="portfolio-btn">View Demo</a>
+                                    <a href="#" class="portfolio-btn details-btn" data-project="restaurant">View Details</a>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
                     <div class="portfolio-details">
                         <h3>Restaurant Website</h3>
                         <p>An elegant website for a high-end restaurant with online reservation system.</p>
+                        <div class="portfolio-meta">
+                            <span class="meta-item"><i class="fas fa-code"></i> HTML, CSS, JavaScript, PHP</span>
+                            <span class="meta-item"><i class="fas fa-calendar"></i> 2023</span>
+                        </div>
                     </div>
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-category="web-design branding">
                     <div class="portfolio-image">
-                        <a href="demos/techstartup/index.html" target="_blank">
-                            <div class="portfolio-preview tech-preview">
-                                <div class="preview-content">
-                                    <h4>Quantum</h4>
-                                    <p>AI-Powered Data Solutions</p>
+                        <img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Tech Startup Website">
+                        <div class="portfolio-overlay">
+                            <div class="preview-content">
+                                <h4>Quantum</h4>
+                                <p>AI-Powered Data Solutions</p>
+                                <div class="portfolio-buttons">
+                                    <a href="demos/techstartup/index.html" target="_blank" class="portfolio-btn">View Demo</a>
+                                    <a href="#" class="portfolio-btn details-btn" data-project="tech">View Details</a>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
                     <div class="portfolio-details">
                         <h3>Tech Startup Website</h3>
                         <p>A cutting-edge website for a technology startup with interactive features.</p>
+                        <div class="portfolio-meta">
+                            <span class="meta-item"><i class="fas fa-code"></i> React, Node.js, SCSS</span>
+                            <span class="meta-item"><i class="fas fa-calendar"></i> 2023</span>
+                        </div>
                     </div>
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-category="e-commerce branding">
                     <div class="portfolio-image">
-                        <a href="demos/fashion/index.html" target="_blank">
-                            <div class="portfolio-preview fashion-preview">
-                                <div class="preview-content">
-                                    <h4>Artisan Collective</h4>
-                                    <p>Handcrafted Fashion</p>
+                        <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Fashion Brand Website">
+                        <div class="portfolio-overlay">
+                            <div class="preview-content">
+                                <h4>Artisan Collective</h4>
+                                <p>Handcrafted Fashion</p>
+                                <div class="portfolio-buttons">
+                                    <a href="demos/fashion/index.html" target="_blank" class="portfolio-btn">View Demo</a>
+                                    <a href="#" class="portfolio-btn details-btn" data-project="fashion">View Details</a>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
                     <div class="portfolio-details">
                         <h3>Fashion Brand Website</h3>
                         <p>A stylish e-commerce website for a boutique fashion brand with product showcase.</p>
+                        <div class="portfolio-meta">
+                            <span class="meta-item"><i class="fas fa-code"></i> Shopify, Liquid, JavaScript</span>
+                            <span class="meta-item"><i class="fas fa-calendar"></i> 2022</span>
+                        </div>
                     </div>
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-category="web-design">
                     <div class="portfolio-image">
-                        <a href="demos/realestate/index.html" target="_blank">
-                            <div class="portfolio-preview realestate-preview">
-                                <div class="preview-content">
-                                    <h4>Prestige Properties</h4>
-                                    <p>Luxury Real Estate</p>
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Real Estate Website">
+                        <div class="portfolio-overlay">
+                            <div class="preview-content">
+                                <h4>Prestige Properties</h4>
+                                <p>Luxury Real Estate</p>
+                                <div class="portfolio-buttons">
+                                    <a href="demos/realestate/index.html" target="_blank" class="portfolio-btn">View Demo</a>
+                                    <a href="#" class="portfolio-btn details-btn" data-project="realestate">View Details</a>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
                     <div class="portfolio-details">
                         <h3>Real Estate Website</h3>
                         <p>A premium real estate website with property listings and virtual tours.</p>
+                        <div class="portfolio-meta">
+                            <span class="meta-item"><i class="fas fa-code"></i> WordPress, PHP, JavaScript</span>
+                            <span class="meta-item"><i class="fas fa-calendar"></i> 2023</span>
+                        </div>
                     </div>
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-category="e-commerce">
                     <div class="portfolio-image">
-                        <a href="demos/electronics/index.html" target="_blank">
-                            <div class="portfolio-preview electronics-preview">
-                                <div class="preview-content">
-                                    <h4>TechVault</h4>
-                                    <p>Premium Electronics Store</p>
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Electronics Store Website">
+                        <div class="portfolio-overlay">
+                            <div class="preview-content">
+                                <h4>TechVault</h4>
+                                <p>Premium Electronics Store</p>
+                                <div class="portfolio-buttons">
+                                    <a href="demos/electronics/index.html" target="_blank" class="portfolio-btn">View Demo</a>
+                                    <a href="#" class="portfolio-btn details-btn" data-project="electronics">View Details</a>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
                     <div class="portfolio-details">
                         <h3>Electronics Store Website</h3>
                         <p>A feature-rich e-commerce platform for electronics with advanced filtering.</p>
+                        <div class="portfolio-meta">
+                            <span class="meta-item"><i class="fas fa-code"></i> WooCommerce, PHP, JavaScript</span>
+                            <span class="meta-item"><i class="fas fa-calendar"></i> 2022</span>
+                        </div>
                     </div>
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item" data-category="web-design branding">
                     <div class="portfolio-image">
-                        <a href="demos/landscaping/index.html" target="_blank">
-                            <div class="portfolio-preview landscaping-preview">
-                                <div class="preview-content">
-                                    <h4>GreenScape</h4>
-                                    <p>Professional Landscaping Services</p>
+                        <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Landscaping Business Website">
+                        <div class="portfolio-overlay">
+                            <div class="preview-content">
+                                <h4>GreenScape</h4>
+                                <p>Professional Landscaping Services</p>
+                                <div class="portfolio-buttons">
+                                    <a href="demos/landscaping/index.html" target="_blank" class="portfolio-btn">View Demo</a>
+                                    <a href="#" class="portfolio-btn details-btn" data-project="landscaping">View Details</a>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
                     <div class="portfolio-details">
                         <h3>Landscaping Business Website</h3>
                         <p>A professional service website with project gallery and quote request system.</p>
+                        <div class="portfolio-meta">
+                            <span class="meta-item"><i class="fas fa-code"></i> HTML, CSS, JavaScript, PHP</span>
+                            <span class="meta-item"><i class="fas fa-calendar"></i> 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Modal -->
+            <div class="portfolio-modal" id="portfolio-modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <div class="modal-body">
+                        <!-- Content will be dynamically inserted here -->
                     </div>
                 </div>
             </div>
@@ -290,11 +379,16 @@
     <script src="js/main.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/mobile-menu.js"></script>
+    <script src="js/portfolio-filter.js"></script>
     <script src="js/custom-chat.js"></script>
 
     <!-- Chat notification sound -->
     <audio id="chat-notification" preload="auto">
         <source src="https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3" type="audio/mpeg">
     </audio>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </body>
 </html>

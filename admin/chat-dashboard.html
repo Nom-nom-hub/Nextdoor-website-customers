@@ -1496,11 +1496,12 @@
                 // Clear input
                 messageInput.value = '';
 
-                // Create message
+                // Create message with a unique ID
                 const message = {
                     sender: 'admin',
                     text: text,
-                    timestamp: new Date().toISOString()
+                    timestamp: new Date().toISOString(),
+                    id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9)
                 };
 
                 // Add to UI
@@ -1517,18 +1518,34 @@
 
                 allChats[currentClientId].messages.push(message);
                 allChats[currentClientId].lastMessage = message.timestamp;
+
+                // Force update by adding a timestamp to ensure localStorage change event
+                allChats[currentClientId].lastUpdate = Date.now();
+
+                // Save to localStorage
                 localStorage.setItem('all_chats', JSON.stringify(allChats));
 
-                // Also update the client's chat history directly
+                // Also update the client's chat history directly with the same message object
                 const clientChatHistory = JSON.parse(localStorage.getItem(`chat_history_${currentClientId}`)) || [];
                 clientChatHistory.push(message);
                 localStorage.setItem(`chat_history_${currentClientId}`, JSON.stringify(clientChatHistory));
+
+                // Create a special notification for this specific client
+                const notification = {
+                    clientId: currentClientId,
+                    messageId: message.id,
+                    timestamp: Date.now()
+                };
+                localStorage.setItem('new_message_notification', JSON.stringify(notification));
 
                 // Update chat list
                 renderChatList();
 
                 // Show success toast
                 showToast('Message sent successfully!', 'success');
+
+                // Clear typing indicator
+                clearAdminTypingStatus();
             }
 
             // Clear chat history
