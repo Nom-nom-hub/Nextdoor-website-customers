@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="site-header">
+    <header class="site-header" style="background-color: #ffffff !important;">
         <div class="container">
             <div class="header-inner">
                 <div class="logo">
@@ -24,6 +24,12 @@
                         <li class="menu-item"><a href="#portfolio">Portfolio</a></li>
                         <li class="menu-item"><a href="#about">About</a></li>
                         <li class="menu-item"><a href="#contact">Contact</a></li>
+                        <li class="menu-item theme-toggle-container">
+                            <button id="theme-toggle" aria-label="Toggle dark mode">
+                                <i class="fas fa-sun light-icon"></i>
+                                <i class="fas fa-moon dark-icon"></i>
+                            </button>
+                        </li>
                     </ul>
                 </nav>
                 <button class="mobile-menu-toggle" aria-label="Toggle menu">
@@ -53,31 +59,132 @@
     <section id="services" class="services-section">
         <div class="container">
             <div class="section-header">
-                <h2>My Services</h2>
-                <p>Professional web development solutions tailored to your needs</p>
+                <span class="section-tagline">EXPERTISE</span>
+                <h2>Premium Services</h2>
+                <p>Comprehensive web design solutions to help your business thrive online</p>
             </div>
+
+            <div class="services-intro">
+                <div class="services-intro-content">
+                    <h3>Why Choose My Services?</h3>
+                    <p>With over 15 years of experience in web design and development, I deliver exceptional results that combine stunning aesthetics with powerful functionality. My approach focuses on creating websites that not only look impressive but also drive real business results.</p>
+                    <div class="services-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">100+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">Discuss Your Project</a>
+                </div>
+                <div class="services-intro-image">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Premium Web Design Services">
+                </div>
+            </div>
+
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card premium">
                     <div class="service-icon">
-                        <img src="images/favicon.svg" alt="Website Development">
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3>Website Development</h3>
-                    <p>Custom, responsive websites designed to convert visitors into customers.</p>
+                    <h3>Custom Web Design</h3>
+                    <p>Unique, tailored websites designed to reflect your brand identity and meet your specific business goals.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Brand-aligned visual design</li>
+                        <li><i class="fas fa-check"></i> Custom functionality</li>
+                        <li><i class="fas fa-check"></i> User experience optimization</li>
+                        <li><i class="fas fa-check"></i> Conversion-focused layouts</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="service-card">
+
+                <div class="service-card premium">
                     <div class="service-icon">
-                        <img src="images/favicon.svg" alt="E-Commerce Solutions">
+                        <i class="fas fa-sync-alt"></i>
                     </div>
-                    <h3>E-Commerce Solutions</h3>
-                    <p>Online stores that provide seamless shopping experiences.</p>
+                    <h3>Website Redesign</h3>
+                    <p>Transform your outdated website into a modern, user-friendly digital experience that converts visitors into customers.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Performance analysis</li>
+                        <li><i class="fas fa-check"></i> Modern UI/UX implementation</li>
+                        <li><i class="fas fa-check"></i> Content restructuring</li>
+                        <li><i class="fas fa-check"></i> Conversion rate optimization</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="service-card">
+
+                <div class="service-card premium">
                     <div class="service-icon">
-                        <img src="images/favicon.svg" alt="Web Applications">
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>Web Applications</h3>
-                    <p>Custom web applications that solve specific business problems.</p>
+                    <h3>Responsive Design</h3>
+                    <p>Ensure your website looks and functions flawlessly across all devices, from desktops to smartphones.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Mobile-first approach</li>
+                        <li><i class="fas fa-check"></i> Cross-device testing</li>
+                        <li><i class="fas fa-check"></i> Touch-friendly interfaces</li>
+                        <li><i class="fas fa-check"></i> Performance optimization</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
+
+                <div class="service-card premium">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Optimization</h3>
+                    <p>Improve your website's visibility in search engines with strategic SEO implementation and best practices.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Keyword research & strategy</li>
+                        <li><i class="fas fa-check"></i> On-page optimization</li>
+                        <li><i class="fas fa-check"></i> Technical SEO improvements</li>
+                        <li><i class="fas fa-check"></i> Performance enhancements</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card premium">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-Commerce Development</h3>
+                    <p>Build powerful online stores that drive sales and provide seamless shopping experiences for your customers.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Custom product catalogs</li>
+                        <li><i class="fas fa-check"></i> Secure payment integration</li>
+                        <li><i class="fas fa-check"></i> Inventory management</li>
+                        <li><i class="fas fa-check"></i> Mobile shopping optimization</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card premium">
+                    <div class="service-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Performance Optimization</h3>
+                    <p>Speed up your website loading times and enhance overall performance for better user experience and SEO ranking.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Page speed analysis</li>
+                        <li><i class="fas fa-check"></i> Code optimization</li>
+                        <li><i class="fas fa-check"></i> Image compression</li>
+                        <li><i class="fas fa-check"></i> Caching implementation</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="services-cta">
+                <h3>Ready to elevate your online presence?</h3>
+                <p>Let's create a website that stands out from the competition and drives real results for your business.</p>
+                <a href="#contact" class="btn btn-primary">Get Started Today</a>
             </div>
         </div>
     </section>
@@ -89,6 +196,13 @@
                 <h2>My Portfolio</h2>
                 <p>Recent projects that showcase my web development expertise</p>
             </div>
+
+            <div class="mobile-instructions">
+                <div class="instruction-icon">
+                    <i class="fas fa-hand-pointer"></i>
+                </div>
+                <p>Tap on any project to view details or try the live demo</p>
+            </div>
             <div class="portfolio-filter">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
                 <button class="filter-btn" data-filter="web-design">Web Design</button>
@@ -99,6 +213,7 @@
             <div class="portfolio-grid">
                 <div class="portfolio-item" data-category="web-design interactive">
                     <div class="portfolio-image">
+                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
                         <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Custom Chat Widget">
                         <div class="portfolio-overlay">
                             <div class="preview-content">
@@ -122,6 +237,7 @@
                 </div>
                 <div class="portfolio-item" data-category="web-design branding">
                     <div class="portfolio-image">
+                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
                         <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Creative Agency Website">
                         <div class="portfolio-overlay">
                             <div class="preview-content">
@@ -145,6 +261,7 @@
                 </div>
                 <div class="portfolio-item" data-category="web-design">
                     <div class="portfolio-image">
+                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
                         <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Restaurant Website">
                         <div class="portfolio-overlay">
                             <div class="preview-content">
@@ -168,6 +285,7 @@
                 </div>
                 <div class="portfolio-item" data-category="web-design branding">
                     <div class="portfolio-image">
+                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
                         <img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Tech Startup Website">
                         <div class="portfolio-overlay">
                             <div class="preview-content">
@@ -191,6 +309,7 @@
                 </div>
                 <div class="portfolio-item" data-category="e-commerce branding">
                     <div class="portfolio-image">
+                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
                         <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Fashion Brand Website">
                         <div class="portfolio-overlay">
                             <div class="preview-content">
@@ -214,6 +333,7 @@
                 </div>
                 <div class="portfolio-item" data-category="web-design">
                     <div class="portfolio-image">
+                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
                         <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Real Estate Website">
                         <div class="portfolio-overlay">
                             <div class="preview-content">
@@ -237,6 +357,7 @@
                 </div>
                 <div class="portfolio-item" data-category="e-commerce">
                     <div class="portfolio-image">
+                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
                         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Electronics Store Website">
                         <div class="portfolio-overlay">
                             <div class="preview-content">
@@ -260,6 +381,7 @@
                 </div>
                 <div class="portfolio-item" data-category="web-design branding">
                     <div class="portfolio-image">
+                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
                         <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Landscaping Business Website">
                         <div class="portfolio-overlay">
                             <div class="preview-content">
@@ -299,13 +421,39 @@
     <section id="about" class="about-section">
         <div class="container">
             <div class="section-header">
+                <span class="section-tagline">MY STORY</span>
                 <h2>About Me</h2>
-                <p>Experienced web developer dedicated to creating exceptional digital experiences</p>
+                <p>Experienced web designer and developer dedicated to creating exceptional digital experiences</p>
             </div>
             <div class="about-content">
+                <div class="about-image">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2721/2721304.png" alt="Web Developer Illustration">
+                    <div class="experience-badge">
+                        <span class="years">15+</span>
+                        <span class="text">Years<br>Experience</span>
+                    </div>
+                </div>
                 <div class="about-text">
-                    <p>I'm a passionate web developer with expertise in creating modern, responsive websites and web applications. With a focus on clean code and user-friendly design, I help businesses establish a strong online presence.</p>
-                    <p>My approach combines technical expertise with creative problem-solving to deliver websites that not only look great but also perform exceptionally well.</p>
+                    <h3>Hello! I'm Teck, a passionate web designer and developer with over 15 years of experience creating beautiful, functional websites that help businesses succeed online.</h3>
+
+                    <p>I started coding in 2008 and graduated from Full Sail University with an Associate's Degree in Computer Science in 2010.</p>
+
+                    <p>My approach combines creative design with technical expertise to deliver websites that not only look stunning but also perform exceptionally well. I believe that great web design should be both visually impressive and strategically effective.</p>
+
+                    <p>I specialize in responsive design, user experience optimization, and creating custom solutions that align with my clients' unique business goals. Every project I undertake is handled with meticulous attention to detail and a commitment to excellence.</p>
+
+                    <div class="skills-container">
+                        <div class="skill-item">HTML5/CSS3</div>
+                        <div class="skill-item">JavaScript/TypeScript</div>
+                        <div class="skill-item">React/Next.js</div>
+                        <div class="skill-item">UI/UX Design</div>
+                        <div class="skill-item">Responsive Design</div>
+                        <div class="skill-item">Node.js/Express</div>
+                        <div class="skill-item">MongoDB/SQL</div>
+                        <div class="skill-item">WebXR/Three.js</div>
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">Let's Work Together</a>
                 </div>
             </div>
         </div>
@@ -315,29 +463,96 @@
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="section-header">
-                <h2>Get In Touch</h2>
-                <p>Ready to start your project? Contact me today.</p>
+                <span class="section-tagline">GET IN TOUCH</span>
+                <h2>Ready to Transform Your Online Presence?</h2>
+                <p>Let's create a website that drives results for your business.</p>
             </div>
-            <div class="contact-form-container">
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Feel free to reach out with any questions about your project. I'm here to help turn your vision into reality.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>ftwenty903@gmail.com</p>
+                                <a href="mailto:ftwenty903@gmail.com" class="contact-link">Send an email</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Cape Coral, FL</p>
+                                <a href="https://www.google.com/maps/place/Cape+Coral,+FL" target="_blank" class="contact-link">View on map</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-share-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Nextdoor</h4>
+                                <p>Connect with me on Nextdoor</p>
+                                <a href="#" class="contact-link">Connect on Nextdoor</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="button" id="emailButton" class="btn btn-primary">Send Message</button>
-                </form>
+                </div>
+
+                <div class="contact-form-container">
+                    <h3>Send Me a Message</h3>
+                    <p>Fill out the form below to discuss your project requirements.</p>
+
+                    <form class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-pencil-alt"></i>
+                                <input type="text" id="subject" name="subject" placeholder="Project Inquiry">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <div class="input-with-icon textarea-icon">
+                                <i class="fas fa-comment-alt"></i>
+                                <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                            </div>
+                        </div>
+
+                        <button type="button" id="emailButton" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -380,6 +595,7 @@
     <script src="js/navigation.js"></script>
     <script src="js/mobile-menu.js"></script>
     <script src="js/portfolio-filter.js"></script>
+    <script src="js/theme-switcher.js"></script>
     <script src="js/custom-chat.js"></script>
 
     <!-- Chat notification sound -->
