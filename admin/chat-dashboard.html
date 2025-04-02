@@ -2085,6 +2085,33 @@
                 customerNotes = JSON.parse(storedNotes);
             }
 
+            // Track admin typing status
+            messageInput.addEventListener('input', function() {
+                if (!currentClientId) return;
+
+                // Save typing status to localStorage
+                const typingStatus = {
+                    isTyping: true,
+                    forClient: currentClientId,
+                    timestamp: new Date().toISOString()
+                };
+                localStorage.setItem('admin_typing', JSON.stringify(typingStatus));
+
+                // Clear typing status after 3 seconds of inactivity
+                if (window.adminTypingTimeout) {
+                    clearTimeout(window.adminTypingTimeout);
+                }
+
+                window.adminTypingTimeout = setTimeout(clearAdminTypingStatus, 3000);
+            });
+
+            function clearAdminTypingStatus() {
+                localStorage.removeItem('admin_typing');
+                if (window.adminTypingTimeout) {
+                    clearTimeout(window.adminTypingTimeout);
+                }
+            }
+
             // Initial load
             loadChats();
 
@@ -2095,6 +2122,9 @@
                     messageInput.focus();
                 }
             });
+
+            // Clear admin typing status when leaving the page
+            window.addEventListener('beforeunload', clearAdminTypingStatus);
         });
     </script>
 </body>
