@@ -31,18 +31,18 @@ function createNightSky() {
     // Create moon
     createMoon();
     
-    // Create water area first (bottom layer)
-    createWaterReflections();
-    
-    // Create boats in the water (middle layer)
-    createBoats();
-    
-    // Create city elements last (top layer)
+    // Create city elements first (before water)
     createCityLights();
     createCitySilhouette();
     
     // Add city styles
     addCityStyles();
+    
+    // Create water area after city elements
+    createWaterReflections();
+    
+    // Create boats in the water (middle layer)
+    createBoats();
     
     // Add shooting stars periodically
     createShootingStar();
@@ -57,12 +57,6 @@ function createNightSky() {
     
     // Add lightning effect
     initLightningEffect();
-    
-    // Add airplanes periodically
-    createAirplane();
-    setInterval(createAirplane, 20000 + Math.random() * 15000);
-    
-    console.log("Night sky created");
 }
 
 // Add city styles
@@ -256,13 +250,14 @@ function addEnhancedStarStyles() {
             position: absolute;
             background-color: #fff;
             border-radius: 50%;
-            animation: twinkle ease-in-out infinite;
-            box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+            animation: twinkle 3s ease-in-out infinite;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
         }
         
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
+            0% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); filter: brightness(1.5); }
+            100% { opacity: 0.2; transform: scale(0.8); }
         }
     `;
     
@@ -1422,9 +1417,15 @@ function addAirplaneStyles() {
             transform: scaleY(0.3);
         }
         
-        /* Flip the airplane when flying left */
+        /* Right-flying plane (default) */
+        .airplane.right .airplane-silhouette {
+            border-radius: 50% 50% 0 0;
+        }
+        
+        /* Left-flying plane needs to be flipped */
         .airplane.left .airplane-silhouette {
             transform: scaleY(0.3) scaleX(-1);
+            border-radius: 50% 50% 0 0;
         }
         
         .airplane-nav-light {
@@ -1441,6 +1442,17 @@ function addAirplaneStyles() {
             left: auto;
             right: 0;
             box-shadow: 0 0 3px rgba(0, 255, 0, 0.5);
+        }
+        
+        /* Ensure lights are positioned correctly when plane is flipped */
+        .airplane.left .airplane-nav-light {
+            left: auto;
+            right: 0;
+        }
+        
+        .airplane.left .airplane-nav-light.right {
+            right: auto;
+            left: 0;
         }
         
         .airplane-strobe {
