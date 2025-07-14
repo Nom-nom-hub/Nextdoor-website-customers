@@ -1075,6 +1075,15 @@
 
 /* Mobile menu styles */
 @media (max-width: 768px) {
+    .services-section,
+    .portfolio-section,
+    .about-section,
+    .contact-section,
+    .site-footer {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
     /* Services responsive styles */
     .services-intro {
         grid-template-columns: 1fr;
