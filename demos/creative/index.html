@@ -11,7 +11,7 @@
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="index.html">Pixel Perfect</a>
+                <a href="#home">Pixel Perfect</a>
             </div>
             <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -24,6 +24,9 @@
                 <li><a href="#team">Team</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
         </nav>
     </header>
 
@@ -40,48 +43,150 @@
             </div>
         </section>
 
-        <!-- Work Section -->
+        <!-- Portfolio/Work Section -->
         <section id="work" class="work">
             <div class="container">
                 <h2>Our Portfolio</h2>
                 <p class="section-subtitle">Recent projects we're proud of</p>
-                
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
                         <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Brand Identity Project">
                         <div class="portfolio-overlay">
                             <h3>Eco Brand Identity</h3>
                             <p>Branding, Logo Design</p>
-                            <a href="#" class="btn btn-sm">View Details</a>
+                            <a href="https://designsbyteck.com/demos/creative/index.html" class="btn btn-sm">View Details</a>
                         </div>
                     </div>
-                    
                     <div class="portfolio-item">
                         <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Web Design Project">
                         <div class="portfolio-overlay">
                             <h3>Modern E-commerce</h3>
                             <p>Web Design, UX/UI</p>
-                            <a href="#" class="btn btn-sm">View Details</a>
+                            <a href="https://designsbyteck.com/demos/creative/index.html" class="btn btn-sm">View Details</a>
                         </div>
                     </div>
-                    
                     <div class="portfolio-item">
                         <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="App Design">
                         <div class="portfolio-overlay">
                             <h3>Fitness App</h3>
                             <p>Mobile App, UI Design</p>
-                            <a href="#" class="btn btn-sm">View Details</a>
+                            <a href="https://designsbyteck.com/demos/creative/index.html" class="btn btn-sm">View Details</a>
                         </div>
+                    </div>
+                    <!-- Add more portfolio items as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <h2>Our Services</h2>
+                <p class="section-subtitle">We offer a full suite of creative services to help your brand stand out</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>Branding</h3>
+                        <p>Crafting unique brand identities that resonate and inspire.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Web Design</h3>
+                        <p>Modern, responsive websites that engage and convert.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-object-group"></i>
+                        <h3>UI/UX Design</h3>
+                        <p>Intuitive interfaces and seamless experiences for your users.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-pen-nib"></i>
+                        <h3>Illustration</h3>
+                        <p>Custom artwork and visuals to bring your brand to life.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Demo Notice -->
-        <div class="demo-notice">
-            <p>This is a demo website created by <a href="../../index.html">Teck</a>. All projects shown are fictional.</p>
-            <a href="../../index.html" class="btn btn-sm">Return to Portfolio</a>
-        </div>
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2>About Us</h2>
+                <p class="section-subtitle">We are passionate creatives with a mission to elevate brands</p>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Our Story</h3>
+                        <p>Pixel Perfect is a creative agency founded in 2015 with a vision to help brands make a lasting impact. Our team blends design, technology, and strategy to deliver exceptional results for clients worldwide.</p>
+                        <ul>
+                            <li>Mission: Empower brands through creativity and innovation</li>
+                            <li>Values: Collaboration, Excellence, Integrity, Curiosity</li>
+                        </ul>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Agency Team">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="team-section">
+            <div class="container">
+                <h2>Meet the Team</h2>
+                <p class="section-subtitle">A group of passionate designers, developers, and strategists</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Alex Kim">
+                        <h4>Alex Kim</h4>
+                        <p class="role">Creative Director</p>
+                        <p>Visionary leader with a passion for branding and design excellence.</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Samantha Lee">
+                        <h4>Samantha Lee</h4>
+                        <p class="role">Lead Designer</p>
+                        <p>Expert in UI/UX and visual storytelling for digital products.</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Jordan Smith">
+                        <h4>Jordan Smith</h4>
+                        <p class="role">Web Developer</p>
+                        <p>Full-stack developer specializing in modern, responsive websites.</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Patel">
+                        <h4>Priya Patel</h4>
+                        <p class="role">Illustrator</p>
+                        <p>Creates custom illustrations and graphics that bring brands to life.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p class="section-subtitle">Let's create something amazing together</p>
+                <form class="contact-form" autocomplete="off">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -89,7 +194,7 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <div class="footer-logo">
-                        <a href="index.html">Pixel Perfect</a>
+                        <a href="#home">Pixel Perfect</a>
                     </div>
                     <p>A creative design studio focused on building memorable brand experiences.</p>
                     <div class="social-links">
@@ -102,27 +207,55 @@
                 <div class="footer-links">
                     <div class="footer-column">
                         <h4>Services</h4>
-                        <a href="#">Branding</a>
-                        <a href="#">Web Design</a>
-                        <a href="#">UI/UX Design</a>
-                        <a href="#">Illustration</a>
+                        <a href="#services">Branding</a>
+                        <a href="#services">Web Design</a>
+                        <a href="#services">UI/UX Design</a>
+                        <a href="#services">Illustration</a>
                     </div>
                     <div class="footer-column">
                         <h4>Company</h4>
-                        <a href="#">About</a>
-                        <a href="#">Team</a>
-                        <a href="#">Careers</a>
-                        <a href="#">Contact</a>
+                        <a href="#about">About</a>
+                        <a href="#team">Team</a>
+                        <a href="#contact">Contact</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Pixel Perfect Studio. Demo Website by <a href="../../index.html">Teck</a>.</p>
+                <p>&copy; 2023 Pixel Perfect Studio. Website by <a href="https://designsbyteck.com" target="_blank" rel="noopener">Teck</a>.</p>
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="../../js/portfolio-details.js"></script>
+    <script>
+        // Theme toggle logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        function setTheme(dark) {
+            if (dark) {
+                body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                themeToggle.setAttribute('aria-label', 'Switch to light mode');
+            } else {
+                body.classList.remove('dark-mode');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+            }
+        }
+
+        // Load theme from localStorage
+        const darkPref = localStorage.getItem('theme') === 'dark' || (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme'));
+        setTheme(darkPref);
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = body.classList.toggle('dark-mode');
+            setTheme(isDark);
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    </script>
 </body>
 </html>

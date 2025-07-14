@@ -123,3 +123,31 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(heroSection);
     }
 });
+
+// Fade-in on scroll for all .fade-in elements
+(function() {
+    function showFadeInElements() {
+        var fadeEls = document.querySelectorAll('.fade-in');
+        fadeEls.forEach(function(el) {
+            el.classList.add('visible');
+        });
+    }
+
+    if ('IntersectionObserver' in window) {
+        var fadeEls = document.querySelectorAll('.fade-in');
+        var observer = new IntersectionObserver(function(entries, obs) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        fadeEls.forEach(function(el) {
+            observer.observe(el);
+        });
+    } else {
+        // Fallback for old browsers
+        document.addEventListener('DOMContentLoaded', showFadeInElements);
+    }
+})();

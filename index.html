@@ -6,13 +6,22 @@
     <title>Designs by Teck | Professional Web Services</title>
     <meta name="description" content="Designs by Teck offers professional web development services tailored to your business needs. Custom websites, e-commerce solutions, and web applications.">
     <link rel="icon" href="images/favicon.png">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/critical.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/custom-chat.css">
+    <!-- Add new stylesheet for modern makeover -->
+    <link rel="stylesheet" href="css/theme-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      body { font-family: 'Inter', Arial, sans-serif; }
+    </style>
 </head>
-<body>
-    <!-- Header -->
-    <header class="site-header" style="background-color: #ffffff !important;">
+<body class="theme-light">
+    <!-- Sticky Transparent Header -->
+    <header class="site-header sticky-header fade-in" style="background: rgba(255,255,255,0.85); box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
         <div class="container">
             <div class="header-inner">
                 <div class="logo">
@@ -45,22 +54,27 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <!-- Hero Section: Modern Makeover -->
+    <section class="hero modern-hero fade-in" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>Web Development Solutions That Drive Results</h1>
-                <p>Custom websites and web applications built to elevate your business</p>
+                <h1 class="hero-title">Web Development Solutions That Drive Results</h1>
+                <p class="hero-subtitle">Custom websites and web applications built to elevate your business</p>
                 <div class="cta-buttons">
-                    <a href="#services" class="btn btn-primary">View Services</a>
+                    <a href="#services" class="btn btn-primary accent">View Services</a>
                     <a href="#contact" class="btn btn-secondary">Get in Touch</a>
                 </div>
             </div>
         </div>
+        <!-- Subtle animated background shapes -->
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services-section">
+    <!-- Services Section: Add fade-in -->
+    <section id="services" class="services-section fade-in">
         <div class="container">
             <div class="section-header">
                 <span class="section-tagline">EXPERTISE</span>
@@ -193,8 +207,8 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio-section">
+    <!-- Portfolio Section: Modern grid, fade-in -->
+    <section id="portfolio" class="portfolio-section fade-in">
         <div class="container">
             <div class="section-header">
                 <h2>My Portfolio</h2>
@@ -248,8 +262,8 @@
                                 <h4>Pixel Perfect</h4>
                                 <p>Creative Design Studio</p>
                                 <div class="portfolio-buttons">
-                                    <a href="demos/creative/index.html" target="_blank" class="portfolio-btn">View Demo</a>
-                                    <a href="#" class="portfolio-btn details-btn" data-project="creative">View Details</a>
+                                    <a href="https://designsbyteck.com/demos/creative/index.html" target="_blank" class="portfolio-btn">View Demo</a>
+                                    <a href="https://designsbyteck.com/demos/creative/index.html" target="_blank" class="portfolio-btn details-btn" data-project="creative">View Details</a>
                                 </div>
                             </div>
                         </div>
@@ -272,8 +286,8 @@
                                 <h4>Savoria</h4>
                                 <p>Fine Dining Experience</p>
                                 <div class="portfolio-buttons">
-                                    <a href="demos/restaurant/index.html" target="_blank" class="portfolio-btn">View Demo</a>
-                                    <a href="#" class="portfolio-btn details-btn" data-project="restaurant">View Details</a>
+                                    <a href="https://designsbyteck.com/demos/restaurant/index.html" target="_blank" class="portfolio-btn">View Demo</a>
+                                    <a href="https://designsbyteck.com/demos/restaurant/index.html" target="_blank" class="portfolio-btn details-btn" data-project="restaurant">View Details</a>
                                 </div>
                             </div>
                         </div>
@@ -296,8 +310,8 @@
                                 <h4>Quantum</h4>
                                 <p>AI-Powered Data Solutions</p>
                                 <div class="portfolio-buttons">
-                                    <a href="demos/techstartup/index.html" target="_blank" class="portfolio-btn">View Demo</a>
-                                    <a href="#" class="portfolio-btn details-btn" data-project="tech">View Details</a>
+                                    <a href="https://designsbyteck.com/demos/techstartup/index.html" target="_blank" class="portfolio-btn">View Demo</a>
+                                    <a href="https://designsbyteck.com/demos/techstartup/index.html" target="_blank" class="portfolio-btn details-btn" data-project="tech">View Details</a>
                                 </div>
                             </div>
                         </div>
@@ -320,8 +334,8 @@
                                 <h4>Artisan Collective</h4>
                                 <p>Handcrafted Fashion</p>
                                 <div class="portfolio-buttons">
-                                    <a href="demos/fashion/index.html" target="_blank" class="portfolio-btn">View Demo</a>
-                                    <a href="#" class="portfolio-btn details-btn" data-project="fashion">View Details</a>
+                                    <a href="https://designsbyteck.com/demos/fashion/index.html" target="_blank" class="portfolio-btn">View Demo</a>
+                                    <a href="https://designsbyteck.com/demos/fashion/index.html" target="_blank" class="portfolio-btn details-btn" data-project="fashion">View Details</a>
                                 </div>
                             </div>
                         </div>
@@ -344,8 +358,8 @@
                                 <h4>Prestige Properties</h4>
                                 <p>Luxury Real Estate</p>
                                 <div class="portfolio-buttons">
-                                    <a href="demos/realestate/index.html" target="_blank" class="portfolio-btn">View Demo</a>
-                                    <a href="#" class="portfolio-btn details-btn" data-project="realestate">View Details</a>
+                                    <a href="https://designsbyteck.com/demos/realestate/index.html" target="_blank" class="portfolio-btn">View Demo</a>
+                                    <a href="https://designsbyteck.com/demos/realestate/index.html" target="_blank" class="portfolio-btn details-btn" data-project="realestate">View Details</a>
                                 </div>
                             </div>
                         </div>
@@ -368,8 +382,8 @@
                                 <h4>TechVault</h4>
                                 <p>Premium Electronics Store</p>
                                 <div class="portfolio-buttons">
-                                    <a href="demos/electronics/index.html" target="_blank" class="portfolio-btn">View Demo</a>
-                                    <a href="#" class="portfolio-btn details-btn" data-project="electronics">View Details</a>
+                                    <a href="https://designsbyteck.com/demos/electronics/index.html" target="_blank" class="portfolio-btn">View Demo</a>
+                                    <a href="https://designsbyteck.com/demos/electronics/index.html" target="_blank" class="portfolio-btn details-btn" data-project="electronics">View Details</a>
                                 </div>
                             </div>
                         </div>
@@ -392,8 +406,8 @@
                                 <h4>GreenScape</h4>
                                 <p>Professional Landscaping Services</p>
                                 <div class="portfolio-buttons">
-                                    <a href="demos/landscaping/index.html" target="_blank" class="portfolio-btn">View Demo</a>
-                                    <a href="#" class="portfolio-btn details-btn" data-project="landscaping">View Details</a>
+                                    <a href="https://designsbyteck.com/demos/landscaping/index.html" target="_blank" class="portfolio-btn">View Demo</a>
+                                    <a href="https://designsbyteck.com/demos/landscaping/index.html" target="_blank" class="portfolio-btn details-btn" data-project="landscaping">View Details</a>
                                 </div>
                             </div>
                         </div>
@@ -405,6 +419,15 @@
                             <span class="meta-item"><i class="fas fa-code"></i> HTML, CSS, JavaScript, PHP</span>
                             <span class="meta-item"><i class="fas fa-calendar"></i> 2023</span>
                         </div>
+                    </div>
+                </div>
+                <!-- PHP Demo Suite card, matching other demo cards -->
+                <div class="portfolio-item">
+                    <img src="images/php-demo-thumb.png" alt="PHP Demo Suite" style="background:#f8f9fa;object-fit:cover;height:300px;width:100%;">
+                    <div class="portfolio-overlay">
+                        <h3>PHP Demo Suite</h3>
+                        <p>Modern PHP scripts: contact, JSON, counter, router</p>
+                        <a href="/php-demo/index.php" target="_blank" class="btn btn-sm">View Demo</a>
                     </div>
                 </div>
             </div>
@@ -421,142 +444,53 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
+    <!-- About Section: Add photo, skills, fade-in -->
+    <section id="about" class="about-section fade-in">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tagline">MY STORY</span>
-                <h2>About Me</h2>
-                <p>Experienced web designer and developer dedicated to creating exceptional digital experiences</p>
-            </div>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2721/2721304.png" alt="Web Developer Illustration">
-                    <div class="experience-badge">
-                        <span class="years">15+</span>
-                        <span class="text">Years<br>Experience</span>
-                    </div>
+            <div class="about-inner">
+                <div class="about-photo">
+                    <img src="images/developer-illustration-light.svg" alt="Your Photo or Illustration">
                 </div>
-                <div class="about-text">
-                    <h3>Hello! I'm Teck, a passionate web designer and developer with over 15 years of experience creating beautiful, functional websites that help businesses succeed online.</h3>
-
-                    <p>I started coding in 2008 and graduated from Full Sail University with an Associate's Degree in Computer Science in 2010.</p>
-
-                    <p>My approach combines creative design with technical expertise to deliver websites that not only look stunning but also perform exceptionally well. I believe that great web design should be both visually impressive and strategically effective.</p>
-
-                    <p>I specialize in responsive design, user experience optimization, and creating custom solutions that align with my clients' unique business goals. Every project I undertake is handled with meticulous attention to detail and a commitment to excellence.</p>
-
-                    <div class="skills-container">
-                        <div class="skill-item">HTML5/CSS3</div>
-                        <div class="skill-item">JavaScript/TypeScript</div>
-                        <div class="skill-item">React/Next.js</div>
-                        <div class="skill-item">UI/UX Design</div>
-                        <div class="skill-item">Responsive Design</div>
-                        <div class="skill-item">Node.js/Express</div>
-                        <div class="skill-item">MongoDB/SQL</div>
-                        <div class="skill-item">WebXR/Three.js</div>
-                    </div>
-
-                    <a href="#contact" class="btn btn-primary">Let's Work Together</a>
+                <div class="about-content">
+                    <h2>About Me</h2>
+                    <p>Hi, I'm Teck, a passionate web designer and developer with 15+ years of experience. I specialize in creating beautiful, high-performance websites for businesses and individuals. My expertise spans HTML, CSS, JavaScript, PHP, and modern frameworks.</p>
+                    <ul class="skills-list">
+                        <li>HTML5</li>
+                        <li>CSS3 / SASS</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>PHP</li>
+                        <li>Responsive Design</li>
+                        <li>UI/UX</li>
+                        <li>SEO</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <!-- Contact Section: Modern form, fade-in -->
+    <section id="contact" class="contact-section fade-in">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tagline">GET IN TOUCH</span>
-                <h2>Ready to Transform Your Online Presence?</h2>
-                <p>Let's create a website that drives results for your business.</p>
-            </div>
-
-            <div class="contact-container">
+            <div class="contact-inner">
                 <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p>Feel free to reach out with any questions about your project. I'm here to help turn your vision into reality.</p>
-
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Email</h4>
-                                <p>ftwenty903@gmail.com</p>
-                                <a href="mailto:ftwenty903@gmail.com" class="contact-link">Send an email</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Location</h4>
-                                <p>Cape Coral, FL</p>
-                                <a href="https://www.google.com/maps/place/Cape+Coral,+FL" target="_blank" class="contact-link">View on map</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-share-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Nextdoor</h4>
-                                <p>Connect with me on Nextdoor</p>
-                                <a href="#" class="contact-link">Connect on Nextdoor</a>
-                            </div>
-                        </div>
+                    <h2>Contact Me</h2>
+                    <p>Ready to start your project or have questions? Fill out the form and I'll get back to you soon.</p>
+                </div>
+                <form class="contact-form" action="contact.php" method="POST" autocomplete="off">
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" required>
+                        <label for="name">Name</label>
                     </div>
-                </div>
-
-                <div class="contact-form-container">
-                    <h3>Send Me a Message</h3>
-                    <p>Fill out the form below to discuss your project requirements.</p>
-
-                    <form class="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <div class="input-with-icon">
-                                    <i class="fas fa-user"></i>
-                                    <input type="text" id="name" name="name" placeholder="John Doe" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Your Email</label>
-                                <div class="input-with-icon">
-                                    <i class="fas fa-envelope"></i>
-                                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <div class="input-with-icon">
-                                <i class="fas fa-pencil-alt"></i>
-                                <input type="text" id="subject" name="subject" placeholder="Project Inquiry">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <div class="input-with-icon textarea-icon">
-                                <i class="fas fa-comment-alt"></i>
-                                <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-                            </div>
-                        </div>
-
-                        <button type="button" id="emailButton" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
-                </div>
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" id="message" rows="5" required></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary accent">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
@@ -580,7 +514,13 @@
                 </div>
                 <div class="footer-contact">
                     <h4>Contact</h4>
-                    <p>Email: admin@designsbyteck.com</p>
+                    <p><i class="fas fa-envelope" aria-label="Email"></i> <a href="mailto:teck@designsbyteck.com">teck@designsbyteck.com</a></p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                    <div class="footer-social-note">Social links coming soon!</div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -600,7 +540,18 @@
     <script src="js/mobile-menu.js"></script>
     <script src="js/portfolio-filter.js"></script>
     <script src="js/theme-switcher.js"></script>
-    <script src="js/custom-chat.js"></script>
+    <!-- Add fade-in on scroll JS -->
+    <script src="js/animations.js"></script>
+    <script>
+      // Auto-enable dark mode if user prefers it or has previously selected it
+      if (
+        localStorage.getItem('theme') === 'dark' ||
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.body.classList.add('dark-mode');
+      }
+    </script>
+    <script src="js/fake-chatbot.js"></script>
 
     <!-- Chat notification sound -->
     <audio id="chat-notification" preload="auto">
