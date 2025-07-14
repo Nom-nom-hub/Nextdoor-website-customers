@@ -17,17 +17,84 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
       body { font-family: 'Inter', Arial, sans-serif; }
+      .about-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2.5em;
+        justify-content: center;
+      }
+      .about-photo {
+        flex: 0 0 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5em;
+      }
+      .about-photo img {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        box-shadow: 0 4px 24px #179e9e22;
+        border: 4px solid #f8fafc;
+        background: #fff;
+        object-fit: cover;
+        transition: border 0.2s, box-shadow 0.2s;
+      }
+      .dark-mode .about-photo img, [data-theme="dark"] .about-photo img, .theme-dark .about-photo img {
+        border: 4px solid #23272a;
+        background: #23272a;
+      }
+      .about-content h2 {
+        font-size: 2.1em;
+        color: #179e9e;
+        margin-bottom: 0.5em;
+      }
+      .about-content p {
+        font-size: 1.18em;
+        color: #222;
+        margin-bottom: 1.2em;
+        font-weight: 500;
+        line-height: 1.6;
+      }
+      .dark-mode .about-content p, [data-theme="dark"] .about-content p, .theme-dark .about-content p {
+        color: #e0e0e0;
+      }
+      @media (max-width: 900px) {
+        .about-inner { flex-direction: column; gap: 1.5em; }
+        .about-photo { margin-bottom: 0.5em; }
+      }
     </style>
     <script>
-    (function() {
-      try {
-        var saved = localStorage.getItem('dark-mode');
-        var sys = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (saved === '1' || (saved === null && sys)) {
-          document.documentElement.classList.add('dark-mode');
-        }
-      } catch(e){}
-    })();
+const html = document.documentElement;
+const body = document.body;
+function setTheme(isDark) {
+  if (isDark) {
+    html.setAttribute('data-theme', 'dark');
+    html.classList.add('dark-mode');
+    html.classList.remove('theme-light');
+    body.classList.add('theme-dark');
+    body.classList.remove('theme-light');
+    localStorage.setItem('dark-mode', '1');
+  } else {
+    html.setAttribute('data-theme', 'light');
+    html.classList.remove('dark-mode');
+    html.classList.remove('theme-dark');
+    html.classList.add('theme-light');
+    body.classList.remove('theme-dark');
+    body.classList.add('theme-light');
+    localStorage.setItem('dark-mode', '0');
+  }
+}
+(function() {
+  const saved = localStorage.getItem('dark-mode');
+  const sys = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  setTheme(saved === '1' || (saved === null && sys));
+})();
+document.getElementById('theme-toggle').onclick = function() {
+  const isDark = !document.documentElement.classList.contains('dark-mode');
+  setTheme(isDark);
+};
     </script>
 </head>
 <body class="theme-light">
@@ -454,15 +521,30 @@
                 </div>
                 <div class="about-content">
                     <h2>About Me</h2>
-                    <p>Hi, I'm Teck, a passionate web designer and developer with 15+ years of experience. I specialize in creating beautiful, high-performance websites for businesses and individuals. My expertise spans HTML, CSS, JavaScript, PHP, and modern frameworks.</p>
-                    <ul class="skills-list">
-                        <li>HTML5</li>
-                        <li>CSS3 / SASS</li>
-                        <li>JavaScript (ES6+)</li>
-                        <li>PHP</li>
-                        <li>Responsive Design</li>
-                        <li>UI/UX</li>
-                        <li>SEO</li>
+                    <p>Hi, I'm Teck—a senior web designer & full-stack developer with 15+ years of experience building beautiful, high-performance websites and apps for businesses and individuals. I specialize in modern JavaScript frameworks, robust backend solutions, and pixel-perfect UI/UX.</p>
+                    <div class="skills-grid">
+                        <div class="skill"><i class="fab fa-react"></i> React</div>
+                        <div class="skill"><i class="fab fa-js-square"></i> JavaScript (ES6+)</div>
+                        <div class="skill"><i class="fab fa-node-js"></i> Node.js</div>
+                        <div class="skill"><i class="fab fa-php"></i> PHP</div>
+                        <div class="skill"><i class="fab fa-html5"></i> HTML5</div>
+                        <div class="skill"><i class="fab fa-css3-alt"></i> CSS3 / SASS</div>
+                        <div class="skill"><i class="fab fa-git-alt"></i> Git</div>
+                        <div class="skill"><i class="fab fa-figma"></i> Figma</div>
+                        <div class="skill"><i class="fab fa-npm"></i> TypeScript</div>
+                        <div class="skill"><i class="fas fa-mobile-alt"></i> Responsive Design</div>
+                        <div class="skill"><i class="fas fa-paint-brush"></i> UI/UX</div>
+                        <div class="skill"><i class="fas fa-search"></i> SEO</div>
+                        <div class="skill"><i class="fab fa-trello"></i> Project Management</div>
+                        <div class="skill"><i class="fab fa-bootstrap"></i> Bootstrap</div>
+                        <div class="skill"><i class="fab fa-css3"></i> Tailwind CSS</div>
+                        <div class="skill"><i class="fab fa-react"></i> Next.js</div>
+                    </div>
+                    <ul class="about-strengths">
+                        <li>End-to-end web app development (frontend + backend)</li>
+                        <li>Modern, accessible, and responsive UI/UX</li>
+                        <li>Performance, SEO, and security best practices</li>
+                        <li>Collaborative, client-focused approach</li>
                     </ul>
                 </div>
             </div>

@@ -844,3 +844,16 @@ body.theme-light .hero-subtitle,
   border-color: #38bdf8 !important;
   font-weight: 700 !important;
 } 
+
+body.theme-dark .skills-grid .skill,
+[data-theme="dark"] .skills-grid .skill,
+.theme-dark .skills-grid .skill {
+  background: #23272a !important;
+  color: #20cfcf !important;
+  box-shadow: 0 2px 8px #20cfcf22 !important;
+}
+body.theme-dark .about-strengths,
+[data-theme="dark"] .about-strengths,
+.theme-dark .about-strengths {
+  color: #20cfcf !important;
+} 
