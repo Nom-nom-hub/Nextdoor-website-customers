@@ -69,6 +69,10 @@
 const html = document.documentElement;
 const body = document.body;
 function setTheme(isDark) {
+  if (!html || !body) {
+    console.warn('setTheme: html or body is null');
+    return;
+  }
   if (isDark) {
     html.setAttribute('data-theme', 'dark');
     html.classList.add('dark-mode');
@@ -91,10 +95,15 @@ function setTheme(isDark) {
   const sys = window.matchMedia('(prefers-color-scheme: dark)').matches;
   setTheme(saved === '1' || (saved === null && sys));
 })();
-document.getElementById('theme-toggle').onclick = function() {
-  const isDark = !document.documentElement.classList.contains('dark-mode');
-  setTheme(isDark);
-};
+document.addEventListener('DOMContentLoaded', function() {
+  var themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.onclick = function() {
+      const isDark = !document.documentElement.classList.contains('dark-mode');
+      setTheme(isDark);
+    };
+  }
+});
     </script>
 </head>
 <body class="theme-light">
