@@ -18,6 +18,17 @@
     <style>
       body { font-family: 'Inter', Arial, sans-serif; }
     </style>
+    <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('dark-mode');
+        var sys = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === '1' || (saved === null && sys)) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch(e){}
+    })();
+    </script>
 </head>
 <body class="theme-light">
     <!-- Sticky Transparent Header -->
@@ -421,16 +432,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- PHP Demo Suite card, matching other demo cards -->
-                <div class="portfolio-item">
-                    <img src="images/php-demo-thumb.png" alt="PHP Demo Suite" style="background:#f8f9fa;object-fit:cover;height:300px;width:100%;">
-                    <div class="portfolio-overlay">
-                        <h3>PHP Demo Suite</h3>
-                        <p>Modern PHP scripts: contact, JSON, counter, router</p>
-                        <a href="/php-demo/index.php" target="_blank" class="btn btn-sm">View Demo</a>
-                    </div>
-                </div>
-            </div>
 
             <!-- Portfolio Modal -->
             <div class="portfolio-modal" id="portfolio-modal">

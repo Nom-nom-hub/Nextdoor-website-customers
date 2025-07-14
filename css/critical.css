@@ -371,3 +371,8 @@ section {
     max-width: 600px;
     margin: 0 auto;
 }
+
+[data-theme="dark"] body, [data-theme="dark"] .container {
+    background: #181b1f !important;
+    color: #e0e0e0 !important;
+}
