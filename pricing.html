@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | Nextdoor Website Customers</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/theme-styles.css">
+    <style>
+        .pricing-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .pricing-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(30,64,175,0.08);
+            padding: 40px 28px 32px 28px;
+            flex: 1 1 280px;
+            max-width: 340px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-top: 4px solid #2563eb;
+        }
+        .pricing-card.featured {
+            border: 2.5px solid #2563eb;
+            border-top: 6px solid #2563eb;
+            background: linear-gradient(135deg, #e0e7ff 0%, #fff 100%);
+            box-shadow: 0 8px 32px rgba(30,64,175,0.13);
+        }
+        .pricing-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(30,64,175,0.18);
+        }
+        .plan-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2563eb;
+        }
+        .plan-price {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: #1d4ed8;
+            margin-bottom: 10px;
+        }
+        .plan-desc {
+            font-size: 1.05rem;
+            color: #64748b;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px 0;
+            text-align: left;
+            width: 100%;
+        }
+        .plan-features li {
+            margin-bottom: 10px;
+            padding-left: 1.2em;
+            position: relative;
+            font-size: 1rem;
+        }
+        .plan-features li:before {
+            content: '\2713';
+            color: #2563eb;
+            position: absolute;
+            left: 0;
+        }
+        .choose-btn {
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 32px;
+            font-size: 1.08rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(30,64,175,0.08);
+        }
+        .choose-btn:hover {
+            background: #1e40af;
+        }
+        @media (max-width: 900px) {
+            .pricing-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <!-- Navigation -->
+  <nav class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap md:flex-nowrap justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-2 text-lg sm:text-xl font-bold mb-2 md:mb-0">
+        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-blue-600 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="3"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
+        <span class="text-blue-700">IT & Web Services By</span>
+        <span class="ml-1 text-blue-900 bg-blue-300 px-2 py-0.5 rounded shadow font-extrabold tracking-wide border border-blue-500">Teck</span>
+      </a>
+      <div class="w-full md:w-auto flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-6 mb-2 md:mb-0">
+        <a href="index.html" class="text-blue-700 font-semibold">Home</a>
+        <a href="services.html" class="hover:text-blue-600">Services</a>
+        <a href="pricing.html" class="hover:text-blue-600 font-semibold underline">Pricing</a>
+        <a href="contact.html" class="hover:text-blue-600">Contact</a>
+        <a href="faq.html" class="hover:text-blue-600">FAQ</a>
+      </div>
+      <a href="contact.html" class="w-full md:w-auto px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold shadow text-center">Get a Free Quote</a>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="bg-gradient-to-br from-blue-700 via-blue-600 to-slate-700 text-white py-16 sm:py-20 px-4 text-center relative overflow-hidden mb-8">
+    <div class="max-w-2xl mx-auto relative z-10">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 drop-shadow-lg">Simple, Transparent Pricing</h1>
+      <p class="text-lg sm:text-2xl mb-6 font-medium opacity-90">Affordable plans for every business. No hidden fees. No surprises.</p>
+      <a href="contact.html" class="inline-block px-8 sm:px-10 py-3 sm:py-4 bg-white text-blue-700 font-bold rounded-full shadow-lg hover:bg-slate-100 transition transform hover:scale-105">Get a Custom Quote</a>
+    </div>
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute w-60 h-60 sm:w-96 sm:h-96 bg-blue-400 opacity-20 rounded-full blur-3xl -top-20 -left-20 sm:-top-32 sm:-left-32"></div>
+      <div class="absolute w-48 h-48 sm:w-80 sm:h-80 bg-white opacity-10 rounded-full blur-2xl -bottom-12 -right-12 sm:-bottom-24 sm:-right-24"></div>
+    </div>
+  </section>
+
+  <main>
+    <div class="pricing-container">
+      <div class="pricing-card">
+        <div class="plan-title">Basic</div>
+        <div class="plan-price">$19<span style="font-size:1rem; font-weight:400;">/mo</span></div>
+        <div class="plan-desc">Perfect for startups and solo businesses who need a professional online presence.</div>
+        <ul class="plan-features">
+          <li>1 custom website</li>
+          <li>Friendly email support</li>
+          <li>Basic visitor stats</li>
+          <li>Mobile & tablet ready</li>
+        </ul>
+        <button class="choose-btn">Choose Basic</button>
+      </div>
+      <div class="pricing-card featured">
+        <div class="plan-title">Pro</div>
+        <div class="plan-price">$49<span style="font-size:1rem; font-weight:400;">/mo</span></div>
+        <div class="plan-desc">Our most popular plan—great for growing businesses who want more features and support.</div>
+        <ul class="plan-features">
+          <li>Up to 5 websites</li>
+          <li>Priority email support</li>
+          <li>Advanced analytics</li>
+          <li>Custom domain included</li>
+          <li>SEO tools</li>
+        </ul>
+        <button class="choose-btn">Choose Pro</button>
+      </div>
+      <div class="pricing-card">
+        <div class="plan-title">Premium</div>
+        <div class="plan-price">$99<span style="font-size:1rem; font-weight:400;">/mo</span></div>
+        <div class="plan-desc">For businesses ready to scale, with unlimited sites and top-tier support.</div>
+        <ul class="plan-features">
+          <li>Unlimited websites</li>
+          <li>24/7 expert support</li>
+          <li>Full analytics suite</li>
+          <li>Custom integrations</li>
+          <li>Dedicated account manager</li>
+        </ul>
+        <button class="choose-btn">Choose Premium</button>
+      </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <section class="max-w-3xl mx-auto mt-16 mb-12 px-4">
+      <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-blue-700">Why Choose Us?</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-slate-700 text-base sm:text-lg">
+          <div class="flex items-center gap-3"><span class="text-blue-600 text-2xl">&#9733;</span> No hidden fees or contracts</div>
+          <div class="flex items-center gap-3"><span class="text-blue-600 text-2xl">&#128640;</span> Fast, friendly support</div>
+          <div class="flex items-center gap-3"><span class="text-blue-600 text-2xl">&#128176;</span> Affordable for small business</div>
+          <div class="flex items-center gap-3"><span class="text-blue-600 text-2xl">&#128187;</span> Modern, mobile-ready websites</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

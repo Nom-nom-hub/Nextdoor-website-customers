@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ | IT & Web Services</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .faq-question { cursor: pointer; }
+    .faq-answer { display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-chevron {
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+    .faq-item.open .faq-chevron {
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <!-- Navigation -->
+  <nav class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap md:flex-nowrap justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-2 text-lg sm:text-xl font-bold mb-2 md:mb-0">
+        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-blue-600 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="3"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
+        <span class="text-blue-700">IT & Web Services By</span>
+        <span class="ml-1 text-blue-900 bg-blue-300 px-2 py-0.5 rounded shadow font-extrabold tracking-wide border border-blue-500">Teck</span>
+      </a>
+      <div class="w-full md:w-auto flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-6 mb-2 md:mb-0">
+        <a href="index.html" class="hover:text-blue-600">Home</a>
+        <a href="services.html" class="hover:text-blue-600">Services</a>
+        <a href="pricing.html" class="hover:text-blue-600">Pricing</a>
+        <a href="contact.html" class="hover:text-blue-600">Contact</a>
+        <a href="faq.html" class="text-blue-700 font-semibold">FAQ</a>
+      </div>
+      <a href="contact.html" class="w-full md:w-auto px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold shadow text-center">Get a Free Quote</a>
+    </div>
+  </nav>
+
+  <!-- FAQ Hero -->
+  <section class="bg-gradient-to-br from-blue-700 via-blue-600 to-slate-700 text-white py-14 px-4 text-center relative overflow-hidden mb-8">
+    <div class="max-w-2xl mx-auto relative z-10">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 drop-shadow-lg">Frequently Asked Questions</h1>
+      <p class="text-lg sm:text-2xl mb-6 font-medium opacity-90">Quick answers to common questions about our services.</p>
+    </div>
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute w-60 h-60 sm:w-96 sm:h-96 bg-blue-400 opacity-20 rounded-full blur-3xl -top-20 -left-20 sm:-top-32 sm:-left-32"></div>
+      <div class="absolute w-48 h-48 sm:w-80 sm:h-80 bg-white opacity-10 rounded-full blur-2xl -bottom-12 -right-12 sm:-bottom-24 sm:-right-24"></div>
+    </div>
+  </section>
+
+  <main class="max-w-3xl mx-auto px-4 pb-16">
+    <div class="bg-white rounded-2xl shadow-lg p-8">
+      <div id="faq-list">
+        <div class="faq-item border-b py-4">
+          <div class="faq-question flex justify-between items-center text-lg font-semibold text-blue-700">
+            <span>How quickly can you build my website?</span>
+            <span class="faq-chevron">&#9654;</span>
+          </div>
+          <div class="faq-answer text-slate-700 mt-2">Most websites are ready in 2-5 days (sometimes even less), depending on your needs and how quickly you provide content.</div>
+        </div>
+        <div class="faq-item border-b py-4">
+          <div class="faq-question flex justify-between items-center text-lg font-semibold text-blue-700">
+            <span>Do you offer support after my site goes live?</span>
+            <span class="faq-chevron">&#9654;</span>
+          </div>
+          <div class="faq-answer text-slate-700 mt-2">Yes! All plans include ongoing support. We're here to help with updates, questions, and any issues.</div>
+        </div>
+        <div class="faq-item border-b py-4">
+          <div class="faq-question flex justify-between items-center text-lg font-semibold text-blue-700">
+            <span>Can you help me get found on Google?</span>
+            <span class="faq-chevron">&#9654;</span>
+          </div>
+          <div class="faq-answer text-slate-700 mt-2">Absolutely. We offer SEO services to help your business show up in local searches and on Google Maps.</div>
+        </div>
+        <div class="faq-item border-b py-4">
+          <div class="faq-question flex justify-between items-center text-lg font-semibold text-blue-700">
+            <span>Is there a contract or setup fee?</span>
+            <span class="faq-chevron">&#9654;</span>
+          </div>
+          <div class="faq-answer text-slate-700 mt-2">No contracts or hidden fees. You pay month-to-month and can cancel anytime.</div>
+        </div>
+        <div class="faq-item border-b py-4">
+          <div class="faq-question flex justify-between items-center text-lg font-semibold text-blue-700">
+            <span>What if I need more than what's in a plan?</span>
+            <span class="faq-chevron">&#9654;</span>
+          </div>
+          <div class="faq-answer text-slate-700 mt-2">We can create a custom plan just for you. Contact us and let us know what you need!</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach((q, idx) => {
+      q.addEventListener('click', function() {
+        const item = this.closest('.faq-item');
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!open) item.classList.add('open');
+      });
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t py-8 mt-12 text-center text-slate-500 text-sm">
+    <div class="mb-2">Email: <a href="mailto:ftwenty903@gmail.com" class="text-blue-600 hover:underline">ftwenty903@gmail.com</a> | Phone: <a href="tel:2394861913" class="text-blue-600 hover:underline">2394861913</a></div>
+    &copy; 2024 IT & Web Services. All rights reserved.
+  </footer>
+</body>
+</html>

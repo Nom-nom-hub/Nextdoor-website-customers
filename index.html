@@ -1,657 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designs by Teck | Professional Web Services</title>
-    <meta name="description" content="Designs by Teck offers professional web development services tailored to your business needs. Custom websites, e-commerce solutions, and web applications.">
-    <link rel="icon" href="images/favicon.png">
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/critical.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/custom-chat.css">
-    <!-- Add new stylesheet for modern makeover -->
-    <link rel="stylesheet" href="css/theme-styles.css">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-      body { font-family: 'Inter', Arial, sans-serif; }
-      .about-inner {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 2.5em;
-        justify-content: center;
-      }
-      .about-photo {
-        flex: 0 0 180px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.5em;
-      }
-      .about-photo img {
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        box-shadow: 0 4px 24px #179e9e22;
-        border: 4px solid #f8fafc;
-        background: #fff;
-        object-fit: cover;
-        transition: border 0.2s, box-shadow 0.2s;
-      }
-      .dark-mode .about-photo img, [data-theme="dark"] .about-photo img, .theme-dark .about-photo img {
-        border: 4px solid #23272a;
-        background: #23272a;
-      }
-      .about-content h2 {
-        font-size: 2.1em;
-        color: #179e9e;
-        margin-bottom: 0.5em;
-      }
-      .about-content p {
-        font-size: 1.18em;
-        color: #222;
-        margin-bottom: 1.2em;
-        font-weight: 500;
-        line-height: 1.6;
-      }
-      .dark-mode .about-content p, [data-theme="dark"] .about-content p, .theme-dark .about-content p {
-        color: #e0e0e0;
-      }
-      @media (max-width: 900px) {
-        .about-inner { flex-direction: column; gap: 1.5em; }
-        .about-photo { margin-bottom: 0.5em; }
-      }
-    </style>
-    <script>
-const html = document.documentElement;
-const body = document.body;
-function setTheme(isDark) {
-  if (!html || !body) {
-    console.warn('setTheme: html or body is null');
-    return;
-  }
-  if (isDark) {
-    html.setAttribute('data-theme', 'dark');
-    html.classList.add('dark-mode');
-    html.classList.remove('theme-light');
-    body.classList.add('theme-dark');
-    body.classList.remove('theme-light');
-    localStorage.setItem('dark-mode', '1');
-  } else {
-    html.setAttribute('data-theme', 'light');
-    html.classList.remove('dark-mode');
-    html.classList.remove('theme-dark');
-    html.classList.add('theme-light');
-    body.classList.remove('theme-dark');
-    body.classList.add('theme-light');
-    localStorage.setItem('dark-mode', '0');
-  }
-}
-(function() {
-  const saved = localStorage.getItem('dark-mode');
-  const sys = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  setTheme(saved === '1' || (saved === null && sys));
-})();
-document.addEventListener('DOMContentLoaded', function() {
-  var themeToggle = document.getElementById('theme-toggle');
-  if (themeToggle) {
-    themeToggle.onclick = function() {
-      const isDark = !document.documentElement.classList.contains('dark-mode');
-      setTheme(isDark);
-    };
-  }
-});
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT & Web Services | Affordable IT, Web Design, SEO & Marketing</title>
+  <meta name="description" content="Affordable IT support, web design, SEO, and digital marketing for small businesses. Fast, professional, and results-driven.">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="theme-light">
-    <!-- Sticky Transparent Header -->
-    <header class="site-header sticky-header fade-in" style="background: rgba(255,255,255,0.85); box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-        <div class="container">
-            <div class="header-inner">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="images/logo-light.svg" alt="Designs by Teck" class="logo-image light-mode-image">
-                        <img src="images/logo-dark.svg" alt="Designs by Teck" class="logo-image dark-mode-image">
-                        <span class="sr-only">Designs by Teck</span>
-                    </a>
-                </div>
-                <nav class="nav-container">
-                    <ul class="main-menu">
-                        <li class="menu-item"><a href="#services">Services</a></li>
-                        <li class="menu-item"><a href="#portfolio">Portfolio</a></li>
-                        <li class="menu-item"><a href="#about">About</a></li>
-                        <li class="menu-item"><a href="#contact">Contact</a></li>
-                        <li class="menu-item theme-toggle-container">
-                            <button id="theme-toggle" aria-label="Toggle dark mode">
-                                <i class="fas fa-sun light-icon"></i>
-                                <i class="fas fa-moon dark-icon"></i>
-                            </button>
-                        </li>
-                    </ul>
-                </nav>
-                <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+<body class="bg-slate-50 text-slate-900">
+  <!-- Navigation -->
+  <nav class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap md:flex-nowrap justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-2 text-lg sm:text-xl font-bold mb-2 md:mb-0">
+        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-blue-600 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="3"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
+        <span class="text-blue-700">IT & Web Services By</span>
+        <span class="ml-1 text-blue-900 bg-blue-300 px-2 py-0.5 rounded shadow font-extrabold tracking-wide border border-blue-500">Teck</span>
+      </a>
+      <div class="w-full md:w-auto flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-6 mb-2 md:mb-0">
+        <a href="index.html" class="text-blue-700 font-semibold">Home</a>
+        <a href="services.html" class="hover:text-blue-600">Services</a>
+        <a href="pricing.html" class="hover:text-blue-600">Pricing</a>
+        <a href="contact.html" class="hover:text-blue-600">Contact</a>
+        <a href="faq.html" class="hover:text-blue-600">FAQ</a>
+      </div>
+      <a href="contact.html" class="w-full md:w-auto px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold shadow text-center">Get a Free Quote</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-700 via-blue-600 to-slate-700 text-white py-20 sm:py-28 px-4 text-center relative overflow-hidden">
+    <div class="max-w-3xl mx-auto relative z-10">
+      <h1 class="text-4xl sm:text-6xl font-extrabold mb-6 drop-shadow-lg">Grow Your Business with Results-Driven IT & Web Solutions</h1>
+      <p class="text-xl sm:text-2xl mb-8 font-medium opacity-90">Professional websites, IT support, SEO, and digital marketing for small businesses that want to win online.</p>
+      <a href="contact.html" class="inline-block px-10 sm:px-12 py-4 sm:py-5 bg-white text-blue-700 font-bold rounded-full shadow-lg hover:bg-slate-100 transition transform hover:scale-105 text-lg sm:text-xl">Get a Free Quote</a>
+    </div>
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute w-60 h-60 sm:w-96 sm:h-96 bg-blue-400 opacity-20 rounded-full blur-3xl -top-20 -left-20 sm:-top-32 sm:-left-32"></div>
+      <div class="absolute w-48 h-48 sm:w-80 sm:h-80 bg-white opacity-10 rounded-full blur-2xl -bottom-12 -right-12 sm:-bottom-24 sm:-right-24"></div>
+    </div>
+  </section>
+
+  <!-- Trusted By Bar -->
+  
+  <!-- Service Highlights -->
+  <section class="max-w-6xl mx-auto py-14 sm:py-20 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
+    <div class="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center transition transform hover:scale-105 hover:shadow-2xl border-t-4 border-blue-600">
+      <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 17v-2a4 4 0 0 1 8 0v2"/><circle cx="12" cy="7" r="4"/><rect x="2" y="17" width="20" height="5" rx="2"/></svg>
+      <h3 class="font-bold text-xl mb-2">IT Support</h3>
+      <p class="text-slate-600 text-center text-base">Fast, friendly help for your computers, WiFi, and tech—onsite or remote. Keep your business running smoothly.</p>
+    </div>
+    <div class="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center transition transform hover:scale-105 hover:shadow-2xl border-t-4 border-blue-400">
+      <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18"/></svg>
+      <h3 class="font-bold text-xl mb-2">Web Design</h3>
+      <p class="text-slate-600 text-center text-base">Look professional online and attract more customers. Mobile-ready, fast, and easy to update.</p>
+    </div>
+    <div class="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center transition transform hover:scale-105 hover:shadow-2xl border-t-4 border-green-500">
+      <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20v-6"/><path d="M6 20v-4"/><path d="M18 20v-2"/><path d="M3 4h18"/></svg>
+      <h3 class="font-bold text-xl mb-2">SEO</h3>
+      <p class="text-slate-600 text-center text-base">Get found on Google and maps. More calls, more leads, more business—without the tech headache.</p>
+    </div>
+    <div class="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center transition transform hover:scale-105 hover:shadow-2xl border-t-4 border-pink-500">
+      <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18"/><path d="M12 3v18"/><circle cx="12" cy="12" r="9"/></svg>
+      <h3 class="font-bold text-xl mb-2">Digital Marketing</h3>
+      <p class="text-slate-600 text-center text-base">Reach more customers with ads, social media, and email. We handle it all so you can focus on your business.</p>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="max-w-5xl mx-auto py-12 sm:py-16 px-4">
+    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 text-blue-700">How It Works</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center">
+        <div class="bg-blue-100 text-blue-700 rounded-full w-14 h-14 flex items-center justify-center text-2xl font-bold mb-4">1</div>
+        <h3 class="font-semibold text-lg mb-2">Free Consultation</h3>
+        <p class="text-slate-600 text-center">Tell us about your business and goals. We’ll recommend the best solutions for you—no pressure, no jargon.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center">
+        <div class="bg-blue-100 text-blue-700 rounded-full w-14 h-14 flex items-center justify-center text-2xl font-bold mb-4">2</div>
+        <h3 class="font-semibold text-lg mb-2">We Build & Launch</h3>
+        <p class="text-slate-600 text-center">We handle everything—design, setup, tech, and launch. You get updates every step of the way.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center">
+        <div class="bg-blue-100 text-blue-700 rounded-full w-14 h-14 flex items-center justify-center text-2xl font-bold mb-4">3</div>
+        <h3 class="font-semibold text-lg mb-2">Grow & Succeed</h3>
+        <p class="text-slate-600 text-center">Enjoy more leads, better online presence, and ongoing support. We’re here whenever you need us.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Price Teaser Cards -->
+  <section class="max-w-5xl mx-auto py-8 sm:py-12 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-10">
+    <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 sm:p-8 text-center shadow-md transition transform hover:scale-105 hover:shadow-xl">
+      <div class="text-xl sm:text-2xl font-bold text-blue-700 mb-2">1-Page Website</div>
+      <div class="text-3xl sm:text-4xl font-extrabold mb-2">$99</div>
+      <div class="text-slate-600 mb-4 text-sm sm:text-base">Everything you need to launch: custom design, mobile-ready, <span class='font-semibold text-blue-700'>1 year free hosting</span>, <span class='font-semibold text-blue-700'>free business email</span>, and <span class='font-semibold text-blue-700'>free logo</span>. Perfect for startups & landing pages.</div>
+      <a href="contact.html" class="inline-block px-4 sm:px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Start Now</a>
+    </div>
+    <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 sm:p-8 text-center shadow-md transition transform hover:scale-105 hover:shadow-xl">
+      <div class="text-xl sm:text-2xl font-bold text-blue-700 mb-2">Local SEO Setup</div>
+      <div class="text-3xl sm:text-4xl font-extrabold mb-2">$99</div>
+      <div class="text-slate-600 mb-4 text-sm sm:text-base">Get found on Google & maps</div>
+      <a href="contact.html" class="inline-block px-4 sm:px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Boost My SEO</a>
+    </div>
+    <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 sm:p-8 text-center shadow-md transition transform hover:scale-105 hover:shadow-xl">
+      <div class="text-xl sm:text-2xl font-bold text-blue-700 mb-2">Remote IT Support</div>
+      <div class="text-3xl sm:text-4xl font-extrabold mb-2">$49/hr</div>
+      <div class="text-slate-600 mb-4 text-sm sm:text-base">Fast, expert help for your tech</div>
+      <a href="contact.html" class="inline-block px-4 sm:px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Get Support</a>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="bg-white py-12 sm:py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center mb-8 sm:mb-12">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">What Our Clients Say</h2>
+      <p class="text-slate-600">Real feedback from small business owners we've helped.</p>
+    </div>
+    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-lg">
+        <p class="italic mb-4 text-base sm:text-lg">"We saved over $1,000 compared to other quotes and got our website live in a week! Highly recommend."</p>
+        <div class="font-bold text-blue-700">— Sarah L., Cafe Owner</div>
+      </div>
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-lg">
+        <p class="italic mb-4 text-base sm:text-lg">"Our Google ranking jumped and we started getting more calls within days. Great value and service."</p>
+        <div class="font-bold text-blue-700">— Mike D., Plumber</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Banner -->
+  <section class="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 text-white py-10 sm:py-14 px-4 text-center mt-8 sm:mt-12 rounded-2xl shadow-xl mx-4 md:mx-auto max-w-4xl">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Ready to grow your business?</h2>
+    <p class="mb-6 text-base sm:text-lg">Get a free quote or book a consultation today. Fast response, no pressure.</p>
+    <a href="contact.html" class="inline-block px-8 sm:px-10 py-3 sm:py-4 bg-white text-blue-700 font-bold rounded-full shadow-lg hover:bg-slate-100 transition transform hover:scale-105">Let's Talk</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 pt-12 pb-8 mt-16 text-slate-700 text-sm">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row md:justify-between md:items-center gap-10">
+      <div class="flex flex-col items-center md:items-start">
+        <div class="flex items-center mb-2">
+          <svg class="w-7 h-7 text-blue-600 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="3"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
+          <span class="text-lg font-bold text-slate-900">IT & Web Services By <span class="ml-1 text-blue-700 bg-blue-100 px-2 py-0.5 rounded shadow font-extrabold tracking-wide border border-blue-400">Teck</span></span>
         </div>
-    </header>
-
-    <!-- Hero Section: Modern Makeover -->
-    <section class="hero modern-hero fade-in" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Web Development Solutions That Drive Results</h1>
-                <p class="hero-subtitle">Custom websites and web applications built to elevate your business</p>
-                <div class="cta-buttons">
-                    <a href="#services" class="btn btn-primary accent">View Services</a>
-                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-                </div>
-            </div>
+        <div class="flex items-center mb-1">
+          <svg class="w-5 h-5 text-blue-600 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 12v1a4 4 0 0 1-8 0v-1"/><rect x="2" y="7" width="20" height="10" rx="5"/></svg>
+          <a href="mailto:ftwenty903@gmail.com" class="hover:underline text-blue-700">ftwenty903@gmail.com</a>
         </div>
-        <!-- Subtle animated background shapes -->
-        <div class="hero-bg-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
+        <div class="flex items-center mb-1">
+          <svg class="w-5 h-5 text-blue-600 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92V17a2 2 0 0 1-2 2h-1c-9.94 0-18-8.06-18-18V3a2 2 0 0 1 2-2h2.09a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.36a2 2 0 0 1-.45 2.11l-.27.27a16.06 16.06 0 0 0 6.29 6.29l.27-.27a2 2 0 0 1 2.11-.45c.76.32 1.55.55 2.36.68A2 2 0 0 1 21 13.91V16a2 2 0 0 1-2 2h-.08"/></svg>
+          <a href="tel:2394861913" class="hover:underline text-blue-700">239-486-1913</a>
         </div>
-    </section>
-
-    <!-- Services Section: Add fade-in -->
-    <section id="services" class="services-section fade-in">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tagline">EXPERTISE</span>
-                <h2>Premium Services</h2>
-                <p>Comprehensive web design solutions to help your business thrive online</p>
-            </div>
-
-            <div class="services-intro">
-                <div class="services-intro-content">
-                    <h3>Why Choose My Services?</h3>
-                    <p>With over 15 years of experience in web design and development, I deliver exceptional results that combine stunning aesthetics with powerful functionality. My approach focuses on creating websites that not only look impressive but also drive real business results.</p>
-                    <div class="services-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">100+</span>
-                            <span class="stat-label">Projects Completed</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">98%</span>
-                            <span class="stat-label">Client Satisfaction</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">15+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                    </div>
-                    <a href="#contact" class="btn btn-primary">Discuss Your Project</a>
-                </div>
-                <div class="services-intro-image">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Premium Web Design Services">
-                </div>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card premium">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Custom Web Design</h3>
-                    <p>Unique, tailored websites designed to reflect your brand identity and meet your specific business goals.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Brand-aligned visual design</li>
-                        <li><i class="fas fa-check"></i> Custom functionality</li>
-                        <li><i class="fas fa-check"></i> User experience optimization</li>
-                        <li><i class="fas fa-check"></i> Conversion-focused layouts</li>
-                    </ul>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="service-card premium">
-                    <div class="service-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3>Website Redesign</h3>
-                    <p>Transform your outdated website into a modern, user-friendly digital experience that converts visitors into customers.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Performance analysis</li>
-                        <li><i class="fas fa-check"></i> Modern UI/UX implementation</li>
-                        <li><i class="fas fa-check"></i> Content restructuring</li>
-                        <li><i class="fas fa-check"></i> Conversion rate optimization</li>
-                    </ul>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="service-card premium">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Responsive Design</h3>
-                    <p>Ensure your website looks and functions flawlessly across all devices, from desktops to smartphones.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Mobile-first approach</li>
-                        <li><i class="fas fa-check"></i> Cross-device testing</li>
-                        <li><i class="fas fa-check"></i> Touch-friendly interfaces</li>
-                        <li><i class="fas fa-check"></i> Performance optimization</li>
-                    </ul>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="service-card premium">
-                    <div class="service-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>SEO Optimization</h3>
-                    <p>Improve your website's visibility in search engines with strategic SEO implementation and best practices.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Keyword research & strategy</li>
-                        <li><i class="fas fa-check"></i> On-page optimization</li>
-                        <li><i class="fas fa-check"></i> Technical SEO improvements</li>
-                        <li><i class="fas fa-check"></i> Performance enhancements</li>
-                    </ul>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="service-card premium">
-                    <div class="service-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <h3>E-Commerce Development</h3>
-                    <p>Build powerful online stores that drive sales and provide seamless shopping experiences for your customers.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Custom product catalogs</li>
-                        <li><i class="fas fa-check"></i> Secure payment integration</li>
-                        <li><i class="fas fa-check"></i> Inventory management</li>
-                        <li><i class="fas fa-check"></i> Mobile shopping optimization</li>
-                    </ul>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="service-card premium">
-                    <div class="service-icon">
-                        <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    <h3>Performance Optimization</h3>
-                    <p>Speed up your website loading times and enhance overall performance for better user experience and SEO ranking.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Page speed analysis</li>
-                        <li><i class="fas fa-check"></i> Code optimization</li>
-                        <li><i class="fas fa-check"></i> Image compression</li>
-                        <li><i class="fas fa-check"></i> Caching implementation</li>
-                    </ul>
-                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="services-cta">
-                <h3>Ready to elevate your online presence?</h3>
-                <p>Let's create a website that stands out from the competition and drives real results for your business.</p>
-                <a href="#contact" class="btn btn-primary">Get Started Today</a>
-            </div>
+        <div class="text-slate-500 mt-2">Fort Myers, FL &bull; Serving all SWFL</div>
+      </div>
+      <div class="flex flex-col items-center md:items-end gap-2">
+        <div class="flex flex-wrap gap-2 mb-3">
+          <a href="index.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">Home</a>
+          <a href="services.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">Services</a>
+          <a href="pricing.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">Pricing</a>
+          <a href="contact.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">Contact</a>
+          <a href="faq.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">FAQ</a>
         </div>
-    </section>
-
-    <!-- Portfolio Section: Modern grid, fade-in -->
-    <section id="portfolio" class="portfolio-section fade-in">
-        <div class="container">
-            <div class="section-header">
-                <h2>My Portfolio</h2>
-                <p>Recent projects that showcase my web development expertise</p>
-            </div>
-
-            <div class="mobile-instructions">
-                <div class="instruction-icon">
-                    <i class="fas fa-hand-pointer"></i>
-                </div>
-                <p>Tap on any project to view details or try the live demo</p>
-            </div>
-            <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="web-design">Web Design</button>
-                <button class="filter-btn" data-filter="e-commerce">E-Commerce</button>
-                <button class="filter-btn" data-filter="interactive">Interactive</button>
-                <button class="filter-btn" data-filter="branding">Branding</button>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="web-design interactive">
-                    <div class="portfolio-image">
-                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
-                        <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Custom Chat Widget">
-                        <div class="portfolio-overlay">
-                            <div class="preview-content">
-                                <h4>LiveConnect</h4>
-                                <p>Real-time Chat Solution</p>
-                                <div class="portfolio-buttons">
-                                    <a href="#" class="portfolio-btn" onclick="document.querySelector('.chat-button').click(); return false;">Try Live Demo</a>
-                                    <a href="#" class="portfolio-btn details-btn" data-project="chat">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-details">
-                        <h3>Custom Chat Widget</h3>
-                        <p>A real-time customer support chat widget with admin dashboard.</p>
-                        <div class="portfolio-meta">
-                            <span class="meta-item"><i class="fas fa-code"></i> HTML, CSS, JavaScript</span>
-                            <span class="meta-item"><i class="fas fa-calendar"></i> 2023</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="web-design branding">
-                    <div class="portfolio-image">
-                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Creative Agency Website">
-                        <div class="portfolio-overlay">
-                            <div class="preview-content">
-                                <h4>Pixel Perfect</h4>
-                                <p>Creative Design Studio</p>
-                                <div class="portfolio-buttons">
-                                    <a href="https://designsbyteck.com/demos/creative/index.html" target="_blank" class="portfolio-btn">View Demo</a>
-                                    <a href="https://designsbyteck.com/demos/creative/index.html" target="_blank" class="portfolio-btn details-btn" data-project="creative">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-details">
-                        <h3>Creative Agency Website</h3>
-                        <p>A modern website for a creative design studio with portfolio showcase.</p>
-                        <div class="portfolio-meta">
-                            <span class="meta-item"><i class="fas fa-code"></i> HTML, CSS, JavaScript</span>
-                            <span class="meta-item"><i class="fas fa-calendar"></i> 2023</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="web-design">
-                    <div class="portfolio-image">
-                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Restaurant Website">
-                        <div class="portfolio-overlay">
-                            <div class="preview-content">
-                                <h4>Savoria</h4>
-                                <p>Fine Dining Experience</p>
-                                <div class="portfolio-buttons">
-                                    <a href="https://designsbyteck.com/demos/restaurant/index.html" target="_blank" class="portfolio-btn">View Demo</a>
-                                    <a href="https://designsbyteck.com/demos/restaurant/index.html" target="_blank" class="portfolio-btn details-btn" data-project="restaurant">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-details">
-                        <h3>Restaurant Website</h3>
-                        <p>An elegant website for a high-end restaurant with online reservation system.</p>
-                        <div class="portfolio-meta">
-                            <span class="meta-item"><i class="fas fa-code"></i> HTML, CSS, JavaScript, PHP</span>
-                            <span class="meta-item"><i class="fas fa-calendar"></i> 2023</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="web-design branding">
-                    <div class="portfolio-image">
-                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
-                        <img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Tech Startup Website">
-                        <div class="portfolio-overlay">
-                            <div class="preview-content">
-                                <h4>Quantum</h4>
-                                <p>AI-Powered Data Solutions</p>
-                                <div class="portfolio-buttons">
-                                    <a href="https://designsbyteck.com/demos/techstartup/index.html" target="_blank" class="portfolio-btn">View Demo</a>
-                                    <a href="https://designsbyteck.com/demos/techstartup/index.html" target="_blank" class="portfolio-btn details-btn" data-project="tech">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-details">
-                        <h3>Tech Startup Website</h3>
-                        <p>A cutting-edge website for a technology startup with interactive features.</p>
-                        <div class="portfolio-meta">
-                            <span class="meta-item"><i class="fas fa-code"></i> React, Node.js, SCSS</span>
-                            <span class="meta-item"><i class="fas fa-calendar"></i> 2023</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="e-commerce branding">
-                    <div class="portfolio-image">
-                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
-                        <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Fashion Brand Website">
-                        <div class="portfolio-overlay">
-                            <div class="preview-content">
-                                <h4>Artisan Collective</h4>
-                                <p>Handcrafted Fashion</p>
-                                <div class="portfolio-buttons">
-                                    <a href="https://designsbyteck.com/demos/fashion/index.html" target="_blank" class="portfolio-btn">View Demo</a>
-                                    <a href="https://designsbyteck.com/demos/fashion/index.html" target="_blank" class="portfolio-btn details-btn" data-project="fashion">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-details">
-                        <h3>Fashion Brand Website</h3>
-                        <p>A stylish e-commerce website for a boutique fashion brand with product showcase.</p>
-                        <div class="portfolio-meta">
-                            <span class="meta-item"><i class="fas fa-code"></i> Shopify, Liquid, JavaScript</span>
-                            <span class="meta-item"><i class="fas fa-calendar"></i> 2022</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="web-design">
-                    <div class="portfolio-image">
-                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
-                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Real Estate Website">
-                        <div class="portfolio-overlay">
-                            <div class="preview-content">
-                                <h4>Prestige Properties</h4>
-                                <p>Luxury Real Estate</p>
-                                <div class="portfolio-buttons">
-                                    <a href="https://designsbyteck.com/demos/realestate/index.html" target="_blank" class="portfolio-btn">View Demo</a>
-                                    <a href="https://designsbyteck.com/demos/realestate/index.html" target="_blank" class="portfolio-btn details-btn" data-project="realestate">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-details">
-                        <h3>Real Estate Website</h3>
-                        <p>A premium real estate website with property listings and virtual tours.</p>
-                        <div class="portfolio-meta">
-                            <span class="meta-item"><i class="fas fa-code"></i> WordPress, PHP, JavaScript</span>
-                            <span class="meta-item"><i class="fas fa-calendar"></i> 2023</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="e-commerce">
-                    <div class="portfolio-image">
-                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
-                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Electronics Store Website">
-                        <div class="portfolio-overlay">
-                            <div class="preview-content">
-                                <h4>TechVault</h4>
-                                <p>Premium Electronics Store</p>
-                                <div class="portfolio-buttons">
-                                    <a href="https://designsbyteck.com/demos/electronics/index.html" target="_blank" class="portfolio-btn">View Demo</a>
-                                    <a href="https://designsbyteck.com/demos/electronics/index.html" target="_blank" class="portfolio-btn details-btn" data-project="electronics">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-details">
-                        <h3>Electronics Store Website</h3>
-                        <p>A feature-rich e-commerce platform for electronics with advanced filtering.</p>
-                        <div class="portfolio-meta">
-                            <span class="meta-item"><i class="fas fa-code"></i> WooCommerce, PHP, JavaScript</span>
-                            <span class="meta-item"><i class="fas fa-calendar"></i> 2022</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="web-design branding">
-                    <div class="portfolio-image">
-                        <span class="tap-indicator"><i class="fas fa-hand-pointer"></i> Tap to view</span>
-                        <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Landscaping Business Website">
-                        <div class="portfolio-overlay">
-                            <div class="preview-content">
-                                <h4>GreenScape</h4>
-                                <p>Professional Landscaping Services</p>
-                                <div class="portfolio-buttons">
-                                    <a href="https://designsbyteck.com/demos/landscaping/index.html" target="_blank" class="portfolio-btn">View Demo</a>
-                                    <a href="https://designsbyteck.com/demos/landscaping/index.html" target="_blank" class="portfolio-btn details-btn" data-project="landscaping">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-details">
-                        <h3>Landscaping Business Website</h3>
-                        <p>A professional service website with project gallery and quote request system.</p>
-                        <div class="portfolio-meta">
-                            <span class="meta-item"><i class="fas fa-code"></i> HTML, CSS, JavaScript, PHP</span>
-                            <span class="meta-item"><i class="fas fa-calendar"></i> 2023</span>
-                        </div>
-                    </div>
-                </div>
-
-            <!-- Portfolio Modal -->
-            <div class="portfolio-modal" id="portfolio-modal">
-                <div class="modal-content">
-                    <span class="close-modal">&times;</span>
-                    <div class="modal-body">
-                        <!-- Content will be dynamically inserted here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section: Add photo, skills, fade-in -->
-    <section id="about" class="about-section fade-in">
-        <div class="container">
-            <div class="about-inner">
-                <div class="about-photo">
-                    <img src="images/developer-illustration-light.svg" alt="Your Photo or Illustration">
-                </div>
-                <div class="about-content">
-                    <h2>About Me</h2>
-                    <p>Hi, I'm Teck—a senior web designer & full-stack developer with 15+ years of experience building beautiful, high-performance websites and apps for businesses and individuals. I specialize in modern JavaScript frameworks, robust backend solutions, and pixel-perfect UI/UX.</p>
-                    <div class="skills-grid">
-                        <div class="skill"><i class="fab fa-react"></i> React</div>
-                        <div class="skill"><i class="fab fa-js-square"></i> JavaScript (ES6+)</div>
-                        <div class="skill"><i class="fab fa-node-js"></i> Node.js</div>
-                        <div class="skill"><i class="fab fa-php"></i> PHP</div>
-                        <div class="skill"><i class="fab fa-html5"></i> HTML5</div>
-                        <div class="skill"><i class="fab fa-css3-alt"></i> CSS3 / SASS</div>
-                        <div class="skill"><i class="fab fa-git-alt"></i> Git</div>
-                        <div class="skill"><i class="fab fa-figma"></i> Figma</div>
-                        <div class="skill"><i class="fab fa-npm"></i> TypeScript</div>
-                        <div class="skill"><i class="fas fa-mobile-alt"></i> Responsive Design</div>
-                        <div class="skill"><i class="fas fa-paint-brush"></i> UI/UX</div>
-                        <div class="skill"><i class="fas fa-search"></i> SEO</div>
-                        <div class="skill"><i class="fab fa-trello"></i> Project Management</div>
-                        <div class="skill"><i class="fab fa-bootstrap"></i> Bootstrap</div>
-                        <div class="skill"><i class="fab fa-css3"></i> Tailwind CSS</div>
-                        <div class="skill"><i class="fab fa-react"></i> Next.js</div>
-                    </div>
-                    <ul class="about-strengths">
-                        <li>End-to-end web app development (frontend + backend)</li>
-                        <li>Modern, accessible, and responsive UI/UX</li>
-                        <li>Performance, SEO, and security best practices</li>
-                        <li>Collaborative, client-focused approach</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section: Modern form, fade-in -->
-    <section id="contact" class="contact-section fade-in">
-        <div class="container">
-            <div class="contact-inner">
-                <div class="contact-info">
-                    <h2>Contact Me</h2>
-                    <p>Ready to start your project or have questions? Fill out the form and I'll get back to you soon.</p>
-                </div>
-                <form class="contact-form" action="contact.php" method="POST" autocomplete="off">
-                    <div class="form-group">
-                        <input type="text" name="name" id="name" required>
-                        <label for="name">Name</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" id="email" required>
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" id="message" rows="5" required></textarea>
-                        <label for="message">Message</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary accent">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>Designs by <span class="highlight">Teck</span></h3>
-                    <p>Professional web development services</p>
-                </div>
-                <div class="footer-nav">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Contact</h4>
-                    <p><i class="fas fa-envelope" aria-label="Email"></i> <a href="mailto:teck@designsbyteck.com">teck@designsbyteck.com</a></p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                    <div class="footer-social-note">Social links coming soon!</div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear">2025</span> Designs by Teck. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to top button -->
-    <a href="#" class="back-to-top" aria-label="Back to top">
-        <span class="arrow-up"></span>
-    </a>
-
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/mobile-menu.js"></script>
-    <script src="js/portfolio-filter.js"></script>
-    <script src="js/theme-switcher.js"></script>
-    <!-- Add fade-in on scroll JS -->
-    <script src="js/animations.js"></script>
-    <script>
-      // Auto-enable dark mode if user prefers it or has previously selected it
-      if (
-        localStorage.getItem('theme') === 'dark' ||
-        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
-        document.body.classList.add('dark-mode');
-      }
-    </script>
-    <script src="js/fake-chatbot.js"></script>
-
-    <!-- Chat notification sound -->
-    <audio id="chat-notification" preload="auto">
-        <source src="https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+        <div class="border-t border-slate-200 w-full mb-2"></div>
+        <div class="text-slate-500">&copy; 2024 IT & Web Services. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

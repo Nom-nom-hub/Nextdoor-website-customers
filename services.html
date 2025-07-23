@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | IT & Web Services</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .testimonial-slide {
+      opacity: 0;
+      transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+      position: absolute;
+      left: 0; right: 0; top: 0; bottom: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .testimonial-slide.active {
+      opacity: 1;
+      position: relative;
+      z-index: 1;
+      pointer-events: auto;
+    }
+    .testimonial-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .testimonial-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      transition: background 0.2s;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .testimonial-dot.active {
+      background: #2563eb;
+      border-color: #2563eb;
+    }
+    .testimonial-carousel-container {
+      min-height: 210px;
+      position: relative;
+    }
+    @media (max-width: 640px) {
+      .testimonial-carousel-container {
+        min-height: 260px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <!-- Navigation -->
+  <nav class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap md:flex-nowrap justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-2 text-lg sm:text-xl font-bold mb-2 md:mb-0">
+        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-blue-600 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="3"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
+        <span class="text-blue-700">IT & Web Services By</span>
+        <span class="ml-1 text-blue-900 bg-blue-300 px-2 py-0.5 rounded shadow font-extrabold tracking-wide border border-blue-500">Teck</span>
+      </a>
+      <div class="w-full md:w-auto flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-6 mb-2 md:mb-0">
+        <a href="index.html" class="hover:text-blue-600">Home</a>
+        <a href="services.html" class="text-blue-700 font-semibold">Services</a>
+        <a href="pricing.html" class="hover:text-blue-600">Pricing</a>
+        <a href="contact.html" class="hover:text-blue-600">Contact</a>
+        <a href="faq.html" class="hover:text-blue-600">FAQ</a>
+      </div>
+      <a href="contact.html" class="w-full md:w-auto px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold shadow text-center">Get a Free Quote</a>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="bg-gradient-to-br from-blue-700 via-blue-600 to-slate-700 text-white py-16 sm:py-20 px-4 text-center relative overflow-hidden mb-8">
+    <div class="max-w-3xl mx-auto relative z-10">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 drop-shadow-lg">Expert IT, Web, and Marketing Services</h1>
+      <p class="text-lg sm:text-2xl mb-6 font-medium opacity-90">Everything your business needs to grow, from one trusted team.</p>
+      <a href="contact.html" class="inline-block px-8 sm:px-10 py-3 sm:py-4 bg-white text-blue-700 font-bold rounded-full shadow-lg hover:bg-slate-100 transition transform hover:scale-105">Get a Free Consultation</a>
+    </div>
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute w-60 h-60 sm:w-96 sm:h-96 bg-blue-400 opacity-20 rounded-full blur-3xl -top-20 -left-20 sm:-top-32 sm:-left-32"></div>
+      <div class="absolute w-48 h-48 sm:w-80 sm:h-80 bg-white opacity-10 rounded-full blur-2xl -bottom-12 -right-12 sm:-bottom-24 sm:-right-24"></div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <main class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8 pb-16 px-4">
+    <!-- IT Support -->
+    <section class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 transition transform hover:scale-105 hover:shadow-2xl flex flex-col justify-between mb-4 border-t-4 border-blue-600">
+      <div>
+        <div class="flex items-center mb-4">
+          <svg class="w-8 h-8 text-blue-600 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 17v-2a4 4 0 0 1 8 0v2"/><circle cx="12" cy="7" r="4"/><rect x="2" y="17" width="20" height="5" rx="2"/></svg>
+          <h2 class="text-2xl font-semibold">IT Support</h2>
+        </div>
+        <ul class="list-disc list-inside text-slate-700 mb-4 text-base sm:text-lg">
+          <li>Get fast help when something goes wrong—onsite or remote.</li>
+          <li>We keep your computers, WiFi, and tech running smoothly.</li>
+          <li>Protect your business from viruses and online threats.</li>
+          <li>Enjoy peace of mind with friendly, expert support.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-blue-700 font-bold mb-2 text-lg">From $49/hr</div>
+        <a href="contact.html" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Request a Quote</a>
+      </div>
+    </section>
+    <!-- Web Design -->
+    <section class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 transition transform hover:scale-105 hover:shadow-2xl flex flex-col justify-between mb-4 border-t-4 border-blue-400">
+      <div>
+        <div class="flex items-center mb-4">
+          <svg class="w-8 h-8 text-blue-600 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18"/></svg>
+          <h2 class="text-2xl font-semibold">Web Design</h2>
+        </div>
+        <ul class="list-disc list-inside text-slate-700 mb-4 text-base sm:text-lg">
+          <li>Look professional online and attract more customers.</li>
+          <li>Your website will work perfectly on phones, tablets, and computers.</li>
+          <li>We build and launch your site quickly—no tech skills needed.</li>
+          <li>Easy updates and built-in tools to help you grow.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-blue-700 font-bold mb-2 text-lg">From $149</div>
+        <a href="contact.html" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Request a Quote</a>
+      </div>
+    </section>
+    <!-- SEO -->
+    <section class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 transition transform hover:scale-105 hover:shadow-2xl flex flex-col justify-between mb-4 border-t-4 border-green-500">
+      <div>
+        <div class="flex items-center mb-4">
+          <svg class="w-8 h-8 text-blue-600 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20v-6"/><path d="M6 20v-4"/><path d="M18 20v-2"/><path d="M3 4h18"/></svg>
+          <h2 class="text-2xl font-semibold">SEO</h2>
+        </div>
+        <ul class="list-disc list-inside text-slate-700 mb-4 text-base sm:text-lg">
+          <li>Get your business found on Google and maps.</li>
+          <li>Show up when local customers search for your services.</li>
+          <li>We handle all the tech and setup for you.</li>
+          <li>Watch your calls and website visits grow.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-blue-700 font-bold mb-2 text-lg">From $79/mo</div>
+        <a href="contact.html" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Request a Quote</a>
+      </div>
+    </section>
+    <!-- Digital Marketing -->
+    <section class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 transition transform hover:scale-105 hover:shadow-2xl flex flex-col justify-between mb-4 border-t-4 border-pink-500">
+      <div>
+        <div class="flex items-center mb-4">
+          <svg class="w-8 h-8 text-blue-600 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18"/><path d="M12 3v18"/><circle cx="12" cy="12" r="9"/></svg>
+          <h2 class="text-2xl font-semibold">Digital Marketing</h2>
+        </div>
+        <ul class="list-disc list-inside text-slate-700 mb-4 text-base sm:text-lg">
+          <li>Reach more customers on Google, Facebook, and Instagram.</li>
+          <li>We create and manage ads, posts, and emails for you.</li>
+          <li>Grow your brand and get more leads—without the hassle.</li>
+          <li>See real results and clear reports every month.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-blue-700 font-bold mb-2 text-lg">From $99/mo</div>
+        <a href="contact.html" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Request a Quote</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Testimonials Carousel -->
+  <section class="bg-white py-12 sm:py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center mb-8 sm:mb-12">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">What Our Clients Say</h2>
+      <p class="text-slate-600">Real feedback from small business owners we've helped.</p>
+    </div>
+    <div class="max-w-2xl mx-auto relative testimonial-carousel-container">
+      <div id="testimonial-carousel" class="relative min-h-[180px]">
+        <div class="testimonial-slide active bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-lg text-center">
+          <p class="italic mb-4 text-base sm:text-lg">"We saved over $1,000 compared to other quotes and got our website live in a week! Highly recommend."</p>
+          <div class="font-bold text-blue-700">— Sarah L., Cafe Owner</div>
+        </div>
+        <div class="testimonial-slide bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-lg text-center">
+          <p class="italic mb-4 text-base sm:text-lg">"Our Google ranking jumped and we started getting more calls within days. Great value and service."</p>
+          <div class="font-bold text-blue-700">— Mike D., Plumber</div>
+        </div>
+        <div class="testimonial-slide bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-lg text-center">
+          <p class="italic mb-4 text-base sm:text-lg">"The IT support was fast and fixed our network issues the same day. Super professional!"</p>
+          <div class="font-bold text-blue-700">— Lisa M., Salon Owner</div>
+        </div>
+        <div class="testimonial-slide bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-lg text-center">
+          <p class="italic mb-4 text-base sm:text-lg">"Our new website looks amazing and works perfectly on phones. The team was great to work with."</p>
+          <div class="font-bold text-blue-700">— Tom S., Contractor</div>
+        </div>
+      </div>
+      <button id="prev-testimonial" class="absolute left-0 top-1/2 -translate-y-1/2 bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center shadow hover:bg-blue-700 transition" aria-label="Previous testimonial" style="left:-2.5rem;">
+        &#8592;
+      </button>
+      <button id="next-testimonial" class="absolute right-0 top-1/2 -translate-y-1/2 bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center shadow hover:bg-blue-700 transition" aria-label="Next testimonial" style="right:-2.5rem;">
+        &#8594;
+      </button>
+      <div class="testimonial-indicators mt-6">
+        <span class="testimonial-dot active"></span>
+        <span class="testimonial-dot"></span>
+        <span class="testimonial-dot"></span>
+        <span class="testimonial-dot"></span>
+      </div>
+    </div>
+    <script>
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const dots = document.querySelectorAll('.testimonial-dot');
+      let currentSlide = 0;
+      let autoAdvance;
+      function showSlide(idx) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === idx);
+        });
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === idx);
+        });
+        currentSlide = idx;
+      }
+      function nextSlide() {
+        showSlide((currentSlide + 1) % slides.length);
+      }
+      function prevSlide() {
+        showSlide((currentSlide - 1 + slides.length) % slides.length);
+      }
+      document.getElementById('prev-testimonial').onclick = function() {
+        prevSlide();
+        resetAutoAdvance();
+      };
+      document.getElementById('next-testimonial').onclick = function() {
+        nextSlide();
+        resetAutoAdvance();
+      };
+      dots.forEach((dot, i) => {
+        dot.onclick = function() {
+          showSlide(i);
+          resetAutoAdvance();
+        };
+      });
+      function resetAutoAdvance() {
+        clearInterval(autoAdvance);
+        autoAdvance = setInterval(nextSlide, 7000);
+      }
+      autoAdvance = setInterval(nextSlide, 7000);
+      // On page load, show the first slide
+      showSlide(0);
+    </script>
+  </section>
+
+  <!-- Call to Action Banner -->
+  <section class="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 text-white py-10 sm:py-14 px-4 text-center mt-8 sm:mt-12 rounded-2xl shadow-xl mx-4 md:mx-auto max-w-4xl">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Ready to grow your business?</h2>
+    <p class="mb-6 text-base sm:text-lg">Get a free quote or book a consultation today. Fast response, no pressure.</p>
+    <a href="contact.html" class="inline-block px-8 sm:px-10 py-3 sm:py-4 bg-white text-blue-700 font-bold rounded-full shadow-lg hover:bg-slate-100 transition transform hover:scale-105">Let's Talk</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 pt-12 pb-8 mt-16 text-slate-700 text-sm">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row md:justify-between md:items-center gap-10">
+      <div class="flex flex-col items-center md:items-start">
+        <div class="flex items-center mb-2">
+          <svg class="w-7 h-7 text-blue-600 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="3"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
+          <span class="text-lg font-bold text-slate-900">IT & Web Services By <span class="ml-1 text-blue-700 bg-blue-100 px-2 py-0.5 rounded shadow font-extrabold tracking-wide border border-blue-400">Teck</span></span>
+        </div>
+        <div class="flex items-center mb-1">
+          <svg class="w-5 h-5 text-blue-600 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 12v1a4 4 0 0 1-8 0v-1"/><rect x="2" y="7" width="20" height="10" rx="5"/></svg>
+          <a href="mailto:ftwenty903@gmail.com" class="hover:underline text-blue-700">ftwenty903@gmail.com</a>
+        </div>
+        <div class="flex items-center mb-1">
+          <svg class="w-5 h-5 text-blue-600 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92V17a2 2 0 0 1-2 2h-1c-9.94 0-18-8.06-18-18V3a2 2 0 0 1 2-2h2.09a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.36a2 2 0 0 1-.45 2.11l-.27.27a16.06 16.06 0 0 0 6.29 6.29l.27-.27a2 2 0 0 1 2.11-.45c.76.32 1.55.55 2.36.68A2 2 0 0 1 21 13.91V16a2 2 0 0 1-2 2h-.08"/></svg>
+          <a href="tel:2394861913" class="hover:underline text-blue-700">239-486-1913</a>
+        </div>
+        <div class="text-slate-500 mt-2">Fort Myers, FL &bull; Serving all SWFL</div>
+      </div>
+      <div class="flex flex-col items-center md:items-end gap-2">
+        <div class="flex flex-wrap gap-2 mb-3">
+          <a href="index.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">Home</a>
+          <a href="services.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">Services</a>
+          <a href="pricing.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">Pricing</a>
+          <a href="contact.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">Contact</a>
+          <a href="faq.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">FAQ</a>
+        </div>
+        <div class="border-t border-slate-200 w-full mb-2"></div>
+        <div class="text-slate-500">&copy; 2024 IT & Web Services. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
