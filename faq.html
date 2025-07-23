@@ -6,9 +6,6 @@
   <title>FAQ | IT & Web Services</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    .faq-question { cursor: pointer; }
-    .faq-answer { display: none; }
-    .faq-item.open .faq-answer { display: block; }
     .faq-chevron {
       transition: transform 0.2s;
       display: inline-block;
@@ -53,41 +50,49 @@
   <main class="max-w-3xl mx-auto px-4 pb-16">
     <div class="bg-white rounded-2xl shadow-lg p-8">
       <div id="faq-list">
-        <div class="faq-item border-b py-4">
-          <div class="faq-question flex justify-between items-center text-lg font-semibold text-blue-700">
-            <span>How quickly can you build my website?</span>
-            <span class="faq-chevron">&#9654;</span>
-          </div>
-          <div class="faq-answer text-slate-700 mt-2">Most websites are ready in 2-5 days (sometimes even less), depending on your needs and how quickly you provide content.</div>
+        <div class="faq-item border-b py-4 mb-2 bg-slate-50 rounded-xl shadow-sm">
+          <button class="faq-question flex justify-between items-center w-full text-lg font-bold text-blue-800 focus:outline-none hover:bg-blue-50 px-4 py-3 rounded-xl transition">
+            <span class="flex items-center gap-2"><svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>How quickly can you build my website?</span>
+            <svg class="faq-chevron w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+          <div class="faq-answer text-slate-700 mt-3 px-4 pb-2 text-base leading-relaxed" style="display:none;">Most websites are ready in 2-5 days (sometimes even less), depending on your needs and how quickly you provide content.</div>
         </div>
-        <div class="faq-item border-b py-4">
-          <div class="faq-question flex justify-between items-center text-lg font-semibold text-blue-700">
-            <span>Do you offer support after my site goes live?</span>
-            <span class="faq-chevron">&#9654;</span>
-          </div>
-          <div class="faq-answer text-slate-700 mt-2">Yes! All plans include ongoing support. We're here to help with updates, questions, and any issues.</div>
+        <div class="faq-item border-b py-4 mb-2 bg-slate-50 rounded-xl shadow-sm">
+          <button class="faq-question flex justify-between items-center w-full text-lg font-bold text-blue-800 focus:outline-none hover:bg-blue-50 px-4 py-3 rounded-xl transition">
+            <span class="flex items-center gap-2"><svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>Do you offer support after my site goes live?</span>
+            <svg class="faq-chevron w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+          <div class="faq-answer text-slate-700 mt-3 px-4 pb-2 text-base leading-relaxed" style="display:none;">Yes! All plans include ongoing support. We're here to help with updates, questions, and any issues.</div>
         </div>
-        <div class="faq-item border-b py-4">
-          <div class="faq-question flex justify-between items-center text-lg font-semibold text-blue-700">
-            <span>Can you help me get found on Google?</span>
-            <span class="faq-chevron">&#9654;</span>
-          </div>
-          <div class="faq-answer text-slate-700 mt-2">Absolutely. We offer SEO services to help your business show up in local searches and on Google Maps.</div>
+        <div class="faq-item border-b py-4 mb-2 bg-slate-50 rounded-xl shadow-sm">
+          <button class="faq-question flex justify-between items-center w-full text-lg font-bold text-blue-800 focus:outline-none hover:bg-blue-50 px-4 py-3 rounded-xl transition">
+            <span class="flex items-center gap-2"><svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>Can you help me get found on Google?</span>
+            <svg class="faq-chevron w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+          <div class="faq-answer text-slate-700 mt-3 px-4 pb-2 text-base leading-relaxed" style="display:none;">Absolutely. We offer SEO services to help your business show up in local searches and on Google Maps.</div>
         </div>
-        <div class="faq-item border-b py-4">
-          <div class="faq-question flex justify-between items-center text-lg font-semibold text-blue-700">
-            <span>Is there a contract or setup fee?</span>
-            <span class="faq-chevron">&#9654;</span>
-          </div>
-          <div class="faq-answer text-slate-700 mt-2">No contracts or hidden fees. You pay month-to-month and can cancel anytime.</div>
+        <div class="faq-item border-b py-4 mb-2 bg-slate-50 rounded-xl shadow-sm">
+          <button class="faq-question flex justify-between items-center w-full text-lg font-bold text-blue-800 focus:outline-none hover:bg-blue-50 px-4 py-3 rounded-xl transition">
+            <span class="flex items-center gap-2"><svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>Is there a contract or setup fee?</span>
+            <svg class="faq-chevron w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+          <div class="faq-answer text-slate-700 mt-3 px-4 pb-2 text-base leading-relaxed" style="display:none;">No contracts or hidden fees. You pay month-to-month and can cancel anytime.</div>
         </div>
-        <div class="faq-item border-b py-4">
-          <div class="faq-question flex justify-between items-center text-lg font-semibold text-blue-700">
-            <span>What if I need more than what's in a plan?</span>
-            <span class="faq-chevron">&#9654;</span>
-          </div>
-          <div class="faq-answer text-slate-700 mt-2">We can create a custom plan just for you. Contact us and let us know what you need!</div>
+        <div class="faq-item border-b py-4 mb-2 bg-slate-50 rounded-xl shadow-sm">
+          <button class="faq-question flex justify-between items-center w-full text-lg font-bold text-blue-800 focus:outline-none hover:bg-blue-50 px-4 py-3 rounded-xl transition">
+            <span class="flex items-center gap-2"><svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>What if I need more than what's in a plan?</span>
+            <svg class="faq-chevron w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+          <div class="faq-answer text-slate-700 mt-3 px-4 pb-2 text-base leading-relaxed" style="display:none;">We can create a custom plan just for you. Contact us and let us know what you need!</div>
         </div>
+      </div>
+    </div>
+    <!-- Still have questions CTA -->
+    <div class="text-center mt-10">
+      <div class="inline-block bg-blue-50 border border-blue-200 rounded-2xl px-8 py-6 shadow">
+        <div class="text-xl font-bold text-blue-700 mb-2 flex items-center justify-center gap-2"><svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><circle cx="12" cy="8" r="1"/></svg>Still have questions?</div>
+        <div class="mb-3 text-slate-700">We're happy to help! Reach out and we'll get back to you fast.</div>
+        <a href="contact.html" class="px-6 py-3 bg-blue-600 text-white rounded font-semibold shadow hover:bg-blue-700">Contact Us</a>
       </div>
     </div>
   </main>
@@ -97,16 +102,50 @@
       q.addEventListener('click', function() {
         const item = this.closest('.faq-item');
         const open = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!open) item.classList.add('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          const ans = i.querySelector('.faq-answer');
+          if (ans) ans.style.display = 'none';
+        });
+        if (!open) {
+          item.classList.add('open');
+          const ans = item.querySelector('.faq-answer');
+          if (ans) ans.style.display = 'block';
+        }
       });
     });
   </script>
 
-  <!-- Footer -->
-  <footer class="bg-white border-t py-8 mt-12 text-center text-slate-500 text-sm">
-    <div class="mb-2">Email: <a href="mailto:ftwenty903@gmail.com" class="text-blue-600 hover:underline">ftwenty903@gmail.com</a> | Phone: <a href="tel:2394861913" class="text-blue-600 hover:underline">2394861913</a></div>
-    &copy; 2024 IT & Web Services. All rights reserved.
+  <!-- Footer (copied from index.html for consistency) -->
+  <footer class="bg-white border-t border-slate-200 pt-12 pb-8 mt-16 text-slate-700 text-sm">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row md:justify-between md:items-center gap-10">
+      <div class="flex flex-col items-center md:items-start">
+        <div class="flex items-center mb-2">
+          <svg class="w-7 h-7 text-blue-600 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="3"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
+          <span class="text-lg font-bold text-slate-900">IT & Web Services By <span class="ml-1 text-blue-700 bg-blue-100 px-2 py-0.5 rounded shadow font-extrabold tracking-wide border border-blue-400">Teck</span></span>
+        </div>
+        <div class="flex items-center mb-1">
+          <svg class="w-5 h-5 text-blue-600 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 12v1a4 4 0 0 1-8 0v-1"/><rect x="2" y="7" width="20" height="10" rx="5"/></svg>
+          <a href="mailto:ftwenty903@gmail.com" class="hover:underline text-blue-700">ftwenty903@gmail.com</a>
+        </div>
+        <div class="flex items-center mb-1">
+          <svg class="w-5 h-5 text-blue-600 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92V17a2 2 0 0 1-2 2h-1c-9.94 0-18-8.06-18-18V3a2 2 0 0 1 2-2h2.09a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.36a2 2 0 0 1-.45 2.11l-.27.27a16.06 16.06 0 0 0 6.29 6.29l.27-.27a2 2 0 0 1 2.11-.45c.76.32 1.55.55 2.36.68A2 2 0 0 1 21 13.91V16a2 2 0 0 1-2 2h-.08"/></svg>
+          <a href="tel:2394861913" class="hover:underline text-blue-700">239-486-1913</a>
+        </div>
+        <div class="text-slate-500 mt-2">Fort Myers, FL &bull; Serving all SWFL</div>
+      </div>
+      <div class="flex flex-col items-center md:items-end gap-2">
+        <div class="flex flex-wrap gap-2 mb-3">
+          <a href="index.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">Home</a>
+          <a href="services.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">Services</a>
+          <a href="pricing.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">Pricing</a>
+          <a href="contact.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">Contact</a>
+          <a href="faq.html" class="px-4 py-1 rounded-full bg-slate-100 hover:bg-blue-100 text-blue-700 font-semibold transition">FAQ</a>
+        </div>
+        <div class="border-t border-slate-200 w-full mb-2"></div>
+        <div class="text-slate-500">&copy; 2024 IT & Web Services. All rights reserved.</div>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
