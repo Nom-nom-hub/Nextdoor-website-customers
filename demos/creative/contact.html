@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creative Portfolio Demo | Designs by Teck</title>
-  <meta name="description" content="Creative web design demo by Designs by Teck. Modern, bold, and artistic layouts for creative professionals.">
+  <title>Contact | Creative Portfolio Demo</title>
+  <meta name="description" content="Contact the team behind the Creative Portfolio Demo by Designs by Teck.">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100 min-h-screen text-slate-900">
@@ -39,31 +39,26 @@
     });
   </script>
 
-  <!-- Hero Section -->
+  <!-- Contact Section -->
   <section class="py-20 px-4 text-center">
-    <h1 class="text-5xl font-extrabold mb-4 text-pink-600 drop-shadow">Creative Portfolio</h1>
-    <p class="text-xl mb-8 text-slate-700">A bold, modern demo site for artists, designers, and creative professionals.</p>
-    <a href="contact.html" class="inline-block px-8 py-3 bg-pink-600 text-white rounded-full font-bold shadow hover:bg-pink-700 transition text-lg">Work With Us</a>
-  </section>
-
-  <!-- Portfolio Gallery -->
-  <section class="max-w-4xl mx-auto py-12 px-4">
-    <h2 class="text-2xl font-bold text-center mb-8 text-pink-600">Featured Work</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Artistic Website" class="w-full h-40 object-cover">
-        <div class="p-4">
-          <h3 class="font-bold text-lg mb-1">Artistic Website</h3>
-          <p class="text-slate-600 text-sm">A vibrant, interactive site for a digital artist.</p>
+    <h1 class="text-4xl font-extrabold mb-4 text-pink-600 drop-shadow">Contact Us</h1>
+    <p class="text-lg mb-8 text-slate-700 max-w-2xl mx-auto">Ready to start your creative project or have questions? Reach out to us using the form below or email us directly at <a href="mailto:teck@designsbyteck.com" class="text-pink-600 underline">teck@designsbyteck.com</a>.</p>
+    <div class="max-w-xl mx-auto bg-white bg-opacity-80 rounded-xl shadow-lg p-8">
+      <form class="space-y-6">
+        <div>
+          <label for="name" class="block text-left font-bold mb-1 text-pink-600">Name</label>
+          <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-pink-200 rounded focus:outline-none focus:ring-2 focus:ring-pink-400" required>
         </div>
-      </div>
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Design Studio" class="w-full h-40 object-cover">
-        <div class="p-4">
-          <h3 class="font-bold text-lg mb-1">Design Studio</h3>
-          <p class="text-slate-600 text-sm">Portfolio for a creative agency with bold visuals.</p>
+        <div>
+          <label for="email" class="block text-left font-bold mb-1 text-pink-600">Email</label>
+          <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-pink-200 rounded focus:outline-none focus:ring-2 focus:ring-pink-400" required>
         </div>
-      </div>
+        <div>
+          <label for="message" class="block text-left font-bold mb-1 text-pink-600">Message</label>
+          <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-pink-200 rounded focus:outline-none focus:ring-2 focus:ring-pink-400" required></textarea>
+        </div>
+        <button type="submit" class="w-full py-3 bg-pink-600 text-white rounded-full font-bold shadow hover:bg-pink-700 transition">Send Message</button>
+      </form>
     </div>
   </section>
 

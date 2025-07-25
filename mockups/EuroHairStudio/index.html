@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Euro Hair Studio | Hair Salon Cape Coral FL | Keratin, Extensions, Color, Cuts</title>
+  <meta name="description" content="Euro Hair Studio is Cape Coral's top-rated hair salon for luxury color, keratin treatments, extensions, and modern haircuts. Award-winning stylists. Book your appointment today!">
+  <meta name="keywords" content="hair salon, Cape Coral, FL, keratin, hair extensions, hair color, balayage, haircuts, perms, Amira Redzic, Euro Hair Studio, best salon, hair stylist, beauty, hair care, book appointment">
+  <link rel="canonical" href="https://eurohairstudio.com/">
+  <link rel="icon" href="/mockups/EuroHairStudio/images/storeOne.jpg" type="image/jpeg">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="business.business">
+  <meta property="og:title" content="Euro Hair Studio | Hair Salon Cape Coral FL">
+  <meta property="og:description" content="Award-winning hair salon in Cape Coral, FL. Specializing in color, keratin, extensions, and modern cuts. Book your appointment today!">
+  <meta property="og:image" content="https://eurohairstudio.com/images/storeOne.jpg">
+  <meta property="og:url" content="https://eurohairstudio.com/">
+  <meta property="og:site_name" content="Euro Hair Studio">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Euro Hair Studio | Hair Salon Cape Coral FL">
+  <meta name="twitter:description" content="Award-winning hair salon in Cape Coral, FL. Specializing in color, keratin, extensions, and modern cuts. Book your appointment today!">
+  <meta name="twitter:image" content="https://eurohairstudio.com/images/storeOne.jpg">
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "Euro Hair Studio",
+    "image": "https://eurohairstudio.com/images/storeOne.jpg",
+    "@id": "https://eurohairstudio.com/",
+    "url": "https://eurohairstudio.com/",
+    "telephone": "+12395551234",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1715 Cape Coral Pkwy W",
+      "addressLocality": "Cape Coral",
+      "addressRegion": "FL",
+      "postalCode": "33914",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 26.563,
+      "longitude": -81.967
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/eurohairstudio/"
+    ],
+    "founder": {
+      "@type": "Person",
+      "name": "Amira Redzic"
+    },
+    "description": "Euro Hair Studio is Cape Coral's best hair salon for color, keratin, extensions, and modern haircuts. Award-winning stylists. Book your appointment today!"
+  }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #f8fafc; font-family: 'Inter', sans-serif; }
+    h1, h2, h3, .brand-font { font-family: 'Playfair Display', serif; }
+    .organic-bg { background: linear-gradient(135deg, #f3f4f6 0%, #e0e7e9 100%); }
+    /* Custom dark mode styles for CDN Tailwind */
+    html.dark, html.dark body { background: #101624 !important; color: #e0e7ef !important; }
+    html.dark .organic-bg, html.dark .bg-white, html.dark .rounded-2xl, html.dark .shadow-lg, html.dark .shadow, html.dark .service-card, html.dark .bg-gradient-to-r, html.dark .bg-gradient-to-br {
+      background: #1a2332 !important; color: #e0e7ef !important; border-color: #22304a !important;
+    }
+    html.dark .hero-image { background: #1a2332 !important; }
+    html.dark .hero-title, html.dark .brand-font, html.dark h2, html.dark h3 { color: #a7f3d0 !important; }
+    html.dark .hero-tagline, html.dark .text-emerald-700, html.dark .text-emerald-900 { color: #6ee7b7 !important; }
+    html.dark .btn-emerald { background: #059669 !important; color: #fff !important; border-color: #059669 !important; }
+    html.dark .btn-outline-emerald { background: #101624 !important; color: #6ee7b7 !important; border-color: #059669 !important; }
+    html.dark .gallery-img { background: #22304a !important; }
+    html.dark .testimonial-slider, html.dark .testimonial-slide, html.dark .bg-white { background: #1a2332 !important; color: #e0e7ef !important; }
+    html.dark .footer-social svg { color: #a7f3d0 !important; }
+    html.dark .sticky-book-btn, html.dark #chatbot-btn { background: #059669 !important; color: #fff !important; }
+    html.dark .lightbox { background: #101624 !important; }
+    html.dark .bg-emerald-50, html.dark .bg-emerald-100 { background: #22304a !important; }
+    html.dark .border-emerald-100, html.dark .border-slate-200 { border-color: #22304a !important; }
+    html.dark .shadow-lg, html.dark .shadow-2xl { box-shadow: 0 8px 32px rgba(16,185,129,0.18) !important; }
+    html.dark input, html.dark textarea { background: #22304a !important; color: #e0e7ef !important; border-color: #22304a !important; }
+    html.dark .bg-slate-900 { background: #101624 !important; }
+    html.dark .bg-slate-800 { background: #1a2332 !important; }
+    html.dark .text-slate-900, html.dark .text-slate-700, html.dark .text-slate-600 { color: #e0e7ef !important; }
+    html.dark .border-slate-800 { border-color: #22304a !important; }
+    html.dark .bg-black { background: #101624 !important; }
+    html.dark .bg-opacity-40 { background: rgba(16,22,36,0.7) !important; }
+    html.dark .bg-gradient-to-r, html.dark .bg-gradient-to-br { background: linear-gradient(135deg, #22304a 0%, #101624 100%) !important; }
+    html.dark .bg-white { background: #1a2332 !important; }
+    html.dark .border-emerald-700 { border-color: #059669 !important; }
+    html.dark .border-slate-300 { border-color: #22304a !important; }
+    html.dark .bg-emerald-700 { background: #059669 !important; }
+    html.dark .text-emerald-200 { color: #a7f3d0 !important; }
+    html.dark .text-emerald-300 { color: #6ee7b7 !important; }
+    html.dark .text-yellow-200 { color: #fde68a !important; }
+    html.dark .bg-emerald-900 { background: #064e3b !important; }
+    html.dark .border-white { border-color: #22304a !important; }
+    html.dark .bg-emerald-100 { background: #22304a !important; }
+    html.dark .bg-emerald-50 { background: #22304a !important; }
+    html.dark .bg-opacity-90 { background: rgba(16,22,36,0.9) !important; }
+    html.dark .bg-opacity-30 { background: rgba(16,22,36,0.7) !important; }
+    html.dark .bg-opacity-10 { background: rgba(16,22,36,0.3) !important; }
+    html.dark .bg-opacity-20 { background: rgba(16,22,36,0.5) !important; }
+    html.dark .bg-opacity-80 { background: rgba(16,22,36,0.9) !important; }
+    html.dark .bg-opacity-100 { background: #101624 !important; }
+    html.dark .border-t { border-top-color: #22304a !important; }
+    html.dark .border-b { border-bottom-color: #22304a !important; }
+    html.dark .border { border-color: #22304a !important; }
+    html.dark .rounded-2xl { background: #1a2332 !important; }
+    html.dark .shadow { box-shadow: 0 2px 8px rgba(16,185,129,0.18) !important; }
+    html.dark .shadow-2xl { box-shadow: 0 8px 32px rgba(16,185,129,0.28) !important; }
+    @keyframes fadeInHero { from { opacity: 0; transform: scale(1.04);} to { opacity: 1; transform: none; } }
+    .hero-image img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center;
+      filter: brightness(0.92) saturate(1.1);
+      transition: transform 0.7s cubic-bezier(.4,0,.2,1);
+      will-change: transform;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg,rgba(16,185,129,0.13) 0%,rgba(255,255,255,0.0) 70%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 2;
+      display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+      padding: 2.5rem 2rem;
+    }
+    .hero-title { font-size: 2.7rem; font-weight: 800; color: #065f46; text-shadow: 0 2px 16px rgba(0,0,0,0.08); letter-spacing: -1px; }
+    .hero-tagline { font-size: 1.3rem; color: #059669; margin-top: 0.5rem; margin-bottom: 1.5rem; font-weight: 600; }
+    .hero-btns { display: flex; gap: 1rem; }
+    .btn-emerald {
+      background: #059669;
+      color: #fff;
+      border: 2px solid #059669;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
+      transition: background 0.2s, color 0.2s, border 0.2s;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 9999px;
+      padding: 0.75rem 2.5rem;
+    }
+    .btn-emerald:hover, .btn-emerald:focus {
+      background: #047857;
+      color: #fff;
+      border-color: #047857;
+    }
+    .btn-outline-emerald {
+      background: #fff;
+      color: #059669;
+      border: 2px solid #059669;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
+      transition: background 0.2s, color 0.2s, border 0.2s;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 9999px;
+      padding: 0.75rem 2.5rem;
+    }
+    .btn-outline-emerald:hover, .btn-outline-emerald:focus {
+      background: #f0fdf4;
+      color: #047857;
+      border-color: #047857;
+    }
+    .about-highlight {
+      background: linear-gradient(90deg, #d1fae5 0%, #f3f4f6 100%);
+      border-radius: 1rem;
+      padding: 1.5rem 2rem;
+      font-size: 1.1rem;
+      color: #047857;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(16,185,129,0.06);
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 1.5rem;
+      box-shadow: 0 2px 8px rgba(16,185,129,0.08);
+      padding: 2.5rem 1.5rem 2rem 1.5rem;
+      display: flex; flex-direction: column; align-items: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+      border-top: 4px solid #059669;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card:hover {
+      box-shadow: 0 8px 32px rgba(16,185,129,0.13);
+      transform: translateY(-6px) scale(1.03);
+    }
+    .service-icon {
+      font-size: 2.5rem;
+      color: #059669;
+      margin-bottom: 0.5rem;
+      background: #d1fae5;
+      border-radius: 50%;
+      padding: 0.7rem;
+      box-shadow: 0 2px 8px rgba(16,185,129,0.08);
+    }
+    .service-title { font-size: 1.2rem; font-weight: 700; color: #047857; margin-bottom: 0.5rem; }
+    .service-desc { color: #64748b; text-align: center; font-size: 1rem; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    @media (min-width: 640px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1024px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    .gallery-img {
+      border-radius: 1rem;
+      object-fit: cover;
+      width: 100%;
+      aspect-ratio: 1/1;
+      box-shadow: 0 2px 8px rgba(16,185,129,0.08);
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s, filter 0.25s;
+      filter: brightness(0.98) saturate(1.1);
+    }
+    .gallery-img:hover {
+      transform: scale(1.05) rotate(-1deg);
+      box-shadow: 0 8px 32px rgba(16,185,129,0.18);
+      filter: brightness(1.05) saturate(1.2);
+      z-index: 2;
+    }
+    .gallery-img[data-animate] { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(.4,0,.2,1); }
+    .gallery-img[data-animate].animate { opacity: 1; transform: none; }
+    .lightbox {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.92); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+    .lightbox img { max-width: 90vw; max-height: 80vh; border-radius: 1.5rem; box-shadow: 0 8px 32px rgba(16,185,129,0.18); }
+    .lightbox-close { position: absolute; top: 2rem; right: 2rem; color: #fff; font-size: 2.5rem; cursor: pointer; }
+    .lightbox-arrow { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 2.5rem; cursor: pointer; background: rgba(0,0,0,0.18); border-radius: 50%; padding: 0.5rem; }
+    .lightbox-arrow.left { left: 2rem; }
+    .lightbox-arrow.right { right: 2rem; }
+    .testimonial-slider { position: relative; }
+    .testimonial-slide { display: none; }
+    .testimonial-slide.active { display: block; animation: fadeInTestimonial 0.8s; }
+    @keyframes fadeInTestimonial { from { opacity: 0; transform: translateY(30px);} to { opacity: 1; transform: none; } }
+    .star { color: #fbbf24; font-size: 1.2rem; }
+    .sticky-book-btn { position: fixed; bottom: 18px; right: 18px; z-index: 50; box-shadow: 0 4px 24px rgba(16,185,129,0.18); animation: pulseBtn 2s infinite alternate; }
+    @keyframes pulseBtn { 0% { box-shadow: 0 4px 24px rgba(16,185,129,0.18);} 100% { box-shadow: 0 8px 32px rgba(16,185,129,0.28);} }
+  </style>
+</head>
+<body class="text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+  <!-- Header & Navigation -->
+  <header class="sticky top-0 z-50 bg-white shadow-lg border-b border-emerald-100 relative overflow-hidden transition-all dark:bg-slate-900 dark:border-slate-800">
+    <div class="absolute left-0 top-0 w-full h-full pointer-events-none" style="background: linear-gradient(90deg,rgba(16,185,129,0.08) 0%,rgba(255,255,255,0.0) 80%);"></div>
+    <div class="hero-blob"></div>
+    <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between relative z-10">
+      <div class="flex flex-col items-center sm:items-start">
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-emerald-900 mb-1 brand-font flex items-center gap-2 dark:text-emerald-200">
+          Euro Hair Studio
+          <span class="inline-block w-3 h-3 rounded-full bg-gradient-to-br from-emerald-400 to-yellow-300 shadow-md border-2 border-white ml-1"></span>
+        </h1>
+        <span class="text-lg text-emerald-700 font-medium tracking-wide dark:text-emerald-300">Luxury Color, Extensions & Keratin in Cape Coral</span>
+        <span class="mt-2 inline-block bg-gradient-to-r from-yellow-200 via-emerald-100 to-white text-emerald-700 px-3 py-1 rounded-full text-xs font-semibold shadow dark:bg-gradient-to-r dark:from-emerald-900 dark:via-slate-800 dark:to-slate-900 dark:text-emerald-200">Awarded Best Salon 2024</span>
+      </div>
+      <!-- Dark Mode Toggle -->
+      <button id="darkmode-toggle" class="ml-2 p-2 rounded-full bg-emerald-50 text-emerald-700 shadow hover:bg-emerald-100 focus:outline-none focus:ring-2 focus:ring-emerald-300 transition-all dark:bg-slate-800 dark:text-yellow-200" aria-label="Toggle dark mode">
+        <svg id="darkmode-icon" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.05l-.71-.71"/><circle cx="12" cy="12" r="5"/></svg>
+      </button>
+      <!-- Desktop Nav -->
+      <nav class="mt-4 sm:mt-0 gap-6 items-center hidden md:flex">
+        <a href="#services" class="text-emerald-800 font-semibold text-lg px-2 py-1 rounded transition hover:bg-emerald-50 hover:text-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-300 dark:text-emerald-200 dark:hover:bg-slate-800 dark:hover:text-emerald-400">Services</a>
+        <a href="#gallery" class="text-emerald-800 font-semibold text-lg px-2 py-1 rounded transition hover:bg-emerald-50 hover:text-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-300 dark:text-emerald-200 dark:hover:bg-slate-800 dark:hover:text-emerald-400">Gallery</a>
+        <a href="#contact" class="text-emerald-800 font-semibold text-lg px-2 py-1 rounded transition hover:bg-emerald-50 hover:text-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-300 dark:text-emerald-200 dark:hover:bg-slate-800 dark:hover:text-emerald-400">Contact</a>
+        <a href="#book" class="btn-emerald px-6 py-2 rounded-full font-bold shadow-lg text-lg transition-all hover:shadow-emerald-200 focus:outline-none focus:ring-2 focus:ring-emerald-400 animate-pulse dark:bg-emerald-700 dark:border-emerald-700 dark:text-white" id="header-book-btn">Book Now</a>
+      </nav>
+      <!-- Mobile Hamburger -->
+      <button id="mobile-menu-btn" class="md:hidden ml-2 p-2 rounded-full bg-emerald-50 text-emerald-700 shadow hover:bg-emerald-100 focus:outline-none focus:ring-2 focus:ring-emerald-300 dark:bg-slate-800 dark:text-yellow-200" aria-label="Open menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-40 bg-black bg-opacity-40 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 md:hidden" style="opacity:0;pointer-events:none;"></div>
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-4/5 max-w-xs z-50 flex flex-col items-center pt-8 pb-8 px-6 gap-6 transition-all duration-300 translate-x-full rounded-l-2xl shadow-2xl md:hidden"
+      style="background: linear-gradient(135deg,rgba(236,253,245,0.98) 0%,rgba(255,255,255,0.98) 100%); box-shadow: -8px 0 32px rgba(16,185,129,0.13);opacity:0;pointer-events:none;transform:translateX(100%);">
+      <div class="w-full flex items-center justify-between mb-6">
+        <span class="text-xl font-extrabold text-emerald-700 brand-font flex items-center gap-2">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-gradient-to-br from-emerald-400 to-yellow-300 shadow border-2 border-white"></span>
+          Euro Hair Studio
+        </span>
+        <button id="mobile-menu-close" class="p-2 rounded-full bg-emerald-50 text-emerald-700 shadow hover:bg-emerald-100 focus:outline-none focus:ring-2 focus:ring-emerald-300" aria-label="Close menu">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <nav class="flex flex-col w-full gap-2 mt-2 mb-6">
+        <a href="#services" class="text-emerald-800 font-semibold text-xl px-4 py-3 rounded-lg transition hover:bg-emerald-50 hover:text-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-200 text-center">Services</a>
+        <a href="#gallery" class="text-emerald-800 font-semibold text-xl px-4 py-3 rounded-lg transition hover:bg-emerald-50 hover:text-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-200 text-center">Gallery</a>
+        <a href="#contact" class="text-emerald-800 font-semibold text-xl px-4 py-3 rounded-lg transition hover:bg-emerald-50 hover:text-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-200 text-center">Contact</a>
+      </nav>
+      <div class="w-full border-t border-emerald-100 my-2"></div>
+      <a href="#book" class="btn-emerald w-full py-3 rounded-full font-bold shadow-lg text-xl transition-all hover:shadow-emerald-200 text-center mt-2">Book Now</a>
+    </div>
+    <script>
+      // Mobile menu toggle
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const overlay = document.getElementById('mobile-menu-overlay');
+      const closeBtn = document.getElementById('mobile-menu-close');
+      function openMenu() {
+        menu.style.transform = 'translateX(0)';
+        menu.style.opacity = '1';
+        menu.style.pointerEvents = 'auto';
+        overlay.style.opacity = '1';
+        overlay.style.pointerEvents = 'auto';
+      }
+      function closeMenu() {
+        menu.style.transform = 'translateX(100%)';
+        menu.style.opacity = '0';
+        menu.style.pointerEvents = 'none';
+        overlay.style.opacity = '0';
+        overlay.style.pointerEvents = 'none';
+      }
+      menuBtn.addEventListener('click', openMenu);
+      closeBtn.addEventListener('click', closeMenu);
+      overlay.addEventListener('mousedown', closeMenu);
+      // Close menu on link click
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+    // Ensure mobile menu is always hidden on load
+    window.addEventListener('DOMContentLoaded', () => {
+      menu.style.transform = 'translateX(100%)';
+      menu.style.opacity = '0';
+      menu.style.pointerEvents = 'none';
+      overlay.style.opacity = '0';
+      overlay.style.pointerEvents = 'none';
+    });
+    </script>
+  </header>
+
+  <!-- Hero Section: Single Salon Image -->
+  <section class="max-w-5xl mx-auto px-4" data-animate>
+    <div class="hero-image dark:bg-slate-800">
+      <img src="images/storeOne.jpg" srcset="images/storeOne.jpg 1x, images/storeOne.jpg 2x" alt="Euro Hair Studio Salon Interior" loading="eager">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="text-center mt-8 mb-4">
+      <div class="hero-title brand-font dark:text-emerald-200">Euro Hair Studio</div>
+      <div class="hero-tagline dark:text-emerald-300">Luxury Color, Extensions & Keratin in Cape Coral</div>
+      <div class="flex justify-center gap-4 mt-6 hero-btns">
+        <a href="#book" class="btn-emerald dark:bg-emerald-700 dark:border-emerald-700 dark:text-white" id="hero-book-btn">Book Now</a>
+        <a href="#contact" class="btn-outline-emerald dark:bg-slate-900 dark:text-emerald-200 dark:border-emerald-700">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Our Studio Section -->
+  <section class="max-w-5xl mx-auto px-4 py-12" data-animate>
+    <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col md:flex-row items-center gap-8 organic-bg dark:bg-slate-800 dark:text-slate-100">
+      <div class="flex-1 mb-6 md:mb-0">
+        <h2 class="text-2xl sm:text-3xl font-bold text-emerald-900 mb-4 brand-font">About Our Studio</h2>
+        <p class="text-slate-700 mb-4">Being the owner of Euro Hair Studio it is always a thrill to create a new look that is on the cutting edge. We provide the highest quality of service and keep up to date on the latest trends, fashions, and products. This allows us to make our clients feel and look fantastic.</p>
+        <p class="text-slate-700 mb-4">Euro Hair Studio is a Full Service Hair Salon that was launched in the Spring of 2011 by Amira and her husband Jasmin Redzic. We believe in having experienced stylists with the knowledge and passion for creating wonderful hairstyles. Our main goal and top focus is hair, that is why we are dedicated to hair fashion. The stylists we chose for Euro Hair Studio are the top in their field and each has something that they have dedicated their career to being the best. We welcome you to come experience us and find out about the best kept secret in Cape Coral.</p>
+        <p class="text-slate-700">We hope you come and enjoy our vibrant and relaxed atmosphere. Let us get to work on making you feel and look your best.</p>
+      </div>
+      <div class="flex-1 flex justify-center">
+        <img src="images/amira.jpg" alt="Euro Hair Studio Owner" class="rounded-2xl shadow-lg object-cover w-64 h-64 md:w-80 md:h-80 border-4 border-emerald-100" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="max-w-5xl mx-auto px-4 py-16" data-animate>
+    <h2 class="text-2xl sm:text-3xl font-bold text-emerald-900 mb-8 text-center brand-font dark:text-emerald-200">Our Services</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col items-center service-card dark:bg-slate-800 dark:text-slate-100" data-animate>
+        <span class="service-icon mb-2 dark:bg-emerald-900 dark:text-emerald-200">✂️</span>
+        <h3 class="font-bold text-lg mb-1 text-emerald-800 dark:text-emerald-200">Cutting & Styling</h3>
+        <p class="text-slate-600 text-center dark:text-slate-300">Precision cuts, blowouts, and styling for all hair types and occasions.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col items-center service-card dark:bg-slate-800 dark:text-slate-100" data-animate>
+        <span class="service-icon mb-2 dark:bg-emerald-900 dark:text-emerald-200">🎨</span>
+        <h3 class="font-bold text-lg mb-1 text-emerald-800 dark:text-emerald-200">Coloring</h3>
+        <p class="text-slate-600 text-center dark:text-slate-300">Luxury color, highlights, balayage, and color correction by experts.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col items-center service-card dark:bg-slate-800 dark:text-slate-100" data-animate>
+        <span class="service-icon mb-2 dark:bg-emerald-900 dark:text-emerald-200">💧</span>
+        <h3 class="font-bold text-lg mb-1 text-emerald-800 dark:text-emerald-200">Keratin Treatment</h3>
+        <p class="text-slate-600 text-center dark:text-slate-300">Smoothing and strengthening for frizz-free, healthy, shiny hair.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col items-center service-card dark:bg-slate-800 dark:text-slate-100" data-animate>
+        <span class="service-icon mb-2 dark:bg-emerald-900 dark:text-emerald-200">🔄</span>
+        <h3 class="font-bold text-lg mb-1 text-emerald-800 dark:text-emerald-200">Perms</h3>
+        <p class="text-slate-600 text-center dark:text-slate-300">Modern, gentle perms for volume, waves, or curls that last.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow p-6 flex flex-col items-center service-card dark:bg-slate-800 dark:text-slate-100" data-animate>
+        <span class="service-icon mb-2 dark:bg-emerald-900 dark:text-emerald-200">🧵</span>
+        <h3 class="font-bold text-lg mb-1 text-emerald-800 dark:text-emerald-200">Extensions</h3>
+        <p class="text-slate-600 text-center dark:text-slate-300">Premium extensions for length, volume, and natural-looking results.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Gallery Section -->
+  <section id="gallery" class="max-w-5xl mx-auto px-4 py-12" data-animate>
+    <h2 class="text-2xl sm:text-3xl font-bold text-emerald-900 mb-8 text-center brand-font dark:text-emerald-200">Gallery</h2>
+    <div class="gallery-grid">
+      <img src="images/storeTwo.jpg" alt="Salon View 1" class="gallery-img" data-gallery data-animate>
+      <img src="images/storeThree.jpg" alt="Salon View 2" class="gallery-img" data-gallery data-animate>
+      <img src="images/five.jpg" alt="Client Style 1" class="gallery-img" data-gallery data-animate>
+      <img src="images/six.jpg" alt="Client Style 2" class="gallery-img" data-gallery data-animate>
+      <img src="images/seven.jpg" alt="Client Style 3" class="gallery-img" data-gallery data-animate>
+      <img src="images/eight.jpg" alt="Client Style 4" class="gallery-img" data-gallery data-animate>
+      <img src="images/nine.jpg" alt="Client Style 5" class="gallery-img" data-gallery data-animate>
+      <img src="images/12.jpg" alt="Client Style 6" class="gallery-img" data-gallery data-animate>
+    </div>
+    <div class="text-xs text-slate-400 mt-2">* All images © Euro Hair Studio. For production, use client-provided high-res images.</div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="max-w-5xl mx-auto px-4 py-12" data-animate>
+    <h2 class="text-2xl sm:text-3xl font-bold text-emerald-900 mb-8 text-center brand-font dark:text-emerald-200">What Clients Say</h2>
+    <div class="testimonial-slider">
+      <div class="testimonial-slide active">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="star">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png" alt="Google" class="h-5 ml-2">
+        </div>
+        <div class="testimonial-quote mb-2">“Absolutely the best salon in Cape Coral! My color and extensions look flawless every time. The team is so talented and welcoming.”</div>
+        <div class="testimonial-author">— Jessica R. (Google Review)</div>
+      </div>
+      <div class="testimonial-slide">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="star">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Yelp_Logo.svg" alt="Yelp" class="h-5 ml-2">
+        </div>
+        <div class="testimonial-quote mb-2">“I love the spa-like atmosphere and the attention to detail. My keratin treatment lasted for months. Highly recommend!”</div>
+        <div class="testimonial-author">— Maria S. (Yelp)</div>
+      </div>
+    </div>
+    <div class="flex justify-center mt-4" id="testimonial-dots"></div>
+  </section>
+
+  <!-- Contact & Info Card -->
+  <section id="contact" class="max-w-5xl mx-auto px-4 py-12" data-animate>
+    <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col md:flex-row items-center gap-8 dark:bg-slate-800 dark:text-slate-100">
+      <div class="flex-1 mb-6 md:mb-0">
+        <h2 class="text-xl font-bold text-emerald-900 mb-2">Visit Us</h2>
+        <div class="mb-2"><span class="font-semibold">Address:</span> 1715 Cape Coral Pkwy W, Cape Coral, FL</div>
+        <div class="mb-2"><span class="font-semibold">Phone:</span> <a href="tel:2395551234" class="text-emerald-700 hover:underline">(239) 555-1234</a></div>
+        <div class="mb-2"><span class="font-semibold">Hours:</span> Tue–Sat 9am–7pm, Sun–Mon Closed</div>
+        <div class="mt-4 flex gap-4 footer-social">
+          <a href="#" aria-label="Facebook"><svg class="w-6 h-6 text-slate-400 hover:text-emerald-600" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 5 3.657 9.127 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.127 22 17 22 12z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="w-6 h-6 text-slate-400 hover:text-emerald-600" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5zm4.25 2.25a6.25 6.25 0 1 1 0 12.5 6.25 6.25 0 0 1 0-12.5zm0 1.5a4.75 4.75 0 1 0 0 9.5 4.75 4.75 0 0 0 0-9.5zm6.25 1.25a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg></a>
+        </div>
+        <div class="mt-6">
+          <iframe src="https://www.google.com/maps?q=1715+Cape+Coral+Pkwy+W,+Cape+Coral,+FL&output=embed" width="100%" height="120" style="border:0;border-radius:0.75rem;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="flex-1">
+        <h2 class="text-xl font-bold text-emerald-900 mb-2">Get in Touch</h2>
+        <form class="flex flex-col gap-4">
+          <input type="text" placeholder="Your Name" class="border border-slate-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+          <input type="email" placeholder="Your Email" class="border border-slate-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+          <textarea placeholder="Your Message" rows="3" class="border border-slate-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
+          <button type="submit" class="btn-emerald px-6 py-2 rounded-full font-bold shadow">Send Message</button>
+        </form>
+        <div class="mt-4">
+          <form class="flex flex-col gap-2">
+            <label for="newsletter" class="text-sm text-slate-600">Subscribe for offers & tips:</label>
+            <div class="flex gap-2">
+              <input id="newsletter" type="email" placeholder="Your Email" class="border border-slate-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-emerald-400 flex-1">
+              <button type="submit" class="btn-emerald px-4 py-1 rounded-full font-bold shadow">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Book Now Button (Mobile) -->
+  <a href="#book" class="sticky-book-btn btn-emerald px-6 py-3 rounded-full font-bold shadow-lg text-lg block sm:hidden" id="floating-book-btn" style="display:none;">Book Now</a>
+
+  <!-- Footer -->
+  <footer class="organic-bg border-t border-slate-200 pt-10 pb-6 mt-8 text-slate-700 text-sm dark:bg-slate-900 dark:text-slate-200 dark:border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row md:justify-between md:items-center gap-6">
+      <div class="flex flex-col items-center md:items-start">
+        <span class="text-lg font-bold text-emerald-900 brand-font">Euro Hair Studio</span>
+        <span class="text-emerald-700">Cape Coral, FL</span>
+      </div>
+      <div class="flex gap-4 footer-social mt-4 md:mt-0">
+        <a href="#" aria-label="Facebook"><svg class="w-6 h-6 text-slate-400 hover:text-emerald-600" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 5 3.657 9.127 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.127 22 17 22 12z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg class="w-6 h-6 text-slate-400 hover:text-emerald-600" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5zm4.25 2.25a6.25 6.25 0 1 1 0 12.5 6.25 6.25 0 0 1 0-12.5zm0 1.5a4.75 4.75 0 1 0 0 9.5 4.75 4.75 0 0 0 0-9.5zm6.25 1.25a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg></a>
+      </div>
+      <div class="text-slate-400 mt-4 md:mt-0">&copy; 2024 Euro Hair Studio. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="chatbot.js"></script>
+  <script>
+    // Dark mode toggle
+    const darkToggle = document.getElementById('darkmode-toggle');
+    const darkIcon = document.getElementById('darkmode-icon');
+    function setDarkMode(on) {
+      const html = document.querySelector('html');
+      if (on) {
+        html.classList.add('dark');
+        localStorage.setItem('eurohair_dark', '1');
+        if (darkIcon) darkIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/>';
+      } else {
+        html.classList.remove('dark');
+        localStorage.setItem('eurohair_dark', '0');
+        if (darkIcon) darkIcon.innerHTML = '<path d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.05l-.71-.71"/><circle cx="12" cy="12" r="5"/>';
+      }
+    }
+    if (darkToggle) {
+      darkToggle.onclick = () => setDarkMode(!document.documentElement.classList.contains('dark'));
+      // On load, respect user/system preference
+      const userPref = localStorage.getItem('eurohair_dark');
+      if (userPref === '1' || (userPref === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        setDarkMode(true);
+      } else {
+        setDarkMode(false);
+      }
+    }
+    // Show floating Book Now button only after hero button is out of view
+    const floatingBtn = document.getElementById('floating-book-btn');
+    const heroBtn = document.getElementById('hero-book-btn');
+    function checkBookBtnVisibility() {
+      const rect = heroBtn.getBoundingClientRect();
+      const headerBookBtn = document.getElementById('header-book-btn');
+      // Only show floating button if hero button is completely above the viewport
+      if (rect.bottom <= 0) {
+        floatingBtn.style.display = 'block';
+        if (headerBookBtn) headerBookBtn.style.visibility = 'hidden';
+      } else {
+        floatingBtn.style.display = 'none';
+        if (headerBookBtn) headerBookBtn.style.visibility = 'visible';
+      }
+    }
+    window.addEventListener('scroll', checkBookBtnVisibility);
+    window.addEventListener('resize', checkBookBtnVisibility);
+    window.addEventListener('DOMContentLoaded', checkBookBtnVisibility);
+
+    // Move floating Book Now button up if footer is visible
+    function adjustFloatingBookBtn() {
+      const footer = document.querySelector('footer');
+      if (!footer) return;
+      const rect = footer.getBoundingClientRect();
+      const winH = window.innerHeight;
+      if (rect.top < winH - 60) {
+        floatingBtn.style.bottom = (winH - rect.top + 24) + 'px';
+      } else {
+        floatingBtn.style.bottom = '24px';
+      }
+    }
+    window.addEventListener('scroll', adjustFloatingBookBtn);
+    window.addEventListener('resize', adjustFloatingBookBtn);
+    window.addEventListener('DOMContentLoaded', adjustFloatingBookBtn);
+  </script>
+</body>
+</html>
